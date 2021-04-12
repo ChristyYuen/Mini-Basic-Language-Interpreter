@@ -1,0 +1,8 @@
+;;Source: programs-mb.d/13-junk.mb
+(
+(    1          )
+(    2          (goto nolabel))
+(    3          (dim (asub a 10)))
+(    4          (let (asub a 50) 3))
+(    5          (let (asub noarray 5) (asub a 90)))
+)

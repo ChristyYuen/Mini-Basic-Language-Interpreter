@@ -1,0 +1,61 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2020.09.07.04.31.26;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.09.07.04.30.43;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/bin/perl
+
+use Cwd;
+use strict;
+use warnings;
+
+my $qx_pwd = qx(pwd);
+chomp $qx_pwd;
+print "[$qx_pwd]\n";
+
+my $cwd = cwd();
+print "[$cwd]\n";
+
+my $getcwd = getcwd();
+print "[$qx_pwd]\n";
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d8 2
+a9 1
+print "$qx_pwd\n";
+d12 1
+a12 1
+print "$cwd\n";
+d15 1
+a15 1
+print "$qx_pwd\n";
+@

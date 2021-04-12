@@ -1,0 +1,15 @@
+# $Id: README,v 1.3 2020-09-06 20:13:06-07 - - $
+
+NAME
+   mbtran - translator from MB to MBIR
+
+SYNOPSIS
+   mbtran mbsource >mbirobject
+
+DESCRIPTION
+   The mbtran utility translate Mini Basic source code into 
+   Mini Basic Intermediate Representation, which looks like
+   Scheme.  You do not need to understand scanning, parsing,
+   or O'Caml to use this.  See the MBIR sources in another
+   directory.
+

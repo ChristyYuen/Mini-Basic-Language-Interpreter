@@ -1,0 +1,51 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2021.01.20.20.51.02;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.09.07.02.56.47;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mk-mbir-files.sh,v 1.1 2020-09-06 19:56:47-07 - - $
+
+for mb in programs-mb.d/*.mb
+do
+   mbir=$(echo $mb | sed -e 's|.*/\(.*\)\.mb$|\1.mbir|')
+   echo mbtran $mb mbir-files.d/$mbir
+   mb2mbir.d/mbtran $mb >mbir-files.d/$mbir
+done
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mk-mbir-files.sh,v 1.4 2020-08-30 19:30:11-07 - - $
+d4 1
+a4 1
+for mb in mb-programs.d/*.mb
+@

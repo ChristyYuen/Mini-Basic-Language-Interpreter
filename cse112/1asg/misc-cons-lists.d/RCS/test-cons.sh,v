@@ -1,0 +1,41 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2020.10.07.22.55.53;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: test-cons,v 1.6 2020-08-23 19:43:58-07 - - $
+cid -is $0
+
+make cons-lists --makefile=- <<__END__
+cons-lists: cons-lists.cpp
+	mkc cons-lists.cpp
+__END__
+[ $? -eq 0 ] || exit $?
+
+cons-lists '     ( a )    ' <<__END__
+((( a b ((c)) )))
+(a (  b  )  c)
+(a b (c) x )))) def
+
+a b c
+__END__
+
+@

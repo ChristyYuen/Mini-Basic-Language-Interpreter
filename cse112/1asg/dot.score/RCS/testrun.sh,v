@@ -1,0 +1,311 @@
+head	1.11;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.11
+date	2021.04.01.23.53.53;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2020.10.20.00.59.51;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2020.10.16.00.15.12;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2020.10.16.00.13.06;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2020.10.08.15.55.21;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2020.10.07.15.27.22;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2020.09.07.03.27.28;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2020.08.19.08.13.50;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2020.08.18.01.39.46;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.08.17.20.59.39;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.08.17.20.58.43;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.11
+log
+@-
+@
+text
+@#!/bin/sh -x
+# $Id: testrun.sh,v 1.10 2020-10-19 17:59:51-07 - - $
+
+export PATH=$PATH:/afs/cats.ucsc.edu/courses/cse112-wm/bin
+
+checksource README *.scm >check.log 2>&1
+partnercheck >partnercheck.log 2>&1
+
+./mbir.scm 00-hello-world.mbir  >00-hello-world.log  2>&1
+./mbir.scm 01-1to10.mbir        >01-1to10.log        2>&1
+./mbir.scm 02-exprs.mbir        >02-exprs.log        2>&1
+./mbir.scm 10-exprs.mbir        >10-exprs.log        2>&1
+./mbir.scm 11-let.mbir          >11-let.log          2>&1
+./mbir.scm 12-syntax.mbir       >12-syntax.log       2>&1
+./mbir.scm 20-goto.mbir         >20-goto.log         2>&1
+./mbir.scm 21-let-if.mbir       >21-let-if.log       2>&1
+./mbir.scm 22-fibonacci.mbir    >22-fibonacci.log    2>&1
+./mbir.scm 23-pi-e-fns.mbir     >23-pi-e-fns.log     2>&1
+
+echo 1 0 0   1 1 0   2 2 2 | \
+./mbir.scm 30-quadratic.mbir    >30-quadratic.log    2>&1
+
+echo 469 | \
+./mbir.scm 31-collatz.mbir      >31-collatz.log      2>&1
+
+echo 1 42 69 107 |  \
+./mbir.scm 32-factorial.mbir    >32-factorial.log    2>&1
+
+echo 5 1 4 2 3 10 1024 0 | \
+./mbir.scm 40-sort-array.mbir   >40-sort-array.log   2>&1
+
+./mbir.scm 41-eratosthenes.mbir >41-eratosthenes.log 2>&1
+
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.9 2020-10-15 17:15:12-07 - - $
+d6 2
+a7 1
+checksource *.scm >check.log 2>&1
+@
+
+
+1.9
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id: testrun.sh,v 1.8 2020-10-15 17:13:06-07 - - $
+d6 1
+a6 1
+checksource *.scm >check.log
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.7 2020-10-08 08:55:21-07 - - $
+d23 1
+a23 1
+./mbir.scm 31-collatz.mbir      >31-big-o-.log       2>&1
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.6 2020-10-07 08:27:22-07 - - $
+d13 1
+a13 1
+./mbir.scm 12-let-dim.mbir      >12-let-dim.log      2>&1
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.5 2020-09-06 20:27:28-07 - - $
+d17 4
+a20 1
+./mbir.scm 25-pi-e-fns.mbir     >25-pi-e-fns.log     2>&1
+a26 3
+
+echo 1 0 0   1 1 0   2 2 2 | \
+./mbir.scm 33-quadratic.mbir    >33-quadratic.log    2>&1
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.4 2020-08-19 01:13:50-07 - - $
+d8 10
+a17 10
+./mbir.scm 00-hello-world.mbirr  >00-hello-world.log  2>&1
+./mbir.scm 01-1to10.mbirr        >01-1to10.log        2>&1
+./mbir.scm 02-exprs.mbirr        >02-exprs.log        2>&1
+./mbir.scm 10-exprs.mbirr        >10-exprs.log        2>&1
+./mbir.scm 11-let.mbirr          >11-let.log          2>&1
+./mbir.scm 12-let-dim.mbirr      >12-let-dim.log      2>&1
+./mbir.scm 20-goto.mbirr         >20-goto.log         2>&1
+./mbir.scm 21-let-if.mbirr       >21-let-if.log       2>&1
+./mbir.scm 22-fibonacci.mbirr    >22-fibonacci.log    2>&1
+./mbir.scm 25-pi-e-fns.mbirr     >25-pi-e-fns.log     2>&1
+d20 1
+a20 1
+./mbir.scm 31-collatz.mbirr      >31-big-o-.log       2>&1
+d23 1
+a23 1
+./mbir.scm 32-factorial.mbirr    >32-factorial.log    2>&1
+d26 1
+a26 1
+./mbir.scm 33-quadratic.mbirr    >33-quadratic.log    2>&1
+d29 1
+a29 1
+./mbir.scm 40-sort-array.mbirr   >40-sort-array.log   2>&1
+d31 1
+a31 1
+./mbir.scm 41-eratosthenes.mbirr >41-eratosthenes.log 2>&1
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.3 2020-08-17 18:39:46-07 - - $
+d8 10
+a17 10
+./sbi.scm 00-hello-world.sbir  >00-hello-world.log  2>&1
+./sbi.scm 01-1to10.sbir        >01-1to10.log        2>&1
+./sbi.scm 02-exprs.sbir        >02-exprs.log        2>&1
+./sbi.scm 10-exprs.sbir        >10-exprs.log        2>&1
+./sbi.scm 11-let.sbir          >11-let.log          2>&1
+./sbi.scm 12-let-dim.sbir      >12-let-dim.log      2>&1
+./sbi.scm 20-goto.sbir         >20-goto.log         2>&1
+./sbi.scm 21-let-if.sbir       >21-let-if.log       2>&1
+./sbi.scm 22-fibonacci.sbir    >22-fibonacci.log    2>&1
+./sbi.scm 25-pi-e-fns.sbir     >25-pi-e-fns.log     2>&1
+d20 1
+a20 1
+./sbi.scm 31-collatz.sbir      >31-big-o-.log       2>&1
+d23 1
+a23 1
+./sbi.scm 32-factorial.sbir    >32-factorial.log    2>&1
+d26 1
+a26 1
+./sbi.scm 33-quadratic.sbir    >33-quadratic.log    2>&1
+d29 1
+a29 1
+./sbi.scm 40-sort-array.sbir   >40-sort-array.log   2>&1
+d31 1
+a31 1
+./sbi.scm 41-eratosthenes.sbir >41-eratosthenes.log 2>&1
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.2 2020-08-17 13:59:39-07 - - $
+d20 1
+a20 1
+   ./sbi.scm 31-collatz.sbir       >31-big-o-.log       2>&1
+d23 1
+a23 1
+   ./sbi.scm 32-factorial.sbir    >32-factorial.log    2>&1
+d26 1
+a26 1
+    ./sbi.scm 33-quadratic.sbir   >33-quadratic.log    2>&1
+d29 1
+a29 1
+    ./sbi.scm 40-sort-array.sbir  >40-sort-array.log   2>&1
+d31 1
+a31 1
+./sbi.scm 41-eratosthenes.sbir    >41-eratosthenes.log 2>&1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.1 2020-08-17 13:58:43-07 - - $
+d19 1
+a19 1
+echo 4269 | \
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: testrun.sh,v 1.5 2020-01-17 12:53:44-08 - - $
+d20 1
+a20 1
+   ./sbi.scm 31-big-o-.sbir       >31-big-o-.log       2>&1
+@

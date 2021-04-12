@@ -1,0 +1,2518 @@
+head	1.86;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.86
+date	2021.04.03.03.05.02;	author -;	state -;
+branches;
+next	1.85;
+
+1.85
+date	2020.10.07.22.57.36;	author -;	state -;
+branches;
+next	1.84;
+
+1.84
+date	2020.10.07.22.56.53;	author -;	state -;
+branches;
+next	1.83;
+
+1.83
+date	2020.08.13.20.10.33;	author -;	state -;
+branches;
+next	1.82;
+
+1.82
+date	2020.08.13.20.07.43;	author -;	state -;
+branches;
+next	1.81;
+
+1.81
+date	2020.08.13.20.07.08;	author -;	state -;
+branches;
+next	1.80;
+
+1.80
+date	2020.08.13.20.02.03;	author -;	state -;
+branches;
+next	1.79;
+
+1.79
+date	2020.08.13.20.01.32;	author -;	state -;
+branches;
+next	1.78;
+
+1.78
+date	2020.08.13.20.00.45;	author -;	state -;
+branches;
+next	1.77;
+
+1.77
+date	2020.08.13.19.57.33;	author -;	state -;
+branches;
+next	1.76;
+
+1.76
+date	2020.08.13.19.50.10;	author -;	state -;
+branches;
+next	1.75;
+
+1.75
+date	2020.08.13.19.31.06;	author -;	state -;
+branches;
+next	1.74;
+
+1.74
+date	2020.08.13.19.26.01;	author -;	state -;
+branches;
+next	1.73;
+
+1.73
+date	2020.08.13.19.25.34;	author -;	state -;
+branches;
+next	1.72;
+
+1.72
+date	2020.08.13.18.51.16;	author -;	state -;
+branches;
+next	1.71;
+
+1.71
+date	2020.08.13.18.46.45;	author -;	state -;
+branches;
+next	1.70;
+
+1.70
+date	2020.08.13.18.46.18;	author -;	state -;
+branches;
+next	1.69;
+
+1.69
+date	2020.08.13.18.45.04;	author -;	state -;
+branches;
+next	1.68;
+
+1.68
+date	2020.08.13.18.43.20;	author -;	state -;
+branches;
+next	1.67;
+
+1.67
+date	2020.08.13.18.29.00;	author -;	state -;
+branches;
+next	1.66;
+
+1.66
+date	2020.08.13.18.19.20;	author -;	state -;
+branches;
+next	1.65;
+
+1.65
+date	2020.08.13.18.12.22;	author -;	state -;
+branches;
+next	1.64;
+
+1.64
+date	2020.08.13.08.38.38;	author -;	state -;
+branches;
+next	1.63;
+
+1.63
+date	2020.08.13.08.37.22;	author -;	state -;
+branches;
+next	1.62;
+
+1.62
+date	2020.08.13.08.36.34;	author -;	state -;
+branches;
+next	1.61;
+
+1.61
+date	2020.08.13.08.34.20;	author -;	state -;
+branches;
+next	1.60;
+
+1.60
+date	2020.08.13.08.34.05;	author -;	state -;
+branches;
+next	1.59;
+
+1.59
+date	2020.08.13.08.33.19;	author -;	state -;
+branches;
+next	1.58;
+
+1.58
+date	2020.08.13.08.32.37;	author -;	state -;
+branches;
+next	1.57;
+
+1.57
+date	2020.08.13.08.31.27;	author -;	state -;
+branches;
+next	1.56;
+
+1.56
+date	2020.08.13.07.06.04;	author -;	state -;
+branches;
+next	1.55;
+
+1.55
+date	2020.08.13.07.04.16;	author -;	state -;
+branches;
+next	1.54;
+
+1.54
+date	2020.08.13.06.57.25;	author -;	state -;
+branches;
+next	1.53;
+
+1.53
+date	2020.08.13.06.53.43;	author -;	state -;
+branches;
+next	1.52;
+
+1.52
+date	2020.08.13.06.49.28;	author -;	state -;
+branches;
+next	1.51;
+
+1.51
+date	2020.08.13.06.48.43;	author -;	state -;
+branches;
+next	1.50;
+
+1.50
+date	2020.08.13.06.48.00;	author -;	state -;
+branches;
+next	1.49;
+
+1.49
+date	2020.08.13.06.47.02;	author -;	state -;
+branches;
+next	1.48;
+
+1.48
+date	2020.08.13.06.44.48;	author -;	state -;
+branches;
+next	1.47;
+
+1.47
+date	2020.08.13.06.42.27;	author -;	state -;
+branches;
+next	1.46;
+
+1.46
+date	2020.08.13.06.41.17;	author -;	state -;
+branches;
+next	1.45;
+
+1.45
+date	2020.08.13.06.40.08;	author -;	state -;
+branches;
+next	1.44;
+
+1.44
+date	2020.08.13.06.39.01;	author -;	state -;
+branches;
+next	1.43;
+
+1.43
+date	2020.08.13.06.33.09;	author -;	state -;
+branches;
+next	1.42;
+
+1.42
+date	2020.08.13.06.25.20;	author -;	state -;
+branches;
+next	1.41;
+
+1.41
+date	2020.08.13.06.23.59;	author -;	state -;
+branches;
+next	1.40;
+
+1.40
+date	2020.08.13.06.15.36;	author -;	state -;
+branches;
+next	1.39;
+
+1.39
+date	2020.08.13.06.08.40;	author -;	state -;
+branches;
+next	1.38;
+
+1.38
+date	2020.08.13.06.05.37;	author -;	state -;
+branches;
+next	1.37;
+
+1.37
+date	2020.08.13.06.03.08;	author -;	state -;
+branches;
+next	1.36;
+
+1.36
+date	2020.08.13.06.02.53;	author -;	state -;
+branches;
+next	1.35;
+
+1.35
+date	2020.08.13.05.45.36;	author -;	state -;
+branches;
+next	1.34;
+
+1.34
+date	2020.08.13.05.44.39;	author -;	state -;
+branches;
+next	1.33;
+
+1.33
+date	2020.08.13.05.41.13;	author -;	state -;
+branches;
+next	1.32;
+
+1.32
+date	2020.08.13.05.40.28;	author -;	state -;
+branches;
+next	1.31;
+
+1.31
+date	2020.08.13.05.38.46;	author -;	state -;
+branches;
+next	1.30;
+
+1.30
+date	2020.08.13.05.38.06;	author -;	state -;
+branches;
+next	1.29;
+
+1.29
+date	2020.08.13.05.26.19;	author -;	state -;
+branches;
+next	1.28;
+
+1.28
+date	2020.08.13.05.18.30;	author -;	state -;
+branches;
+next	1.27;
+
+1.27
+date	2020.08.13.05.18.14;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2020.08.13.05.15.38;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2020.08.13.05.13.32;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2020.08.13.05.12.23;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2020.08.13.05.05.41;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2020.08.13.05.05.17;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2020.08.13.04.55.53;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2020.08.13.04.55.25;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2020.08.13.04.47.27;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2020.08.13.04.45.51;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2020.08.13.04.45.12;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2020.08.13.04.42.39;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2020.08.13.04.36.22;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2020.08.12.22.32.13;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2020.08.12.19.21.50;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2020.08.11.06.41.59;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2020.08.11.06.38.06;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2020.08.11.06.36.40;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2020.08.11.06.15.29;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2020.08.11.05.53.32;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2020.08.11.05.50.05;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2020.08.10.23.37.51;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2020.08.10.23.25.55;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2020.08.10.22.22.58;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2020.08.10.22.14.42;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.08.10.21.50.23;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.08.10.21.43.08;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.86
+log
+@-
+@
+text
+@// $Id: cons-lists.cpp,v 1.85 2020-10-07 15:57:36-07 - - $
+
+#include <cassert>
+#include <cctype>
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+//
+// NAME
+//    cons-lists - parse subset of scheme lists
+//
+// SYNOPSIS
+//    cons-lists [list_expr...]
+//
+// DESCRIPTION
+//
+//    It is intended only to expore Scheme standard lists.  This is
+//    a small subset of scheme syntax, supporting only proper lists,
+//    and the parsing and printing of them.
+//
+//    Proper OO style scatters multiple functions across class
+//    definitions.  Function style scatters multiple objects across
+//    individual functions.  This uses more functional than OO style.
+//
+//    No loops were used in the coding of this program (except in
+//    the test harness in the main function.  This is likely somewhat
+//    inefficient, because C++ does not guarantee that tail recursion
+//    is implemented.
+//
+//    Multiple extra objects are created, causing some memory leak.
+//    No attempt is made to delete extraneous objects, so memory
+//    leak does happen.
+//
+//
+
+// discriminated union to hold data
+using ref = const struct object*;
+enum type_t {NIL, SYM, CELL};
+struct object {
+   const type_t type = NIL;
+   union {
+      const char sym = 0;
+      const struct {ref car = 0; ref cdr = 0;} cell;
+   };
+   object (type_t type_): type(type_) {}
+   object (type_t type_, char sym_): type(type_), sym(sym_) {}
+   object (type_t type_, const ref car_, const ref cdr_):
+      type(type_), cell({car_,cdr_}) {
+   }
+};
+
+// list data structure construction functions
+const ref nil = new object (NIL);
+ref sym (const char chr_) {
+   return new object (SYM, chr_);
+}
+ref cons (const ref car_, const ref cdr_) {
+   return new object (CELL, car_, cdr_);
+}
+
+// print an object
+void print (const ref item, bool is_cdr = false) {
+   switch (item->type) {
+      case NIL:  cout << (is_cdr ? ")" : "()");
+                 break;
+      case SYM:  cout << (is_cdr ? " " : "") << item->sym;
+                 break;
+      case CELL: cout << (is_cdr ? " " : "(");
+                 print (item->cell.car);
+                 print (item->cell.cdr, true);
+                 break;
+      default:   assert (false && "item->type is corrupted");
+   }
+}
+
+// buffer to hold input string and scan tokens
+struct buffer {
+   string const* const str;
+   size_t const pos;
+   bool eof() const {return pos == str->size();}
+   char first() const {return str->at (pos);}
+   buffer rest() const {return {str, pos + 1};}
+   operator string() const {return str->substr(pos);}
+   pair<int,buffer> scan() const;
+};
+
+pair<int,buffer> buffer::scan() const {
+   if (eof()) return {EOF, *this};
+   if (isspace (first())) return rest().scan();
+   return {first(), rest()};
+}
+
+// mutually recursive sym and list parsers
+struct parse_state {const ref obj; const buffer buf;};
+parse_state parse_buf (const buffer&);
+
+parse_state parse_buf_cdr (const buffer& buf) {
+   const auto [chr, rest] = buf.scan();
+   if (chr == EOF) return {nil, rest};
+   if (chr == ')') return {nil, rest};
+   const auto [car, restcar] = parse_buf (buf);
+   const auto [cdr, restcdr] = parse_buf_cdr (restcar);
+   return {cons (car, cdr), restcdr};
+}
+
+parse_state parse_buf (const buffer& buf) {
+   const auto [chr, rest] = buf.scan();
+   if (chr == EOF) return {nil, rest};
+   if (chr == '(') return parse_buf_cdr (rest);
+   return {sym (chr), rest};
+}
+
+// top level parser to control parse
+parse_state parse (const string& str) {
+   cout << "string: \"" << str << "\"" << endl;
+   const auto [obj, rest] = parse_buf ({&str, 0});
+   return {obj, rest};
+}
+
+void report (const parse_state& state) {
+   cout << "object: \"";
+   print (state.obj);
+   cout << "\"" << endl;
+   const auto [chr, rest] = state.buf.scan();
+   if (chr != EOF) {
+      cout << "*ERROR: \"" << char (chr) << string (rest)
+           << "\"" << endl;
+   }
+   cout << endl;
+}
+
+// explicitly construct arbitrary example
+ref example_1() {
+   return cons (sym ('a'), cons (sym ('b'), cons (sym ('c'), nil)));
+}
+ref example_2() {
+   return cons (cons (sym ('a'), cons (sym ('b'), nil)),
+                cons (cons (sym ('c'), cons (sym ('d'), nil)),
+                      nil));
+}
+ref example_3() {
+   // '((a (b)) (c d) () e)
+   const ref p1 = cons (sym ('a'),
+                        cons (cons (sym ('b'),
+                                    nil),
+                              nil));
+   const ref p2 = cons (sym ('c'),
+                        cons (sym ('d'),
+                              nil));
+   const ref p3 = nil;
+   const ref p4 = sym ('e');
+   const ref list = cons (p1, cons (p2, cons (p3, cons (p4, nil))));
+   return list;
+}
+const vector<pair<string,ref>> builtin_examples {
+   {"example_1", example_1()},
+   {"example_2", example_2()},
+   {"example_3", example_3()},
+};
+
+const vector<string> scan_tests {"a", "((a (b)) (c d) () e)"};
+// main function is test harness
+int main (int argc, char** argv) {
+   vector<string> args (&argv[1], &argv[argc]);
+   for (const auto& example: builtin_examples) {
+      cout << example.first << ":" << endl;
+      report ({example.second, {new string(),0}});
+   }
+   for (const auto& test: scan_tests) report (parse (test));
+   for (const auto& arg: args) report (parse (arg));
+   string line;
+   while (getline (cin, line)) report (parse (line));
+   return 0;
+}
+
+@
+
+
+1.85
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.84 2020-10-07 15:56:53-07 - - $
+d89 1
+@
+
+
+1.84
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.83 2020-08-13 13:10:33-07 - - $
+a122 1
+   cout << endl;
+d131 1
+@
+
+
+1.83
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.82 2020-08-13 13:07:43-07 - - $
+d123 1
+@
+
+
+1.82
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.81 2020-08-13 13:07:08-07 - - $
+a88 1
+int isparen (int chr) {return chr == '(' or chr == ')';}
+d92 1
+a92 2
+   if (isalnum (first()) or isparen(first())) return {first(), rest()};
+   return {EOF, *this};
+@
+
+
+1.81
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.80 2020-08-13 13:02:03-07 - - $
+d94 1
+a94 1
+   return (EOF, *this);
+@
+
+
+1.80
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.79 2020-08-13 13:01:32-07 - - $
+d89 1
+d93 2
+a94 1
+   return {first(), rest()};
+@
+
+
+1.79
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.78 2020-08-13 13:00:45-07 - - $
+d128 1
+a128 1
+      cout << "ERROR: \"" << char (chr) << string (rest)
+@
+
+
+1.78
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.73 2020-08-13 12:25:34-07 - - $
+d128 2
+a129 1
+      cout << "ERROR: \"" << chr << string (rest) << "\"" << endl;
+@
+
+
+1.77
+log
+@-
+@
+text
+@d126 3
+a128 2
+   if (not state.buf.eof()) {
+      cout << "syntax error: \"" << string (state.buf) << "\"" << endl;
+@
+
+
+1.76
+log
+@-
+@
+text
+@d28 1
+a28 1
+//    No loops were used in the coding of this program (except for
+d55 1
+a55 1
+// construction functions for the data structure
+@
+
+
+1.75
+log
+@-
+@
+text
+@d86 1
+d119 1
+a119 1
+   return {obj, rest.scan()};;
+d127 1
+a127 1
+      cout << "syntax error: \"" << buf.rest() << "\"" << endl;
+d166 1
+a166 1
+      report (example.second);
+@
+
+
+1.74
+log
+@-
+@
+text
+@a85 1
+   void error() const {throw runtime_error (str->substr (pos));}
+d95 1
+a95 1
+struct parse_state {const object obj; const buffer buf;};
+d100 1
+a100 1
+   if (chr == EOF) buf.error();
+d109 1
+a109 1
+   if (chr == EOF) buf.error();
+@
+
+
+1.73
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.72 2020-08-13 11:51:16-07 - - $
+d166 1
+a166 1
+      println (example.second);
+d168 2
+a169 2
+   for (const auto& test: scan_tests) println (parse (test));
+   for (const auto& arg: args) println (parse (arg));
+d171 1
+a171 1
+   while (getline (cin, line)) println (parse (line));
+@
+
+
+1.72
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.71 2020-08-13 11:46:45-07 - - $
+a78 6
+void println (const ref item) {
+   cout << "object: \"";
+   print (item);
+   cout << "\"" << endl;
+}
+
+d96 2
+a97 1
+pair<ref,buffer> parse_buf (const buffer&);
+d99 1
+a99 1
+pair<ref,buffer> parse_buf_cdr (const buffer& buf) {
+d108 1
+a108 1
+pair<ref,buffer> parse_buf (const buffer& buf) {
+d116 1
+a116 1
+ref parse (const string& str) {
+d118 10
+a127 7
+   try {
+      const auto [obj, rest] = parse_buf ({&str, 0});
+      if (rest.scan().first != EOF) rest.error();
+      return obj;
+   }catch (runtime_error& error) {
+      cout << "syntax error: \"" << error.what() << "\"" << endl;
+      return nil;
+@
+
+
+1.71
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.67 2020-08-13 11:29:00-07 - - $
+d102 1
+a102 2
+struct parse_state {ref obj; buffer buf;};
+parse_state parse_buf (const buffer&);
+d104 1
+a104 1
+parse_state parse_buf_list (const buffer& buf) {
+d109 1
+a109 1
+   const auto [cdr, restcdr] = parse_buf_list (restcar);
+d113 1
+a113 1
+parse_state parse_buf (const buffer& buf) {
+d116 1
+a116 1
+   if (chr == '(') return parse_buf_list (rest);
+@
+
+
+1.70
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.68 2020-08-13 11:43:20-07 - - $
+a88 1
+   buffer (const string& str_): str(str_), pos(0) {}
+d125 1
+a125 1
+      const auto [obj, rest] = parse_buf (str);
+@
+
+
+1.69
+log
+@-
+@
+text
+@d89 1
+a89 1
+   buffer (const string& str_): str(&str_), pos(0) {}
+@
+
+
+1.68
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.67 2020-08-13 11:29:00-07 - - $
+d89 1
+a89 1
+   buffer (const string& str_): str(str_), pos(0) {}
+@
+
+
+1.67
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.65 2020-08-13 11:12:22-07 - - $
+d89 1
+d126 1
+a126 1
+      const auto [obj, rest] = parse_buf ({&str, 0});
+@
+
+
+1.66
+log
+@-
+@
+text
+@d90 1
+a91 1
+   char first() const {return str->at (pos);}
+d93 1
+d95 4
+a98 5
+
+pair<int,buffer> scan_token (const buffer& buf) {
+   if (buf.eof()) return {EOF, buf};
+   if (isspace (buf.first())) return scan_token (buf.rest());
+   return {buf.first(), buf.rest()};
+d106 1
+a106 1
+   const auto [chr, rest] = scan_token (buf);
+d115 1
+a115 1
+   const auto [chr, rest] = scan_token (buf);
+d126 1
+a126 1
+      if (scan_token (rest).first != EOF) rest.error();
+@
+
+
+1.65
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.64 2020-08-13 01:38:38-07 - - $
+d22 1
+a22 1
+//    and the parsing and printing of them thereof.
+d88 1
+a88 1
+   const size_t pos;
+d97 2
+a98 2
+   else if (isspace (buf.first())) return scan_token (buf.rest());
+   else return {buf.first(), buf.rest()};
+@
+
+
+1.64
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.63 2020-08-13 01:37:22-07 - - $
+d55 1
+a55 1
+// constructor functions for the data structure
+@
+
+
+1.63
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.62 2020-08-13 01:36:34-07 - - $
+d153 1
+a153 1
+   const ref p4 = cons (sym ('e'), nil);
+@
+
+
+1.62
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.61 2020-08-13 01:34:20-07 - - $
+d140 2
+a141 2
+                cons (sym ('c'), cons (sym ('d'), nil)),
+                      nil);
+@
+
+
+1.61
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.60 2020-08-13 01:34:05-07 - - $
+d140 2
+a141 1
+                cons (sym ('c'), cons (sym ('d'), nil)));
+@
+
+
+1.60
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.59 2020-08-13 01:33:19-07 - - $
+d117 1
+a117 1
+   if chr == '(') return parse_buf_list (rest);
+@
+
+
+1.59
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.58 2020-08-13 01:32:37-07 - - $
+d117 1
+a117 1
+   if (chr == '(') return parse_buf_list (rest);
+d136 1
+a136 1
+   return cons (sym ('a'), cons (sym ('b'), cons (sym ('c'), nil))));
+d167 2
+a168 2
+      cout << example.first() << ":" << endl;
+      println (example.second());
+@
+
+
+1.58
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.57 2020-08-13 01:31:27-07 - - $
+d136 1
+a136 1
+   return cons (sym ('a', cons (sym ('b'), cons (sym ('c'), nil))));
+@
+
+
+1.57
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.56 2020-08-13 00:06:04-07 - - $
+d136 1
+a136 1
+   return cons (sym ('a', cons (sym 'b', cons (sym 'c', nil))));
+d139 2
+a140 2
+   return cons (cons (sym 'a', cons (sym 'b', nil)),
+                cons (sym 'c', cons (sym 'd', nil)));
+@
+
+
+1.56
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.55 2020-08-13 00:04:16-07 - - $
+d135 8
+a142 1
+ref test_cons() {
+d156 5
+d162 1
+a163 1
+static const vector<string> tests {"a", "((a (b)) (c d) () e)"};
+d166 5
+a170 2
+   println (test_cons());
+   for (const auto& test: tests) println (parse (test));
+@
+
+
+1.55
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.54 2020-08-12 23:57:25-07 - - $
+d85 1
+a85 1
+// buffer to hold input string and extract tokens
+a148 1
+
+@
+
+
+1.54
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.53 2020-08-12 23:53:43-07 - - $
+d94 1
+@
+
+
+1.53
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.52 2020-08-12 23:49:28-07 - - $
+d94 1
+a94 1
+pair<int,buffer> next_token (const buffer& buf) {
+d96 1
+a96 1
+   else if (isspace (buf.first())) return next_token (buf.rest());
+d101 2
+a102 2
+struct parsed {ref obj; buffer buf;};
+parsed parse_buf (const buffer&);
+d104 2
+a105 2
+parsed parse_buf_list (const buffer& buf) {
+   const auto [chr, rest] = next_token (buf);
+d113 2
+a114 2
+parsed parse_buf (const buffer& buf) {
+   const auto [chr, rest] = next_token (buf);
+d117 1
+a117 2
+   parsed result = {sym (chr), rest};
+   return result;
+d125 1
+a125 1
+      if (next_token (rest).first != EOF) rest.error();
+@
+
+
+1.52
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.51 2020-08-12 23:48:43-07 - - $
+d13 1
+a13 1
+//    cons-lists - scan subset of scheme lists
+d22 1
+a22 1
+//    and the scanning and printing of them thereof.
+d85 1
+a85 1
+// scan an object into a const ref (object)
+d100 1
+d102 1
+a102 1
+parsed scan_buf (const buffer&);
+d104 1
+a104 1
+parsed scan_buf_list (const buffer& buf) {
+d108 2
+a109 2
+   const auto [car, restcar] = scan_buf (buf);
+   const auto [cdr, restcdr] = scan_buf_list (restcar);
+d113 1
+a113 1
+parsed scan_buf (const buffer& buf) {
+d116 1
+a116 1
+   if (chr == '(') return scan_buf_list (rest);
+d121 2
+a122 1
+ref scan (const string& str) {
+d125 1
+a125 1
+      const auto [obj, rest] = scan_buf ({&str, 0});
+d156 2
+a157 2
+   for (const auto& test: tests) println (scan (test));
+   for (const auto& arg: args) println (scan (arg));
+d159 1
+a159 1
+   while (getline (cin, line)) println (scan (line));
+@
+
+
+1.51
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.47 2020-08-12 23:42:27-07 - - $
+d127 1
+a127 1
+      cout << "syntax error: " << error.what() << endl;
+@
+
+
+1.50
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.49 2020-08-12 23:47:02-07 - - $
+a92 1
+   pair<int,buffer> next() const;
+d94 4
+a97 4
+pair<int,buffer> buffer::next() const {
+   if (eof()) return {EOF, *this};
+   if (isspace (first())) return next();
+   return {first(), rest()};
+d104 1
+a104 1
+   const auto [chr, rest] = buf.next();
+d113 1
+a113 1
+   const auto [chr, rest] = buf.next();
+d124 1
+a124 1
+      if (rest.next().first != EOF) rest.error();
+@
+
+
+1.49
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.48 2020-08-12 23:44:48-07 - - $
+d93 1
+a93 1
+   pair<int,buffer> next();
+d95 1
+a95 1
+pair<int,buffer> buffer::next() {
+@
+
+
+1.48
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.47 2020-08-12 23:42:27-07 - - $
+d97 1
+a97 1
+   if (isspace (first())) return next_token (rest());
+d105 1
+a105 1
+   const auto [chr, rest] = next_token (buf);
+d114 1
+a114 1
+   const auto [chr, rest] = next_token (buf);
+d125 1
+a125 1
+      if (next_token (rest).first != EOF) rest.error();
+@
+
+
+1.47
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.46 2020-08-12 23:41:17-07 - - $
+d93 1
+d95 4
+a98 4
+pair<int,buffer> next_token (const buffer& buf) {
+   if (buf.eof()) return {EOF, buf};
+   else if (isspace (buf.first())) return next_token (buf.rest());
+   else return {buf.first(), buf.rest()};
+@
+
+
+1.46
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.45 2020-08-12 23:40:08-07 - - $
+d92 1
+a92 2
+   const string to_string() const {return str->substr (pos);}
+   void error() const {throw runtime_error (to_string());}
+@
+
+
+1.45
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.44 2020-08-12 23:39:01-07 - - $
+d125 1
+a125 1
+      if (next_token (rest).first != EOF) buf.error();
+@
+
+
+1.44
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.43 2020-08-12 23:33:09-07 - - $
+d80 1
+a80 1
+   cout << "object: ";
+d82 1
+a82 1
+   cout << endl;
+d122 1
+a122 1
+   cout << "string: " << str << endl;
+@
+
+
+1.43
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.42 2020-08-12 23:25:20-07 - - $
+d93 1
+a94 6
+struct parsed {ref obj; buffer buf;};
+
+void syntax_error (const buffer& buf) {
+   throw runtime_error ("syntax error: \"" + buf.to_string() + "\"");
+}
+
+d101 1
+d106 1
+a106 1
+   if (chr == EOF) syntax_error (buf);
+d115 1
+a115 1
+   if (chr == EOF) syntax_error (buf);
+d125 1
+a125 1
+      if (next_token (rest).first != EOF) syntax_error (rest);
+d128 1
+a128 1
+      cout << error.what() << endl;
+@
+
+
+1.42
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.41 2020-08-12 23:23:59-07 - - $
+d90 1
+a90 1
+   buffer next() const {return {str, pos + 1};}
+d102 2
+a103 2
+   else if (isspace (buf.first())) return next_token (buf.next());
+   else return {buf.first(), buf.next()};
+d129 1
+a129 1
+      if (not rest.eof()) syntax_error (rest);
+@
+
+
+1.41
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cons-lists.cpp,v 1.1 2020-08-12 23:23:06-07 - - $
+d13 1
+a13 1
+//    micro_scheme - scan subset of scheme lists
+d16 1
+a16 1
+//    micro_scheme [list_expr...]
+@
+
+
+1.40
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.39 2020-08-12 23:08:40-07 - - $
+d55 1
+a55 1
+// accessor functions for the data structure
+@
+
+
+1.39
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.38 2020-08-12 23:05:37-07 - - $
+d10 1
+d78 1
+d107 1
+d116 1
+@
+
+
+1.38
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.37 2020-08-12 23:03:08-07 - - $
+d18 1
+d21 12
+a32 8
+//    and the scanning and printing of them thereof.  Proper OO style
+//    scatters multiple functions across class definitions.  Function
+//    style scatters multiple objects across individual functions.
+//    This uses more functional than OO style.  No loops were used in
+//    the coding of this program (except for the test harness in the
+//    main function.  This is likely somewhat inefficient, because
+//    C++ does not guarantee that tail recursion is implemented, and
+//    multiple extra objects are created, causing some memory leak.
+d35 1
+@
+
+
+1.37
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.36 2020-08-12 23:02:53-07 - - $
+a86 1
+string to_string (const buffer& buf) {return buf.str->substr (buf.pos);}
+@
+
+
+1.36
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.35 2020-08-12 22:45:36-07 - - $
+a74 7
+}
+
+void indent (size_t depth) {
+   if (depth > 1) {cout << "      "; indent (depth -1;}
+}
+void pretty_print (const ref item, size_t depth) {
+   indent (depth);
+@
+
+
+1.35
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.34 2020-08-12 22:44:39-07 - - $
+d75 7
+@
+
+
+1.34
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.33 2020-08-12 22:41:13-07 - - $
+d41 1
+a41 1
+   object() = default;
+@
+
+
+1.33
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.32 2020-08-12 22:40:28-07 - - $
+d36 1
+a36 1
+   const type_t type;
+d38 2
+a39 2
+      const char sym;
+      const struct {ref car; ref cdr;} cell;
+d41 1
+a41 1
+   object (type_t type_): type(type_) {}
+d146 1
+a146 4
+static const vector<string> tests {
+   "a",
+   "((a (b)) (c d) () e)",
+};
+@
+
+
+1.32
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.31 2020-08-12 22:38:46-07 - - $
+d103 4
+a106 6
+   else if (chr == ')') return {nil, rest};
+   else {
+      const auto [car, restcar] = scan_buf (buf);
+      const auto [cdr, restcdr] = scan_buf_list (restcar);
+      return {cons (car, cdr), restcdr};
+   }
+@
+
+
+1.31
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.30 2020-08-12 22:38:06-07 - - $
+d94 3
+a96 7
+   if (buf.eof()) {
+      return {EOF, buf};
+   }else if (isspace (buf.first())) {
+      return next_token (buf.next());
+   }else {
+      return {buf.first(), buf.next()};
+   }
+d103 1
+a103 1
+   if (chr == ')') return {nil, rest};
+@
+
+
+1.30
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.29 2020-08-12 22:26:19-07 - - $
+d84 1
+a84 1
+   const string& to_string() const {return str->substr (pos);}
+@
+
+
+1.29
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.28 2020-08-12 22:18:30-07 - - $
+d83 2
+d90 1
+a90 1
+   throw runtime_error ("syntax error: \"" + to_string (buf) + "\"");
+d96 1
+a96 1
+   }else if (isspace (buf.str->at(buf.pos))) {
+d99 1
+a99 1
+      return {buf.str->at(buf.pos), buf.next()};
+@
+
+
+1.28
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.27 2020-08-12 22:18:14-07 - - $
+d78 6
+a83 1
+struct buffer {string const* const str; const size_t pos;};
+a84 2
+bool eof (const buffer& buf) {return buf.pos == buf.str->size();}
+buffer next (const buffer& buf) {return {buf.str, buf.pos + 1};}
+d92 1
+a92 1
+   if (eof (buf)) {
+d95 1
+a95 1
+      return next_token (next (buf));
+d97 1
+a97 1
+      return {buf.str->at(buf.pos), next (buf)};
+a111 1
+
+d124 1
+a124 1
+      if (not eof (rest)) syntax_error (rest);
+@
+
+
+1.27
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.26 2020-08-12 22:15:38-07 - - $
+d106 1
+a106 1
+      return {cons (car, cdr), restcdr}};
+@
+
+
+1.26
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.25 2020-08-12 22:13:32-07 - - $
+d106 1
+a106 2
+      auto cell = cons (car, cdr);
+      return {cell, restcdr};
+@
+
+
+1.25
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.22 2020-08-12 22:05:17-07 - - $
+d149 4
+d155 1
+a155 6
+   const ref list = test_cons();
+   println (list);
+   static const vector<string> tests {
+      "a",
+      "((a (b)) (c d) () e)",
+   };
+@
+
+
+1.24
+log
+@-
+@
+text
+@d160 1
+a160 1
+   while (getline (line)) println (scan (line));
+@
+
+
+1.23
+log
+@-
+@
+text
+@d19 11
+a29 11
+//    a small subset of scheme, supporting only proper lists,
+//    and the scanning and printing of them thereof.  Proper OO
+//    style scatters multiple functions across class definitions.
+//    Function style scatters multiple objects across individual
+//    functions.  This uses more functional than OO style.  Hence,
+//    there are no functions inside class definitions.  No loops
+//    were used in the coding of this program.  This is likely
+//    somewhat inefficient, because C++ does not guarantee that tail
+//    recursion is implemented, and multiple extra objects are
+//    created, causing some memory leak.  No attempt is made to
+//    delete extraneous objects, so memory leak does happen.
+d150 1
+d157 4
+a160 6
+   for (const auto& test: tests) {
+      println (scan (test));
+   }
+   for (char** argp = &argv[1]; argp != &argv[argc]; ++argp) {
+      println (scan (*argp));
+   }
+@
+
+
+1.22
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.21 2020-08-12 21:55:53-07 - - $
+d149 1
+a149 1
+int main() {
+@
+
+
+1.21
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.20 2020-08-12 21:55:25-07 - - $
+d135 3
+a137 3
+                  cons (cons (sym ('b'),
+                              nil),
+                        nil));
+d139 2
+a140 2
+                  cons (sym ('d'),
+                        nil));
+d158 3
+@
+
+
+1.20
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.19 2020-08-12 21:47:27-07 - - $
+d7 1
+@
+
+
+1.19
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.15 2020-08-12 21:36:22-07 - - $
+d77 1
+a77 1
+struct buffer {const string& str; const size_t pos;};
+d79 1
+a79 1
+bool eof (const buffer& buf) {return buf.pos == buf.str.size();}
+d81 1
+a81 1
+string to_string (const buffer& buf) {return buf.str.substr (buf.pos);}
+a87 1
+//   cout << "next_token: \"" << to_string (buf) << "\"" << endl;
+d90 1
+a90 1
+   }else if (isspace (buf.str.at(buf.pos))) {
+d93 1
+a93 1
+      return {buf.str.at(buf.pos), next (buf)};
+d103 2
+a104 2
+      const auto [car, resta] = scan_buf (buf);
+      const auto [cdr, restb] = scan_buf_list (resta);
+d106 1
+a106 1
+      return {cell, restb};
+d121 1
+a121 1
+      const auto [obj, rest] = scan_buf ({str, 0});
+d151 7
+a157 3
+   println (scan ("a"));
+   const ref test2 = scan ("((a (b)) (c d) () e)");
+   println (test2);
+@
+
+
+1.18
+log
+@-
+@
+text
+@d77 1
+a77 7
+struct buffer {
+   const string* str;
+   const size_t pos;
+   bool eof() const { return pos == str->size(); }
+   buffer next() const { return {str, pos + 1}; }
+   string to_string() const { return str->substr (pos); }
+};
+d79 3
+d84 1
+a84 1
+   throw runtime_error ("syntax error: \"" + buf.to_string() + "\"");
+d88 2
+a89 1
+   if (buf.eof()) {
+d91 2
+a92 2
+   }else if (isspace (buf.str->at(buf.pos))) {
+      return next_token (buf.next());
+d94 1
+a94 1
+      return {buf.str->at(buf.pos), buf.next()};
+d123 1
+a123 1
+      if (not rest.eof()) syntax_error (rest);
+@
+
+
+1.17
+log
+@-
+@
+text
+@d82 1
+a82 1
+   string to_string() const { return ->tr.substr (pos); }
+@
+
+
+1.16
+log
+@-
+@
+text
+@d78 1
+a78 1
+   const string& str;
+d80 1
+a80 1
+   bool eof() const { return pos == str.size(); }
+d82 1
+a82 1
+   string to_string const { return str.substr (pos); }
+d93 1
+a93 1
+   }else if (isspace (buf.str.at(buf.pos))) {
+d96 1
+a96 1
+      return {buf.str.at(buf.pos), buf.next()};
+@
+
+
+1.15
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.14 2020-08-12 15:32:13-07 - - $
+d77 7
+a83 1
+struct buffer {const string& str; const size_t pos;};
+a84 3
+bool eof (const buffer& buf) {return buf.pos == buf.str.size();}
+buffer next (const buffer& buf) {return {buf.str, buf.pos + 1};}
+string to_string (const buffer& buf) {return buf.str.substr (buf.pos);}
+d87 1
+a87 1
+   throw runtime_error ("syntax error: \"" + to_string (buf) + "\"");
+d91 1
+a91 2
+//   cout << "next_token: \"" << to_string (buf) << "\"" << endl;
+   if (eof (buf)) {
+d94 1
+a94 1
+      return next_token (next (buf));
+d96 1
+a96 1
+      return {buf.str.at(buf.pos), next (buf)};
+d125 1
+a125 1
+      if (not eof (rest)) syntax_error (rest);
+@
+
+
+1.14
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.12 2020-08-10 23:41:59-07 - - $
+d38 1
+a38 1
+      const struct { ref car; ref cdr; } cell;
+d77 6
+a82 1
+using buffer = struct {const string& str; const size_t pos;};
+d84 1
+a84 2
+   throw runtime_error ("syntax error: \""
+         + buf.str.substr (buf.pos) + "\"");
+d88 2
+a89 2
+   cout << "next_token: " << buf.str.substr (buf.pos) << endl;
+   if (buf.pos == buf.str.size()) {
+d91 2
+a92 2
+   }else if (isspace (buf.str[0])) {
+      return next_token ({buf.str, buf.pos + 1});
+d94 1
+a94 1
+      return {buf.str[0], {buf.str, buf.pos + 1}};
+d98 3
+a100 3
+ref scan_string (const buffer&);
+ref scan_string_list (const buffer& buf) {
+   auto [chr, rest] = next_token (buf);
+d102 7
+a108 4
+   if (chr == ')') return nil;
+   const ref car = scan_string (str);
+   const ref cdr = scan_string_list (str);
+   return cons (car, cdr);
+d111 6
+a116 5
+ref scan_string (const buffer& buf) {
+   const int chr = next_token (str);
+   if (chr == EOF) syntax_error (str);
+   if (chr == '(') return scan_string_list (str);
+   return sym (chr);
+d120 1
+a120 1
+   cout << "string: \"" << str << "\""<< endl;
+d122 3
+a124 3
+      const ref result = scan_string (str, 0);
+      if (has_nonwhite (str)) syntax_error (str);
+      return result;
+d146 1
+@
+
+
+1.13
+log
+@-
+@
+text
+@d4 1
+a5 1
+#include <sstream>
+d24 5
+a28 3
+//    were used in the coding of this program.  This might be a
+//    little inefficient, since C++ does not guarantee that tail
+//    recursion is implemented.
+d38 1
+a38 1
+      struct { ref car; ref cdr; } cell;
+d42 2
+a43 2
+   object (type_t type_, ref car_, ref cdr_): type(type_) {
+      cell.car = car_; cell.cdr = cdr_;
+d57 1
+a57 1
+void print (ref item, bool is_cdr = false) {
+d70 2
+a71 1
+void println (ref item) {
+d76 6
+a81 1
+// scan an object into a ref (object)
+d83 9
+a91 4
+int scan_token (istreamstring& stream) {
+   char chr;
+   stream >> chr;
+   return stream.eof() ? EOF : chr;
+d94 4
+a97 4
+ref scan_stream (istringstream&);
+ref scan_stream_list (istringstream& stream) {
+   char chr = scan_token (stream);
+   if (chr == EOF) throw ("syntax error");
+d99 2
+a100 2
+   ref car = scan_stream (stream);
+   ref cdr = scan_stream_list (stream);
+d104 4
+a107 3
+ref scan_stream (istringstream& stream) {
+   char chr = scan_token (stream);
+   if (chr == '(') return scan_stream_list (stream);
+d111 2
+a112 1
+ref scan_string (const string& str) {
+d114 2
+a115 3
+      istringstream stream (str);
+      ref result = scan_stream (stream);
+      if (not stream.eof()) throw ("syntax error");
+d118 1
+a118 1
+      cout << error.what() << ": " << str << endl;
+d126 1
+a126 1
+   ref p1 = cons (sym ('a'),
+d130 1
+a130 1
+   ref p2 = cons (sym ('c'),
+d133 3
+a135 3
+   ref p3 = nil;
+   ref p4 = cons (sym ('e'), nil);
+   ref list = cons (p1, cons (p2, cons (p3, cons (p4, nil))));
+d141 1
+a141 1
+   ref list = test_cons();
+d143 3
+a145 2
+   ref test = scan_string ("((a (b)) (c d) () e)");
+   println (test);
+@
+
+
+1.12
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.11 2020-08-10 23:38:06-07 - - $
+d5 1
+d45 1
+a46 1
+
+a49 1
+
+d65 41
+a105 1
+      default:   assert (false);
+d128 3
+a130 1
+   print (list); cout << endl;
+@
+
+
+1.11
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.10 2020-08-10 23:36:40-07 - - $
+a66 4
+}
+
+// scan a string into an object
+ref scan (const string& source) {
+@
+
+
+1.10
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.7 2020-08-10 22:50:05-07 - - $
+d23 3
+a25 1
+//    were used in the coding of this program.
+@
+
+
+1.9
+log
+@-
+@
+text
+@d5 1
+d8 17
+a24 8
+// It is intended only to expore Scheme standard lists.
+// This is a small subset of scheme, supporting only proper lists,
+// and the scanning and printing of them thereof.
+// Note: Proper OO style scatters multiple functions across class
+// definitions.  Function style scatters multiple objects across
+// individual functions.  This uses more functional than OO style.
+// Hence, there are no functions inside class definitions.
+
+d37 3
+a39 1
+   object (type_t type_, ref car_, ref cdr_): type(type), cell(car_, cdr_) {}
+d42 1
+a42 1
+static const ref nil = new object (NIL);
+d55 1
+a55 1
+      case NIL:  cout << (is_cdr ? ")" : "()";
+d57 1
+a57 1
+      case SYM:  cout << (is_cdr ? " " : "") << item->sym.chr;
+d67 4
+d90 1
+a90 1
+   list->print(); cout << endl;
+@
+
+
+1.8
+log
+@-
+@
+text
+@d17 3
+a19 3
+using obj = const struct obj_t*;
+enum type_t type {NIL, SYM, CELL};
+struct obj_t {
+d22 2
+a23 3
+      struct nil_t {};
+      struct sym_t { const char chr; };
+      struct cell_t { const obj car; const obj cdr: };
+d25 3
+a27 1
+   obj_t (type_t type_): type(type_) {}
+d30 1
+a30 1
+static const nil_t* nil = new obj_t (NIL);
+d32 2
+a33 4
+obj sym (char chr_) {
+   obj result = new obj_t (SYM);
+   result->chr = chr_;
+   return result;
+d36 2
+a37 5
+obj cons (const obj car_, const obj cdr_) {
+   obj result = new obj_t (CELL);
+   result->car = car_;
+   result->cdr = cdr_;
+   return result;
+d41 2
+a42 2
+void print (obj item, bool is_cdr = false) {
+   switch (item->type()) {
+d45 1
+a45 1
+      case SYM:  cout << (is_cdr ? " " : "") << item->chr;
+d47 3
+a49 1
+      case CELL:
+d56 1
+a56 1
+obj test_cons() {
+d58 1
+a58 1
+   obj p1 = cons (sym ('a'),
+d62 1
+a62 1
+   obj p2 = cons (sym ('c'),
+d65 3
+a67 3
+   obj p3 = nil;
+   obj p4 = cons (sym ('e'), nil);
+   obj list = cons (p1, cons (p2, cons (p3, cons (p4, nil))));
+d73 1
+a73 1
+   obj list = test_cons();
+@
+
+
+1.7
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.6 2020-08-10 16:37:51-07 - - $
+d17 2
+a18 1
+using obj = const obj_t*;
+d20 1
+a20 1
+   const enum type_t type {NIL, SYM, CELL};
+@
+
+
+1.6
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.5 2020-08-10 16:25:55-07 - - $
+d10 4
+d16 2
+a17 1
+// base class for any type of object.
+d19 7
+a25 1
+   virtual void print (bool = false) const = 0;
+a26 1
+using obj = const obj_t*;
+d28 7
+a34 7
+// null? class for end of list null marker
+struct nil_t: obj_t {
+   void print (bool is_cdr = false) const override {
+      cout << (is_cdr ? ")" : "()");
+   }
+};
+static const nil_t* nil = new nil_t();
+d36 5
+a40 10
+// symbol? class for arbitrary symbols
+struct sym_t: obj_t {
+   const char chr;
+   sym_t (const char chr_): chr(chr_) {}
+   void print (bool is_cdr = false) const override {
+      cout << (is_cdr ? " " : "") << chr;
+   }
+};
+const sym_t* operator"" _sym (const char sym_) {
+   return new sym_t (sym_);
+d43 10
+a52 9
+// pair? for cons of proper lists
+struct cell_t: obj_t {
+   const obj car;
+   const obj cdr;
+   cell_t (const obj car_, const obj cdr_): car(car_), cdr(cdr_) {}
+   void print (bool is_cdr = false) const override {
+      cout << (is_cdr ? " " : "(");
+      car->print (false);
+      cdr->print (true);
+a53 3
+};
+obj cons (const obj car_, const obj cdr_) {
+   return new cell_t (car_, cdr_);
+d59 2
+a60 2
+   obj p1 = cons ('a'_sym,
+                  cons (cons ('b'_sym,
+d63 2
+a64 2
+   obj p2 = cons ('c'_sym,
+                  cons ('d'_sym,
+d67 1
+a67 1
+   obj p4 = cons ('e'_sym, nil);
+@
+
+
+1.5
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.4 2020-08-10 15:22:58-07 - - $
+d20 2
+a21 2
+   void print (bool = false) const override {
+      cout << ")";
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.3 2020-08-10 15:14:42-07 - - $
+a12 1
+enum class type_t {OBJ, NIL, SYM, CELL};
+d14 1
+a14 1
+   virtual type_t type() { return type_t::OBJ; }
+d20 3
+a22 1
+   virtual type_t type() { return type_t::NIL; }
+d30 3
+a32 1
+   virtual type_t type() { return type_t::SYM; }
+d43 5
+a47 1
+   virtual type_t type() { return type_t::CELL; }
+d72 1
+a72 1
+   (void) list;
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.2 2020-08-10 14:50:23-07 - - $
+d3 1
+a43 5
+}
+
+obj read() {
+   char sym;
+   cin >> sym;
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: micro_scheme.cpp,v 1.1 2020-08-10 14:43:08-07 - - $
+a5 1
+//
+a8 1
+//
+a9 2
+struct obj_type {};
+using obj = const obj_type*;
+d11 12
+a22 2
+struct null_type: obj_type {};
+static const null_type* null = new null_type();
+d24 2
+a25 1
+struct sym_type: obj_type {
+d27 2
+a28 1
+   sym_type (const char chr_): chr(chr_) {}
+d30 2
+a31 2
+const sym_type* operator"" _sym (const char sym_) {
+   return new sym_type (sym_);
+d34 2
+a35 1
+struct cell_type: obj_type {
+d38 2
+a39 1
+   cell_type (const obj car_, const obj cdr_): car(car_), cdr(cdr_) {}
+d42 6
+a47 1
+   return new cell_type (car_, cdr_);
+d50 2
+a51 1
+int main() {
+d55 2
+a56 2
+                              null),
+                        null));
+d59 10
+a68 4
+                        null));
+   obj p3 = null;
+   obj p4 = cons ('e'_sym, null);
+   obj list = cons (p1, cons (p2, cons (p3, cons (p4, null))));
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+// $Id: cell_list.cpp,v 1.7 2020-08-10 01:27:40-07 - - $
+d6 5
+a10 2
+// DISCLAIMER:  THis is not good C++.
+// It is intended onluy to expore Scheme standard lists.
+d22 1
+a22 1
+sym_type* operator"" _sym (const char sym_) {
+d27 3
+a29 3
+   obj car;
+   obj cdr;
+   cell_type (obj car_, obj cdr_): car(car_), cdr(cdr_) {}
+d31 1
+a31 2
+
+obj cons (obj car_, obj cdr_) {
+@

@@ -1,0 +1,19 @@
+#!/bin/sh
+# $Id: mk,v 1.3 2021-04-03 22:15:05-07 - - $
+
+if [ cons-lists-fn.cpp -nt cons-lists-fn ]; then
+   cid -is $0 cons-lists-fn.cpp
+   mkc cons-lists-fn.cpp
+   [ $? -eq 0 ] || exit $?
+else
+   echo cons-lists-fn : cons-lists-fn.cpp is up to date
+fi
+
+cons-lists-fn '     ( a )    ' <<__END__
+((( a b ((c)) )))
+(a (  b  )  c)
+(a b (c) x )))) def
+
+a b c
+__END__
+
