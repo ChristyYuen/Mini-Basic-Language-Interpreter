@@ -24,6 +24,22 @@
 (define *array-table*    (make-hash))
 (define *label-table*    (make-hash))
 
+;;---------------------------------------------------------------------------
+;;added from c-evalexpr/evalexpr.scm
+(for-each
+    (lambda (symfun) (hash-set! *function-table* (car symfun) (cadr symfun)))
+    `(
+        (+    ,+)
+        (-    ,-)
+        (*    ,*)
+        (/    ,/)
+        (^    ,expt)
+        (sqrt ,sqrt)
+        (sqr  ,sqr)
+
+    ))
+
+
 (for-each (lambda (var) (hash-set! *var-table* (car var) (cadr var)))
    `(
         (e    ,(exp 1.0))
@@ -73,11 +89,24 @@
     (printf "(NOT-IMPLEMENTED: ~s ~s)" function args)
     (when (not (null? nl)) (printf "~n")))
 
-;;  -----------------------------------------------------------------------------
+;;  --------------------------------------------------------------
+;;added from c-evalexpr/evalexpr.scm
+
+(define NAN (/ 0.0 0.0))
+
 (define (eval-expr expr)
     (cond ((number? expr) (+ expr 0.0))
           ((symbol? expr) (hash-ref *var-table* expr 0.0))
-          (else (not-implemented 'eval-expr expr))))
+          ;;(else (not-implemented 'eval-expr expr))));; ---- OG code
+          ;;added from c-evalexpr/evalexpr.scm
+          ((pair? expr) 
+              (let ((func (hash-ref *function-table* (car expr) #f))
+                    (opnds (map eval-expr (cdr expr))))
+                   (if (not func) NAN
+                       (apply func opnds))))
+          (else NAN))) 
+
+
 
 ;;-----------------------------------------------------------------------------
 (define (interp-dim args continuation)
