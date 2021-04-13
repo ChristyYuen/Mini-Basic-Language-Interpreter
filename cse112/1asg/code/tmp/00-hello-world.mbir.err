@@ -1,0 +1,15 @@
+./mbir.scm:120:4: if: missing an "else" expression
+  in: (if (symbol?) mem)
+  location...:
+   ./mbir.scm:120:4
+  context...:
+   do-raise-syntax-error
+   for-loop
+   finish-bodys
+   lambda-clause-expander
+   expand-capturing-lifts
+   temp118_0
+   temp91_0
+   compile15
+   temp85_0
+   loop

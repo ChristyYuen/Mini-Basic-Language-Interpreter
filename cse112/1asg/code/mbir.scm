@@ -36,6 +36,7 @@
         (^    ,expt)
         (sqrt ,sqrt)
         (sqr  ,sqr)
+	(atan ,atan)
 
     ))
 
@@ -92,6 +93,7 @@
 ;;  --------------------------------------------------------------
 ;;added from c-evalexpr/evalexpr.scm
 
+;; error for eval-expr
 (define NAN (/ 0.0 0.0))
 
 (define (eval-expr expr)
@@ -106,8 +108,6 @@
                        (apply func opnds))))
           (else NAN))) 
 
-
-
 ;;-----------------------------------------------------------------------------
 (define (interp-dim args continuation)
     (not-implemented 'interp-dim args 'nl)
@@ -115,8 +115,16 @@
 
 ;;-----------------------------------------------------------------------------
 (define (interp-let args continuation)
-    (not-implemented 'interp-let args 'nl)
-    (interp-program continuation))
+    ;;(not-implemented 'interp-let args 'nl)
+    ;;(if (symbol? (car args))
+    ;;       (hash-ref *function-table* (cdr args)))
+   (cond ((vector? (car args)) (hash-set! *array-table* (car args) (cdr args))) 
+   	((symbol? (car args)) (hash-set! *function-table* (car args) (cdr args)))
+              (else interp-program continuation)
+	  ;;Might need an error message 
+   ) 
+)
+    ;;(else interp-program continuation) ) 
 
 ;;-----------------------------------------------------------------------------
 (define (interp-goto args continuation)
@@ -175,9 +183,6 @@
                (when (symbol? label)
                      (hash-set! *hash* label program)))
           (scan-for-labels (cdr program))))
-
-
-
 
 (define (readlist filename)
     (let ((inputfile (open-input-file filename)))
