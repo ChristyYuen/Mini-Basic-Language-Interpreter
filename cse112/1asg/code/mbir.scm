@@ -27,7 +27,7 @@
 ;;---------------------------------------------------------------------------
 ;;added from c-evalexpr/evalexpr.scm
 (for-each
-    (lambda (symfun) (hash-set! *function-table* (car symfun) (cadr symfun)))
+    (lambda (symfun) (hash-set! *function-table* (car symfun) (cadr symfun))) ;;FUNCTION TABLE
     `(
         (+    ,+)
         (-    ,-)
@@ -36,14 +36,14 @@
         (^    ,expt)
         (sqrt ,sqrt)
         (sqr  ,sqr)
-	(atan ,atan)
+	    (atan ,atan)
 
     ))
 
 
-(for-each (lambda (var) (hash-set! *var-table* (car var) (cadr var)))
+(for-each (lambda (var) (hash-set! *var-table* (car var) (cadr var))) ;;VARIABLE TABLE
    `(
-        (e    ,(exp 1.0))
+        (e    ,(exp 1.0)) ;;changed .0
         (eof  0.0)
         (nan  ,(/ 0.0 0.0))
         (pi   ,(acos -1.0))
@@ -85,7 +85,6 @@
                ((null? (cdr tail)) #f)
                (else (cadr tail)))))
 
-;;Not Implemted stuff-----------------------------------------------------------------------------
 (define (not-implemented function args . nl)
     (printf "(NOT-IMPLEMENTED: ~s ~s)" function args)
     (when (not (null? nl)) (printf "~n")))
@@ -110,26 +109,59 @@
 
 ;;-----------------------------------------------------------------------------
 (define (interp-dim args continuation)
-    (not-implemented 'interp-dim args 'nl)
+    ;;(not-implemented 'interp-dim args 'nl)
+    (hash-set! *var-table* (car args) (vestor-set! (exact-round (eval-expr (cdr args) ) )))
     (interp-program continuation))
 
 ;;-----------------------------------------------------------------------------
 (define (interp-let args continuation)
+    (if (symbol? (car args) )
+        (hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
+        (if (vector? (car args) )
+            (vector-set! (hash-ref *array-table* (car args) (exact-round (eval-expr (args) ) ) (eval-expr args)) )  
+            (exit 1) 
+        )
+        ;;(hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
+    )
+    (interp-program continuation)
+)
+
+; (exact-round (eval-expr (caddr args))) (eval-expr args) 
+
+;    (cond ((symbol? (car args)) (hash-set! *function-table* (car args) (eval-expr (cdr args))))
+; 	((vector? (car args)) (hash-ref *array-table* args (exact-round (eval-expr (caddr args))) (eval-expr args)   ) ) 
+;               (else interp-program continuation)
+;    ) 
+; )
+
+;; OLD IMPLEMENTATION ------------------
     ;;(not-implemented 'interp-let args 'nl)
     ;;(if (symbol? (car args))
     ;;       (hash-ref *function-table* (cdr args)))
-   (cond ((vector? (car args)) (hash-set! *array-table* (car args) (cdr args))) 
-   	((symbol? (car args)) (hash-set! *function-table* (car args) (cdr args)))
-              (else interp-program continuation)
-	  ;;Might need an error message 
-   ) 
-)
+   ;;;;;;(cond ((vector? (car args)) (hash-set! *array-table* args (eval-expr(cdr args)))) 
+   ;;;;;;	((symbol? (car args)) (hash-set! *function-table* (car args) (cdr args)))
+   ;;;;;;           (else interp-program continuation)
+	  ;;Might need an error message
+	  ;;(exact-round (eval-expr (caddr args))) (eval-expr args)) 
+	  ;;^^need that somewhere 
+   ;;;;;;) 
+;;;;;;)
     ;;(else interp-program continuation) ) 
 
 ;;-----------------------------------------------------------------------------
 (define (interp-goto args continuation)
-    (not-implemented 'interp-goto args 'nl)
-    (interp-program continuation))
+    ;;(not-implemented 'interp-goto args 'nl)
+        ((interp-program scan-for-labels args)) ;;changed from hash-set
+    
+    ; (if (hash-has-key? *label-table* args)
+    ;     (interp-program (hash-ref *label-table* args))
+    ; )
+    ;;(interp-program continuation) ;;-OG CODE
+
+    ;; (display "Label is undefined" *stderr*) (newline)
+    ;; OR (throw (make-error "~a is undefined" 'Label') )
+
+)
 
 ;;-----------------------------------------------------------------------------
 (define (interp-if args continuation)
