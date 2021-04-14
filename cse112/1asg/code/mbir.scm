@@ -36,7 +36,23 @@
         (^    ,expt)
         (sqrt ,sqrt)
         (sqr  ,sqr)
-	    (atan ,atan)
+	(atan ,atan)
+  	(< , <)
+   	(> , >)
+   	(= , =)
+   	(<= , <=)
+   	(>= , >=)
+   	(^           ,expt)
+   	(i           ,(sqrt -1))
+   	(div         ,(lambda (x y) (floor (/ x y))))
+   	(log10       ,(lambda (x) (/ (log x) (log 10.0))))
+   	(ceil        ,ceiling)
+   	(exp         ,exp)
+   	(floor       ,floor)
+   	(log         ,log)
+   	(sqrt        ,sqrt)
+   	;;(complex-abs ,complex-abs)
+
 
     ))
 
@@ -116,15 +132,26 @@
 ;;-----------------------------------------------------------------------------
 (define (interp-let args continuation)
     (if (symbol? (car args) )
-        (hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
+        (hash-set! *var-table* (car args) (eval-expr (cadr args) ) )
         (if (vector? (car args) )
-            (vector-set! (hash-ref *array-table* (car args) (exact-round (eval-expr (args) ) ) (eval-expr args)) )  
+            (vector-set! (hash-ref *array-table* (car args) (eval-expr (cadr args) ) ) )  
             (exit 1) 
         )
         ;;(hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
     )
     (interp-program continuation)
 )
+
+;;------------------------working version-----------------------------------
+; (if (symbol? (car args) )
+;         (hash-set! *var-table* (car args) (eval-expr (cadr args) ) )
+;         (if (vector? (car args) )
+;             (vector-set! (hash-ref *array-table* (car args) (exact-round (eval-expr (cadr args) ) ) (eval-expr (args))) )  
+;             (exit 1) 
+;         )
+;         ;;(hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
+;     )
+;     (interp-program continuation)
 
 ; (exact-round (eval-expr (caddr args))) (eval-expr args) 
 
