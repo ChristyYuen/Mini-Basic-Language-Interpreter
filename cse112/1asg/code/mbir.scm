@@ -123,13 +123,27 @@
                        (apply func opnds))))
           (else NAN))) 
 
-;;---------------------------------- interp-dim -------------------------------------------
+;;---------------------------------- interp-DIM -------------------------------------------
+; The dim statement creates an array given by the variable name and
+; inserts it into the array table, replacing any previous array already in
+; the array table. The dimension of the array is given by the expression.
+; All values in the array are initialized to 0.0 (as a real). The expression is
+; rounded to the nearest integer before being used as the bound, which
+; must be positive. Since the size of the vector must be an integer, use
+; (make-vector (exact-round size) 0.0) to create the array. A subscript i
+; must be in the range 0 ≤ i < n, where n is the dimension.
 (define (interp-dim args continuation)
     ;;(not-implemented 'interp-dim args 'nl)
-    (hash-set! *var-table* (car args) (vestor-set! (exact-round (eval-expr (cdr args) ) )))
+    (hash-set! *var-table* (car args) (make-vector (exact-round (eval-expr (cdr args) ) )))
     (interp-program continuation))
 
 ;;----------------------------------- interp-let ------------------------------------------
+; A let statement makes an assignment to a variable. The expression is
+; first evaluated. For a Variable, its value is stored into the Symbol table,
+; replacing whatever was there previously. For an Arrayref , the store mes-
+; sage is sent to the vector representing the array. If the Symbol table
+; entry is not an array, an error occurs.
+; NOTE: NEED AN ERROR MESSAGE
 (define (interp-let args continuation)
     (if (symbol? (car args) )
         (hash-set! *var-table* (car args) (eval-expr (cadr args) ) )
@@ -176,6 +190,8 @@
     ;;(else interp-program continuation) ) 
 
 ;;------------------------------ interp-goto -----------------------------------------------
+; Control transfers to the statement referred to by the Label. An error
+; occurs if the Label is not defined.
 (define (interp-goto args continuation)
     ;;(not-implemented 'interp-goto args 'nl)
         ((interp-program scan-for-labels args)) ;;changed from hash-set
@@ -190,7 +206,11 @@
 
 )
 
-;;-------------------------------- interp-if ---------------------------------------------
+;;-------------------------------- interp-IF ---------------------------------------------
+; Relop → ‘=’ | ‘<’ | ‘>’ | ‘!=’ | ‘>=’ | ‘<=’
+; The two Expressions are compared according to the given Relop, and if
+; the comparison is true, control transfers to the statement, as for the goto
+; statement.
 (define (interp-if args continuation)
     ;(not-implemented 'interp-if args 'nl)
     (interp-program continuation))
@@ -205,6 +225,16 @@
     (interp-program continuation))
 
 ;;--------------------------------- interp-input --------------------------------------------
+; Numeric values are read in and assigned to the input variables in
+; sequence. Arguments might be elements of an array. For each value
+; read into a Memory, the value is inserted into the Symbol table under
+; that variable’s key. For arrays, the array must already exist and the sub-
+; script not be out of bounds.
+; If an invalid value (anything that is not a number?) is read, the value
+; returned is nan. If end of file is encountered, the value returned is nan
+; and the variable eof is entered into the symbol table with the value 1.
+; The value of nan can be computed using the expression (/ 0.0 0.0).
+; Counterintuitively, the expression (= nan nan) is false.
 (define (interp-input args continuation)
     ;(not-implemented 'interp-input args 'nl)
     (interp-program continuation))
