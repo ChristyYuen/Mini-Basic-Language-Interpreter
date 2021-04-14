@@ -123,13 +123,13 @@
                        (apply func opnds))))
           (else NAN))) 
 
-;;-----------------------------------------------------------------------------
+;;---------------------------------- interp-dim -------------------------------------------
 (define (interp-dim args continuation)
     ;;(not-implemented 'interp-dim args 'nl)
     (hash-set! *var-table* (car args) (vestor-set! (exact-round (eval-expr (cdr args) ) )))
     (interp-program continuation))
 
-;;-----------------------------------------------------------------------------
+;;----------------------------------- interp-let ------------------------------------------
 (define (interp-let args continuation)
     (if (symbol? (car args) )
         (hash-set! *var-table* (car args) (eval-expr (cadr args) ) )
@@ -175,7 +175,7 @@
 ;;;;;;)
     ;;(else interp-program continuation) ) 
 
-;;-----------------------------------------------------------------------------
+;;------------------------------ interp-goto -----------------------------------------------
 (define (interp-goto args continuation)
     ;;(not-implemented 'interp-goto args 'nl)
         ((interp-program scan-for-labels args)) ;;changed from hash-set
@@ -190,9 +190,9 @@
 
 )
 
-;;-----------------------------------------------------------------------------
+;;-------------------------------- interp-if ---------------------------------------------
 (define (interp-if args continuation)
-    (not-implemented 'interp-if args 'nl)
+    ;(not-implemented 'interp-if args 'nl)
     (interp-program continuation))
 
 (define (interp-print args continuation)
@@ -204,9 +204,9 @@
     (printf "~n");
     (interp-program continuation))
 
-;;-----------------------------------------------------------------------------
+;;--------------------------------- interp-input --------------------------------------------
 (define (interp-input args continuation)
-    (not-implemented 'interp-input args 'nl)
+    ;(not-implemented 'interp-input args 'nl)
     (interp-program continuation))
 
 (for-each (lambda (fn) (hash-set! *stmt-table* (car fn) (cadr fn)))
