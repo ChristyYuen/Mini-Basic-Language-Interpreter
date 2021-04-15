@@ -220,11 +220,17 @@
 ;;------------------------------ interp-goto -----------------------------------------------
 ; Control transfers to the statement referred to by the Label. An error
 ; occurs if the Label is not defined.
+;; WORKING LINE: (interp-program (hash-ref *label-table* (car args) ))
 (define (interp-goto args continuation)
-    ;;(not-implemented 'interp-goto args 'nl)
-    ;;((interp-program scan-for-labels args)) ;;changed from hash-set
-        ;(eval-expr (hash-ref *label-table* (car args) )  );;Should work 
+    (if (not  (hash-ref *label-table* (car args) ) )
+        (printf "Error: args not found")
         (interp-program (hash-ref *label-table* (car args) ))
+    )
+) 
+;;------------------------------ interp-goto brainstorm-----------------------------------------------       
+        ;;(not-implemented 'interp-goto args 'nl)
+        ;;((interp-program scan-for-labels args)) ;;changed from hash-set
+        ;(eval-expr (hash-ref *label-table* (car args) )  );;Should work 
         ;;(printf "~a" (hash-ref *label-table* (args) )  )
         ;(printf "~a" args) ;;prints (label)
         ;(printf "~a" (cdr (hash-ref *label-table* (car args) ) ))
@@ -239,8 +245,6 @@
     ;; (display "Label is undefined" *stderr*) (newline)
     ;; OR (throw (make-error "~a is undefined" 'Label') )
 
-)
-
 ;;-------------------------------- interp-IF ---------------------------------------------
 ; Relop → ‘=’ | ‘<’ | ‘>’ | ‘!=’ | ‘>=’ | ‘<=’
 ; The two Expressions are compared according to the given Relop, and if
@@ -249,7 +253,7 @@
 ;; Checks if the args are really the args 
 (define (interp-if args continuation)
     ;(not-implemented 'interp-if args 'nl)
-    (if (not (hash-ref *function-table* (car args)))
+    (if (not (hash-ref *function-table* (car args)));;if 2 args (expression) (label)
         (printf "Error: args not found")
         (if (hash-ref *function-table* (car args) )
             (eval-expr (cadr args)) 
@@ -279,28 +283,29 @@
 ; and the variable eof is entered into the symbol table with the value 1.
 ; The value of nan can be computed using the expression (/ 0.0 0.0).
 ; Counterintuitively, the expression (= nan nan) is false.
+;; HINT: NEED A FOR-EACH? maybe
 (define (interp-input args continuation)
-    (printf "\n" (car args))
-    (printf "help")
+
+    (printf "~a\n" (cdr args))
+    ;(printf "~a\n" (cdr args))
+    (printf "help \n")
     ;(not-implemented 'interp-input args 'nl)
-    (cond ( (not(null? (cdr args))) (let ((input (read)))
-        (printf "Halo")
-            (cond 
-                    ((eof-object? input)    (begin var-put! 'eof 1))
-                    ( (number? input)     (var-put! (car args) input) )
-                    (else (printf "Error Message in Input, not a value input"))
-            ) 
-        ))
+    ;(cond ( (not(null? (cdr args))) (let ((input (read)))
+    (cond (not(null? (cdr args))) 
+        ; (let ( (input (read) )   )
+        (printf "between")
+        ;     (cond 
+        ;             ( (eof-object? input)    (begin var-put! 'eof 1) )
+        ;             ( (number? input)     (var-put! (car args) input) )
+        ;             ( else (printf "Error Message in Input, not a value input") )
+        ;     ) 
+        ; )
         ((null? (cdr args))
             (interp-program continuation)
             (interp-input (cdr args))
         )
     )
 )
-    
-    
-    
-    
     ; (if (not (null? args))
     ;     (let ((input (read)))
     ;     (printf "Halo")
