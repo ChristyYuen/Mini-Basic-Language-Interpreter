@@ -24,6 +24,15 @@
 (define *array-table*    (make-hash))
 (define *label-table*    (make-hash))
 
+;;Added to make code simplier
+(define (array-put! key value)
+    (hash-set! *array-table* key value)
+)
+
+(define (var-put! key value)
+    (hash-set! *var-table* key value)
+)
+
 ;;---------------------------------------------------------------------------
 ;;added from c-evalexpr/evalexpr.scm
 (for-each
@@ -36,7 +45,13 @@
         (^    ,expt)
         (sqrt ,sqrt)
         (sqr  ,sqr)
-	(atan ,atan)
+	(asin ,asin)
+    (acos ,acos)
+    (atan ,atan)
+    (sin ,sin)
+    (cos ,cos)
+    (tan ,tan)
+    (round ,round)
   	(< , <)
    	(> , >)
    	(= , =)
@@ -51,9 +66,8 @@
    	(floor       ,floor)
    	(log         ,log)
    	(sqrt        ,sqrt)
+    (read ,read)
    	;;(complex-abs ,complex-abs)
-
-
     ))
 
 
@@ -112,15 +126,23 @@
 (define NAN (/ 0.0 0.0))
 
 (define (eval-expr expr)
+    ;;(printf "~a\n" expr)
     (cond ((number? expr) (+ expr 0.0))
           ((symbol? expr) (hash-ref *var-table* expr 0.0))
           ;;(else (not-implemented 'eval-expr expr))));; ---- OG code
           ;;added from c-evalexpr/evalexpr.scm
+          ((string? expr) ;;need to support words
+            ;(printf "~a\n" expr) ;;return the string
+            ;expr
+            ;(printf "hello\n")
+            (printf "" (car expr))
+          )
           ((pair? expr) 
               (let ((func (hash-ref *function-table* (car expr) #f))
                     (opnds (map eval-expr (cdr expr))))
                    (if (not func) NAN
-                       (apply func opnds))))
+                       (apply func opnds)))
+          )
           (else NAN))) 
 
 ;;---------------------------------- interp-DIM -------------------------------------------
@@ -134,8 +156,14 @@
 ; must be in the range 0 ≤ i < n, where n is the dimension.
 (define (interp-dim args continuation)
     ;;(not-implemented 'interp-dim args 'nl)
-    (hash-set! *var-table* (car args) (make-vector (exact-round (eval-expr (cdr args) ) )))
-    (interp-program continuation))
+    ;;(hash-set! *var-table* (car args) (make-vector (exact-round (eval-expr (cdr args) ) )))
+    (array-put!
+        (make-vector 
+            (exact-round (eval-expr (caaddr args) 0.0) )
+        )
+    )
+    (interp-program continuation)
+)
 
 ;;----------------------------------- interp-let ------------------------------------------
 ; A let statement makes an assignment to a variable. The expression is
@@ -194,13 +222,20 @@
 ; occurs if the Label is not defined.
 (define (interp-goto args continuation)
     ;;(not-implemented 'interp-goto args 'nl)
-        ((interp-program scan-for-labels args)) ;;changed from hash-set
-    
+    ;;((interp-program scan-for-labels args)) ;;changed from hash-set
+        ;(eval-expr (hash-ref *label-table* (car args) )  );;Should work 
+        (interp-program (hash-ref *label-table* (car args) ))
+        ;;(printf "~a" (hash-ref *label-table* (args) )  )
+        ;(printf "~a" args) ;;prints (label)
+        ;(printf "~a" (cdr (hash-ref *label-table* (car args) ) ))
+        ;(printf "~a\n"  (hash-ref *label-table* (car args) ) )
+        ;(printf "~a" continuation)
+    ;;(car ( hash-ref *label-table* (car args)  )  ) 
     ; (if (hash-has-key? *label-table* args)
     ;     (interp-program (hash-ref *label-table* args))
     ; )
     ;;(interp-program continuation) ;;-OG CODE
-
+        ;; HINT FROM DISCORD: goto doesn't use cont. 
     ;; (display "Label is undefined" *stderr*) (newline)
     ;; OR (throw (make-error "~a is undefined" 'Label') )
 
@@ -211,9 +246,18 @@
 ; The two Expressions are compared according to the given Relop, and if
 ; the comparison is true, control transfers to the statement, as for the goto
 ; statement.
+;; Checks if the args are really the args 
 (define (interp-if args continuation)
     ;(not-implemented 'interp-if args 'nl)
-    (interp-program continuation))
+    (if (not (hash-ref *function-table* (car args)))
+        (printf "Error: args not found")
+        (if (hash-ref *function-table* (car args) )
+            (eval-expr (cadr args)) 
+            (eval-expr (caddr args))
+        )
+    )
+    (interp-goto (car args))
+)
 
 (define (interp-print args continuation)
     (define (print item)
@@ -236,8 +280,54 @@
 ; The value of nan can be computed using the expression (/ 0.0 0.0).
 ; Counterintuitively, the expression (= nan nan) is false.
 (define (interp-input args continuation)
+    (printf "\n" (car args))
+    (printf "help")
     ;(not-implemented 'interp-input args 'nl)
-    (interp-program continuation))
+    (cond ( (not(null? (cdr args))) (let ((input (read)))
+        (printf "Halo")
+            (cond 
+                    ((eof-object? input)    (begin var-put! 'eof 1))
+                    ( (number? input)     (var-put! (car args) input) )
+                    (else (printf "Error Message in Input, not a value input"))
+            ) 
+        ))
+        ((null? (cdr args))
+            (interp-program continuation)
+            (interp-input (cdr args))
+        )
+    )
+)
+    
+    
+    
+    
+    ; (if (not (null? args))
+    ;     (let ((input (read)))
+    ;     (printf "Halo")
+    ;         (cond 
+    ;                 ((eof-object? input)    (begin var-put! 'eof 1))
+    ;                 ( (number? input)     (var-put! (car args) input) )
+    ;                 (else (printf "Error Message in Input, not a value input"))
+    ;         ) 
+    ;     )
+    ;     ((null? (cdr args))
+    ;         (interp-program continuation)
+    ;         (interp-input (cdr args))
+    ;     )
+    ; ) ;;should it ask for an input? 
+
+    ; (if ((not null?) args)
+    ;     (let (input (read)))
+    ;             (cond 
+    ;                 ((eof-object? input)    (begin var-put! 'eof 1))
+    ;                 ( (number? input)     (var-put! (car args) input) )
+    ;                 (else (printf "Error Message in Input, not a value input"))
+    ;             )       
+    ;     ((null? (cdr args))
+    ;         (interp-program continuation)
+    ;         (interp-input (cdr args))
+    ;     )
+    ; )
 
 (for-each (lambda (fn) (hash-set! *stmt-table* (car fn) (cadr fn)))
    `(
@@ -262,7 +352,7 @@
 ;;    (not-implemented 'scan-for-labels '() 'nl))
 ;; SCAN FOR LABEL FUNCTION BELOW!! ----------------------------------------
 ;; Code taken from examples/c-evalexpr/labelhash.scm
-(define (scan-for-labels program)
+(define (scan-for-labels program) ;;car -hash key || cutter is actual value 
     (define (get-label line)
         (and (not (null? line))
              (not (null? (cdr line)))
@@ -270,7 +360,7 @@
     (when (not (null? program))
           (let ((label (get-label (car program))))
                (when (symbol? label)
-                     (hash-set! *hash* label program)))
+                     (hash-set! *label-table* label program)))
           (scan-for-labels (cdr program))))
 
 (define (readlist filename)
@@ -289,6 +379,7 @@
     (for-each (lambda (line) (dump-line line)) program))
 
 (define (main arglist)
+    ;(eval-expr (print))
     (cond ((null? arglist)
                 (usage-exit))
           ((string=? (car arglist) "-d")
