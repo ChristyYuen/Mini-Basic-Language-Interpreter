@@ -52,7 +52,9 @@
     (cos ,cos)
     (tan ,tan)
     (round ,round)
-    (asub , (lamba (x y)  (array-put! (make-vector x y) ) ) )
+        
+        
+    )
   	(< , <)
    	(> , >)
    	(= , =)
@@ -159,14 +161,13 @@
 (define (interp-dim args continuation)
     ;;(not-implemented 'interp-dim args 'nl)
     ;;(hash-set! *var-table* (car args) (make-vector (exact-round (eval-expr (cdr args) ) )))
-    (if (symbol? args) ;;asub stuff - added if state for asub
-        (eval-expr args)
-        (array-put!
-            (make-vector 
-                (exact-round (eval-expr (caaddr args) 0.0) )
-            )
+    ;;asub stuff - added if state for asub
+    (array-put!
+        (make-vector 
+            (exact-round (eval-expr (caaddr args) 0.0) )
         )
     )
+    
     (interp-program continuation)
 )
 
