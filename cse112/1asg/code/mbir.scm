@@ -52,11 +52,13 @@
     (cos ,cos)
     (tan ,tan)
     (round ,round)
+    (asub , (lamba (x y)  (array-put! (make-vector x y) ) ) )
   	(< , <)
    	(> , >)
    	(= , =)
    	(<= , <=)
    	(>= , >=)
+    (!= , (lambda (x y) (not (equal? x y)) )) ;;inf loop 
    	(^           ,expt)
    	(i           ,(sqrt -1))
    	(div         ,(lambda (x y) (floor (/ x y))))
@@ -157,9 +159,12 @@
 (define (interp-dim args continuation)
     ;;(not-implemented 'interp-dim args 'nl)
     ;;(hash-set! *var-table* (car args) (make-vector (exact-round (eval-expr (cdr args) ) )))
-    (array-put!
-        (make-vector 
-            (exact-round (eval-expr (caaddr args) 0.0) )
+    (if (symbol? args) ;;asub stuff - added if state for asub
+        (eval-expr args)
+        (array-put!
+            (make-vector 
+                (exact-round (eval-expr (caaddr args) 0.0) )
+            )
         )
     )
     (interp-program continuation)
@@ -180,6 +185,10 @@
             (exit 1) 
         )
         ;;(hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
+    )
+    (if (not (symbol? (car args))) ;; error message -- added in 
+        (printf "Symbol table; entry is not an array")
+        (exit 1)
     )
     (interp-program continuation)
 )
@@ -252,16 +261,27 @@
 ; statement.
 ;; Checks if the args are really the args 
 (define (interp-if args continuation)
-    ;(not-implemented 'interp-if args 'nl)
-    (if (not (hash-ref *function-table* (car args)));;if 2 args (expression) (label)
-        (printf "Error: args not found")
-        (if (hash-ref *function-table* (car args) )
-            (eval-expr (cadr args)) 
-            (eval-expr (caddr args))
-        )
+    (if (not (eval-expr (car args) ) ) 
+        (interp-program continuation)
+        (interp-goto (cdr args) continuation)
     )
-    (interp-goto (car args))
 )
+    ;(not-implemented 'interp-if args 'nl)
+    ; (printf "~a\n " args)
+    ;(printf "~a\n " (cadr args))
+
+    ;(printf "eval ~a\n " (not (eval-expr (car args) ) ))
+    ;(hash-ref *function-table* (car args)));;if 2 args (expression) (label) - HINT FROM TA
+        ;(printf "Error: args not found")
+    ; (if (eval-expr (car args) ) ;(hash-ref *function-table* (car args) )
+        ;     (eval-expr (cadr args)) 
+        ;     (eval-expr (caddr args))
+        ; )
+    ;(interp-goto (cdr args) continuation)
+
+; if (expression)
+;  -> does smth 
+;  -> else 
 
 (define (interp-print args continuation)
     (define (print item)
@@ -286,25 +306,29 @@
 ;; HINT: NEED A FOR-EACH? maybe
 (define (interp-input args continuation)
 
-    (printf "~a\n" (cdr args))
+    
     ;(printf "~a\n" (cdr args))
-    (printf "help \n")
+    ;(printf "Before Cond \n")
     ;(not-implemented 'interp-input args 'nl)
     ;(cond ( (not(null? (cdr args))) (let ((input (read)))
-    (cond (not(null? (cdr args))) 
-        ; (let ( (input (read) )   )
-        (printf "between")
-        ;     (cond 
-        ;             ( (eof-object? input)    (begin var-put! 'eof 1) )
-        ;             ( (number? input)     (var-put! (car args) input) )
-        ;             ( else (printf "Error Message in Input, not a value input") )
-        ;     ) 
-        ; )
-        ((null? (cdr args))
+    (cond (   (not (null? args) ) 
+            (let ((input (read) ) )   
+                
+                (cond 
+                    ( (eof-object? input)    (begin var-put! 'eof 1) )
+                    ( (number? input)     (var-put! (car args) input)   (printf "var:~a"  (car args) )  (printf "value~a: " input))
+                    ( (vector? input) (array-put! (car args) input) )  
+                    ( else NAN ) ;(printf "Error Message in Input, not a value input \n")
+                ) 
+            )
+            (interp-input (cdr args) continuation) 
+        )
+        (else
+            ;(printf "Else Cond \n")
             (interp-program continuation)
-            (interp-input (cdr args))
         )
     )
+    ;(printf "Outside Cond \n")
 )
     ; (if (not (null? args))
     ;     (let ((input (read)))
