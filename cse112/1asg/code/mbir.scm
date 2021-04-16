@@ -52,9 +52,6 @@
     (cos ,cos)
     (tan ,tan)
     (round ,round)
-        
-        
-    )
   	(< , <)
    	(> , >)
    	(= , =)
@@ -72,7 +69,8 @@
    	(sqrt        ,sqrt)
     (read ,read)
    	;;(complex-abs ,complex-abs)
-    ))
+    )
+)
 
 
 (for-each (lambda (var) (hash-set! *var-table* (car var) (cadr var))) ;;VARIABLE TABLE
@@ -139,7 +137,7 @@
             ;(printf "~a\n" expr) ;;return the string
             ;expr
             ;(printf "hello\n")
-            (printf "" (car expr))
+            (printf "~a" (car expr))
           )
           ((pair? expr) 
               (let ((func (hash-ref *function-table* (car expr) #f))
@@ -183,14 +181,14 @@
         (hash-set! *var-table* (car args) (eval-expr (cadr args) ) )
         (if (vector? (car args) )
             (vector-set! (hash-ref *array-table* (car args) (eval-expr (cadr args) ) ) )  
-            (exit 1) 
+            (printf "Symbol table; entry is not an array")
         )
         ;;(hash-set! *var-table* (car args) (eval-expr (cdr args) ) )
     )
-    (if (not (symbol? (car args))) ;; error message -- added in 
-        (printf "Symbol table; entry is not an array")
-        (exit 1)
-    )
+    ; (if (not (symbol? (car args))) ;; error message -- added in 
+        
+    ;     (continuation)
+    ; )
     (interp-program continuation)
 )
 
@@ -317,7 +315,7 @@
                 
                 (cond 
                     ( (eof-object? input)    (begin var-put! 'eof 1) )
-                    ( (number? input)     (var-put! (car args) input)   (printf "var:~a"  (car args) )  (printf "value~a: " input))
+                    ( (number? input)     (var-put! (car args) input) )   ;(printf "var:~a"  (car args) )  (printf "value~a: " input))
                     ( (vector? input) (array-put! (car args) input) )  
                     ( else NAN ) ;(printf "Error Message in Input, not a value input \n")
                 ) 
