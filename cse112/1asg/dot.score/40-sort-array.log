@@ -1,1 +1,3 @@
-./testrun.sh: line 30: ./mbir.scm: No such file or directory
+caaddr: contract violation
+  expected: (cons/c any/c (cons/c any/c (cons/c pair? any/c)))
+  given: ((asub a size))
