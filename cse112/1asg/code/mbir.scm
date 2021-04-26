@@ -1,4 +1,7 @@
+;; Christy Yuen | cyuen7
+;; Mellany Quiroz Almendarez | mquiroza 
 #!/afs/cats.ucsc.edu/courses/cse112-wm/usr/racket/bin/mzscheme -qr
+
 ;; $Id: mbir.scm,v 1.9 2021-01-12 11:57:59-08 - - $
 ;;
 ;; NAME
