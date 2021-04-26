@@ -1,0 +1,44 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2020.08.17.07.10.18;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2019.01.18.22.06.03;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mk.score.listing,v 1.1 2019-01-18 14:06:03-08 - - $
+cid -is $0
+mkpspdf Listing.score.ps .score/*
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 2
+a3 2
+# $Id$
+cid + $0
+@

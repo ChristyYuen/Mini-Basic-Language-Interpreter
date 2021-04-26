@@ -148,11 +148,14 @@
 
 ;;-- interp-DIM ----
 (define (interp-dim args continuation)
-    (array-put!
+    ;(if (equal? ('asub (caar args) ) ) 
+      ;(printf "incorrect useage")
+      (array-put!
         (make-vector 
             (exact-round (eval-expr (caaddr args) 0.0) )
         )
-    )
+      )
+    ;)
     (interp-program continuation)
 )
 

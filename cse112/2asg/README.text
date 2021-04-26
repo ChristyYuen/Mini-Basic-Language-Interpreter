@@ -1,0 +1,39 @@
+
+Objective Caml links:
+
+The Objective Caml home page
+https://ocaml.org/
+
+Learn about OCaml
+https://ocaml.org/learn/
+
+OCaml Documentation
+https://ocaml.org/docs/
+
+Install OCaml
+https://ocaml.org/docs/install.html
+
+An Introduction to Objective Caml
+/afs/cats.ucsc.edu/courses/cse112-wm/Languages/ocaml/intro-ocaml-columbia/
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/ocaml/intro-ocaml-columbia/
+
+Think OCaml: How to Think Like a (Functional) Computer Scientist
+/afs/cats.ucsc.edu/courses/cse112-wm/Languages/ocaml/think-ocaml/
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/ocaml/think-ocaml/
+http://greenteapress.com/thinkocaml/
+
+Unix Systems Programming in Objective Caml
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/ocaml/unix-systems-programming/
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/ocaml/unix-systems-programming/ocamlunix.pdf
+
+Strict Typed Functional Programming in OCaml
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/ocaml/strict-typed-fnprog-ocaml/
+http://www.bromans.com/david/publ/ocaml-tutorial.pdf
+
+Why do you like functional programming so much?
+https://imgs.xkcd.com/comics/functional_2x.png
+
+What is a Makefile and how does it work?
+https://opensource.com/article/18/8/what-how-makefile
+
+$Id: README.text,v 1.4 2021-01-25 21:49:40-08 - - $

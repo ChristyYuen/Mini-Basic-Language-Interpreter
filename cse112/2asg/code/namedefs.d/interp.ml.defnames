@@ -1,0 +1,11 @@
+val want_dump : bool ref
+val source_filename : string ref
+val eval_expr : Absyn.expr -> float
+val eval_memref : Absyn.memref -> float
+val eval_STUB : string -> float
+val interpret : Absyn.program -> unit
+val interp_stmt : Absyn.stmt -> Absyn.program -> unit
+val interp_print : Absyn.printable list -> Absyn.program -> unit
+val interp_input : Absyn.memref list -> Absyn.program -> unit
+val interp_STUB : string -> Absyn.program -> unit
+val interpret_program : Absyn.program -> unit

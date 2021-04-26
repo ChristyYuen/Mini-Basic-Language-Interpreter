@@ -1,0 +1,4 @@
+#!/bin/sh
+# $Id: mk.score.listing,v 1.2 2020-08-17 00:10:18-07 - - $
+cid -is $0
+mkpspdf Listing.score.ps .score/*

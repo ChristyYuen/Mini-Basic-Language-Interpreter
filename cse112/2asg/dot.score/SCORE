@@ -1,0 +1,83 @@
+$Id: SCORE,v 1.3 2020-10-22 16:28:42-07 - - $
+
+Grader:  copy this file into the student's directory and grade
+according to the following point values.  There are a max of 30
+points for the program and 30 points for the test run.  
+
+The numbers in parens are the max points for a particular section.
+Enter some number between 0 and the max depending on the quality
+of the work.
+
+________________________________________________________________________
+
+PROGRAM SOURCE CODE. (30)
+
+        (3) Run checksource.  Deduct 1 point per different
+            file complained about, but not more than 2 points.
+            checksource README *.ml *.mli >check.log
+
+            DO NOT DEDUCT POINTS for complaints about generated
+            files:  parser.{mli,ml} and scanner.ml.
+
+        (3) Look at the code.  Formatted reasonably?  Properly
+            indented?  Good choice of identifiers?
+
+        (3) Code to implement the INPUT statement
+
+        (3) Code to implement the DIM statement
+
+        (3) Code to implement the LET statement
+
+        (3) Code to implement the IF statement
+
+        (3) Code to implement the GOTO statement
+
+        (3) code to evaluate operator expressions
+
+        (3) code to evaluate function calls and arrays from
+            the symbol table
+
+        (3) function interpret uses tail recursion in all cases
+
+total source code score:  /30
+Minimum score is 1 if the directory exists.
+
+________________________________________________________________________
+
+TEST RUN.  (30)
+
+Record a score of zero to two points for each of the following
+test programs.  Indicate why any point loss.
+
+        00-hello-world.mb
+        01-1to10.mb
+        02-exprs.mb
+        10-exprs.mb
+        11-let.mb
+        12-syntax.mb
+        20-goto.mb
+        21-let-if.mb
+        22-fibonacci.mb
+        23-pi-e-fns.mb
+        30-quadratic.mb
+        31-collatz.mb
+        32-factorial.mb
+        40-sort-array.mb
+        41-eratosthenes.mb
+
+total test run score: /30
+
+________________________________________________________________________
+
+Add up the two numbers out of 30 and enter the score below at
+the end of the line that says SCORE=.  TOTAL SCORE ENTERED BELOW
+BETWEEN 1 and 60.  A score of 0 is used to indicate nothing was
+submitted.  If they submitted anything at all, it is worth at
+least 1 point.
+
+TOTALSCORE=
+
+If the student is doing pair programming verify that the partner's
+directory exists.  If not mkdir.  Then cp SCORE into it.  Also
+make sure the symlink PARTNER points in both directions.
+

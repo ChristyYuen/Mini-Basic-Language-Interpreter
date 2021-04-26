@@ -1,0 +1,60 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@; @;
+
+
+1.2
+date	2021.01.25.20.13.38;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2021.01.25.20.12.45;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/afs/cats.ucsc.edu/courses/cse112-wm/usr/ocaml/bin/ocaml
+(* $Id: nan.ml,v 1.1 2021-01-25 12:12:45-08 - - $ *)
+
+open Printf;;
+
+printf "nan = %.16g\n%!" nan;;
+printf "nan = nan = %B\n%!" (nan = nan);;
+printf "nan < nan = %B\n%!" (nan < nan);;
+printf "nan > nan = %B\n%!" (nan > nan);;
+printf "nan = 0.0 = %B\n%!" (nan = 0.0);;
+printf "nan < 0.0 = %B\n%!" (nan < 0.0);;
+printf "nan > 0.0 = %B\n%!" (nan > 0.0);;
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+(* $Id: printfloat.ml,v 1.8 2021-01-25 12:05:35-08 - - $ *)
+d7 6
+a12 6
+printf "nan == nan = %B\n%!" (nan == nan);;
+printf "nan < nan  = %B\n%!" (nan <  nan);;
+printf "nan > nan  = %B\n%!" (nan >  nan);;
+printf "nan == 0.0 = %B\n%!" (nan == 0.0);;
+printf "nan < 0.0  = %B\n%!" (nan <  0.0);;
+printf "nan > 0.0  = %B\n%!" (nan >  0.0);;
+@
