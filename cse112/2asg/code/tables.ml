@@ -10,6 +10,19 @@ type binary_fn_table_t = (string, float -> float -> float) Hashtbl.t
 type bool_fn_table_t = (string, float -> float -> bool) Hashtbl.t
 type label_table_t = (string, Absyn.program) Hashtbl.t
 
+let bool_fn_table_t : bool_fn_table_t = Hashtbl.create 16
+let _ = List.iter (fun (label, value) ->
+                   Hashtbl.replace bool_fn_table_t label value)
+                 ["="  , (=);
+                  "==" , (==);
+                  "<"  , (<);
+                  ">"  , (>);
+                  "!=" , (<>);
+                  "<>" , (<>);
+                  ">=" , (>=);
+                  "<=" , (<=)
+                 ]
+
 let variable_table : variable_table_t = Hashtbl.create 16
 let _ = List.iter (fun (label, value) ->
                    Hashtbl.replace variable_table label value)
