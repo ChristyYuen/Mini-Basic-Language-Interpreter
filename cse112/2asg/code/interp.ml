@@ -5,6 +5,8 @@ Mellany Quiroz Almendarez | mquiroza
 *)
 open Absyn
 
+let nan = 0.0 
+
 let want_dump = ref false
 
 let source_filename = ref ""
@@ -15,15 +17,13 @@ let rec eval_expr (expr : Absyn.expr) : float = match expr with
     | Unary (oper, expr) -> 
             (   Hashtbl.find Tables.unary_fn_table 
                 oper (eval_expr expr)
-            ) (*.binary.fntable * *)
-    (*eval_STUB "eval_expr Unary"*)
+            ) 
     | Binary (oper, expr1, expr2) ->  
             (   Hashtbl.find Tables.binary_fn_table 
                 oper 
                 (eval_expr expr1) 
                 (eval_expr expr2) 
             )
-    (*eval_STUB "eval_expr Binary"*)
 and eval_memref (memref : Absyn.memref) : float = match memref with
     | Arrayref (ident, expr) -> Array.get (Hashtbl.find Tables.array_table ident) (Float.to_int (eval_expr expr))
     | Variable ident -> try Hashtbl.find Tables.variable_table ident
@@ -32,14 +32,6 @@ and eval_memref (memref : Absyn.memref) : float = match memref with
 and eval_STUB reason = (
     print_string ("(" ^ reason ^ ")");
     nan)
-
-(* let rec eval_relexpr (oper, expr1, expr2) (continue : Absyn.program) : float = match oper with
-     | Relexpr (oper, expr1, expr2) -> 
-            (   Hashtbl.find Tables.bool_fn_table_t
-                oper 
-                (eval_expr expr1) 
-                (eval_expr expr2) 
-            ) *)
 
 let rec interpret (program : Absyn.program) = match program with
     | [] -> ()
@@ -54,7 +46,8 @@ and interp_stmt (stmt : Absyn.stmt) (continue : Absyn.program) =
     | Goto label -> interp_goto label continue
     | If (expr, label) -> interp_if (expr, label) continue
     | Print print_list -> interp_print print_list continue
-    | Input memref_list -> interp_input memref_list continue
+    | Input memref_list -> interp_let_helper memref_list continue
+    (*helper function calls main function *)
 
 (*Added a LET function below*)
 and interp_let (memref, expr) (continue : Absyn.program)  = 
@@ -69,11 +62,14 @@ and interp_let (memref, expr) (continue : Absyn.program)  =
             Hashtbl.find Tables.array_table name 
                 in 
                 (Array.set arr
-                    (Float.to_int (eval_expr index)) (*Hint from TA*) 
+                    (Float.to_int (eval_expr index)) 
                     (eval_expr expr);
                     (interpret continue)
                 )
-        with Not_found -> Printf.printf "Not_found\n";  
+        with Not_found -> Printf.printf "Not_found\n";
+        (* Printf.printf "Not_found\n"; Need to ask Ramesh, why find_opt isn't working *)
+        (* None; *)
+        (* Printf.printf "Not_found\n";   *)
         (* (exit 1); *)
         (* (interpret continue); need find_opt and return none *)
         (*Difference between exit 1 and exit 0, and does it matter?*)
@@ -85,16 +81,13 @@ and interp_dim (ident, expr)
     (Array.make 
         (Float.to_int(eval_expr expr)) 0.0
     ); 
-    (* Printf.printf "Dim is working";  *)
     (interpret continue)
-
-(* (interpret continue); *)
 
 and interp_goto (label) (continue : Absyn.program)  = 
     try let gotoLabel = Hashtbl.find Tables.label_table label 
     in interpret gotoLabel; 
-    with Not_found -> Printf.printf "Not_found\n";  
-    (* (exit 1);  *)
+    with Not_found -> Printf.printf "Label_Not_found\n";  
+    (exit 1)
 
 and interp_if (expr, label) (continue : Absyn.program) =
     match expr with 
@@ -102,33 +95,6 @@ and interp_if (expr, label) (continue : Absyn.program) =
      if (Hashtbl.find Tables.bool_fn_table_t oper (eval_expr ex1) (eval_expr ex2) )
         then interpret (Hashtbl.find Tables.label_table label)
         else interpret continue;  
-
-        (* try let valu = Hashtbl.find Tables.bool_fn_table_t oper in 
-        (* I wanted to try catch it because I had a fatal error *)
-            if valu (eval_expr ex1) (eval_expr ex2)
-            then 
-                if (Hashtbl.find Tables.bool_fn_table_t oper) (eval_expr ex1) (eval_expr ex2) 
-                then interpret (Hashtbl.find Tables.label_table label)
-                else interpret continue; 
-        with Not_found -> (exit 1);  *)
-
-
-     (* if (Hashtbl.find Tables.bool_fn_table_t oper (eval_expr ex1) (eval_expr ex2) )
-        then interpret (Hashtbl.find Tables.label_table label)
-        else interpret continue;  Working BUT CAN'T PASS TESTS*) 
-    
-        (* if (Hashtbl.find Tables.bool_fn_table_t oper (eval_expr ex1) (eval_expr ex2) )
-        then interpret (Hashtbl.find Tables.label_table label)
-        else interpret continue; *)
-
-    (* (eval_expr ex1) (eval_expr expr ex2)  *)
-        (* (eval_expr expr) *)
-    (* = (interpret continue); *)
-    (* need pattern match
-    probably same as let need a 
-    binary match and an array match   *)
-
-
 
 and interp_print (print_list : Absyn.printable list)
                  (continue : Absyn.program) =
@@ -141,47 +107,52 @@ and interp_print (print_list : Absyn.printable list)
     in (List.iter print_item print_list; print_newline ());
     interpret continue
 
-
+and interp_let_helper (memref_list : Absyn.memref list)
+                      (continue : Absyn.program)  =
+    match (Hashtbl.find Tables.variable_table "eof") with 
+    | 0. -> interp_input memref_list continue
+    | 1. -> interpret continue (*error here*)
+    | _ -> interpret continue
+
+    (* match memref_list with 
+    | End_of_file -> if (Hashtbl.find Tables.variable_table "eof" 1.)
+                     then interpret continue (*meaning skip inter_input*)
+                     else interp_input memref_list continue;
+    0. -> interp_input memref_list continue;
+    1. -. interp continue *)
+
+(* let input_number memref = 
+    (* = try in*) 
+        if memref = "eof"
+        then let memref = nan;
+        else interp_input memref_list continue *) 
+
 and interp_input (memref_list : Absyn.memref list)
                  (continue : Absyn.program)  =
-    let input_number memref =
-        try  let number = Etc.read_number ()
-             (* in (print_float number; print_newline ()) *)
-            in match memref with
-                (* copied from let *)
-                | Variable var ->  
-                    (   Hashtbl.add Tables.variable_table var number;
-                        (* Printf.printf "%d: number(var)\n%!" (Float.to_int number);  *)
-                        (* (interpret continue)  *)
-                    )
-                | Arrayref(name, index) -> 
-                    try let arr = 
-                    Hashtbl.find Tables.array_table name 
-                    in 
-                    (   Array.set arr 
-                        (Float.to_int (eval_expr index)) 
-                        number;
-                        (* Printf.printf "%d: number(array)\n%!" (Float.to_int number);  *)
-                        (* (interpret continue) *)
-                    )
-                    with Not_found -> (exit 0);
-                    (* (interpret continue) *)
-        with End_of_file -> (*(replace eof "1"); *)
-            (
-                print_string "End_of_file"; 
-                Hashtbl.add Tables.variable_table "eof" 1.; 
-                print_newline ()
-            )
+    let input_number memref = 
+            try  let number = Etc.read_number ()
+                in match memref with
+                    (* copied from let *)
+                    | Variable var ->  
+                        (   Hashtbl.add Tables.variable_table var number;
+                        )
+                    | Arrayref(name, index) -> 
+                        try let arr = 
+                        Hashtbl.find Tables.array_table name 
+                        in 
+                        (   Array.set arr 
+                            (Float.to_int (eval_expr index)) 
+                            number;
+                        )
+                        with Not_found -> (exit 0);
+            with End_of_file -> (*(replace eof "1"); *)
+                (
+                    print_string "End_of_file"; 
+                    Hashtbl.add Tables.variable_table "eof" 1.; 
+                    print_newline ();
+                )
     in List.iter input_number memref_list;
     interpret continue
-
-(* | Variable var ->  
-                    (   let numnum = 1. in Printf.printf "%d: numnum(var)\n%!" (Float.to_int numnum); 
-                        Hashtbl.add Tables.variable_table var number;
-                        Printf.printf "%d: number(var)\n%!" (Float.to_int number); 
-                        Printf.printf "%d: numnum(var)\n%!" (Float.to_int (numnum+1)); 
-                        (interpret continue) 
-                    ) *)
 
 and interp_STUB reason continue = (
     print_string "Unimplemented: ";
@@ -195,4 +166,3 @@ let interpret_program program =
      if !want_dump then Dumper.dump_program program;
      interpret program;
      if !want_dump then Tables.dump_label_table ())
-
