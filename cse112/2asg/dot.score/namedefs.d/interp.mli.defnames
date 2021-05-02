@@ -1,0 +1,3 @@
+val want_dump : bool ref
+val source_filename : string ref
+val interpret_program : Absyn.program -> unit

@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2021.01.26.06.22.10;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/bash -x
+# $Id: mki,v 1.2 2021-01-25 22:21:26-08 - - $
+
+cid -is $0
+
+(cd ..; file *) >file.types
+
+for file in $(cd ..; ls *.mli *.ml)
+do
+   (cd ..; ocamlopt -i $file) >$file.defnames
+done
+
+@
