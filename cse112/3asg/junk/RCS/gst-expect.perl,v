@@ -1,0 +1,68 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2020.09.08.05.53.36;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.09.08.02.57.05;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: gst-expect.perl,v 1.1 2020-09-07 19:57:05-07 - - $
+
+# Expect script which runs gst interactively with data
+# from STDIN, showing interactive transacript.
+
+$0 =~ s|.*/||;
+use strict;
+use warnings;
+
+my $expect = "| expect 2>&1";
+open EXPECT, $expect or die "$0: open $expect: $!\n";
+print EXPECT "spawn gst\n";
+
+while (my $line = <>) {
+   next if $line =~ m/^#!/;
+   chomp $line;
+   $line =~ s/[\[\]\$"]/\\$&/g;
+   print EXPECT "expect \"st> \"\n";
+   print EXPECT "send -- \"$line\\n\"\n";
+}
+
+close EXPECT;
+print "\n";
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: misc-expect.perl,v 1.1 2020-09-07 17:54:56-07 - - $
+d16 1
+d18 1
+a18 1
+   $line =~ s/[\[\]"]/\\$&/g;
+@

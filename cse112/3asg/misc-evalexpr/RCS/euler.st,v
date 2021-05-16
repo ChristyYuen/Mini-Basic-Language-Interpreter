@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2021.04.28.20.52.03;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/afs/cats.ucsc.edu/courses/cse112-wm/usr/smalltalk/bin/gst -f
+"$Id: euler.st,v 1.1 2021-02-18 17:09:36-08 - - $"
+
+i := -1 sqrt.
+pi := -1 arcCos.
+euler := (i * pi) exp + 1.
+
+nl := Character nl.
+stdout << 'i = ' << i << nl.
+stdout << 'pi = ' << pi << nl.
+stdout << 'euler = ' << euler << nl.
+
+@

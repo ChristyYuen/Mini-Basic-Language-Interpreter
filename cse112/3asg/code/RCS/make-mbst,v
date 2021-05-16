@@ -1,0 +1,50 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2021.02.02.03.16.01;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.10.05.31.12;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: make-mbst,v 1.1 2020-11-09 21:31:12-08 - - $
+cid -is $0 mb2mbst.perl mbint.st
+for mb in programs-mb.d/*.mb
+do
+   mb2mbst.perl $mb
+done
+mv *.mbst ../dot.score
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mk.mbst,v 1.1 2020-11-09 17:39:44-08 - - $
+d4 1
+a4 1
+for mb in mb-programs.d/*.mb
+@

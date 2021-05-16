@@ -1,0 +1,40 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2020.11.05.05.26.44;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@"$Id: misc.expect,v 1.1 2020-09-07 19:55:11-07 - - $"
+
+nl := Character nl.
+
+pi := -1 arcCos.
+3 perform: #+ with: 4.
+pi perform: #sin.
+
+oper := [:op :x :y|
+   stdout << 'op: ' << op << '. x: ' << x << '. y: ' << y << '.' << nl.
+   stdout << (x perform: op with: y) << nl.
+].
+
+#( #+ #- #* #/) do: [:op|
+   oper value: op value: 3.0 value: 4.
+]
+
+@

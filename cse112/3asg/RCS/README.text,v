@@ -1,0 +1,89 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.3
+date	2021.02.09.03.49.47;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2021.02.09.03.45.42;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2021.02.02.03.22.41;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@GNU Smalltalk Library and Other References
+
+Learn X in Y minutes Where X=Smalltalk
+https://learnxinyminutes.com/docs/smalltalk/
+
+Angelfire Notes on Smalltalk
+http://www.angelfire.com/tx4/cus/notes/smalltalk.html
+
+Using Gnu Smalltalk (Canol Gokel)
+https://www2.ucsc.edu/courses/cse112-wm/:/Languages/smalltalk/using-gnu-smalltalk-gokel/
+
+Sources for smalltalk tar files
+https://ftp.gnu.org/gnu/smalltalk/
+
+GNU Smalltalk Resources
+https://www.gnu.org/software/smalltalk/
+
+GNU Smalltalk user's manual
+https://www.gnu.org/software/smalltalk/manual/
+
+GNU Smalltalk Library Reference
+https://www.gnu.org/software/smalltalk/manual-base/gst-base.html
+
+$Id: README.text,v 1.2 2021-02-08 19:45:42-08 - - $
+@
+
+
+1.2
+log
+@-
+@
+text
+@d9 1
+a9 1
+Using Gnu Smalltalk (Canol G&ouml;kel)
+d24 1
+a24 1
+$Id: README.text,v 1.1 2021-02-01 19:22:41-08 - - $
+@
+
+
+1.1
+log
+@-
+@
+text
+@d3 9
+d24 1
+a24 7
+Learn X in Y minutes Where X=Smalltalk
+https://learnxinyminutes.com/docs/smalltalk/
+
+Angelfire Notes on Smalltalk
+http://www.angelfire.com/tx4/cus/notes/smalltalk.html
+
+$Id: README.text,v 1.2 2021-01-18 23:27:46-08 - - $
+@

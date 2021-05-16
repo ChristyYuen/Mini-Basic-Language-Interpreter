@@ -1,0 +1,104 @@
+$Id: SCORE,v 1.1 2021-02-01 19:13:05-08 - - $
+
+Grader:  copy this file into the student's directory and grade
+according to the following point values.  There are a max of 30
+points for the program and 30 points for the test run.  
+
+The numbers in parens are the max points for a particular section.
+Enter some number between 0 and the max depending on the quality
+of the work.
+
+________________________________________________________________________
+
+PROGRAM SOURCE CODE. (30)
+
+        (2) Run checksource.  Deduct 1 point if <= 10 complaints,
+            else deduct 2 points.  Consider both files.
+            checksource README mbint.st >check.log
+            Score 0 for this item interpreter is not mbint.st.
+
+        (3) Look at the code.  Formatted reasonably?  Properly
+            indented?  Good choice of identifiers?
+
+        (3) Code to manage the label dictionary.
+            Preliminary scan to create it.
+
+        (3) Code to implement the INPUT statement
+
+        (3) Code to implement the DIM statement
+
+        (3) Code to implement the LET statement
+
+        (3) Code to implement the IF statement
+
+        (3) Code to implement the GOTO statement
+
+        (3) code to evaluate operator expressions
+
+        (2) code to look up variables and arrays in their dictionary
+
+        (2) code to use labelDict in ifStmt and gotoStmt
+
+total source code score:  /30
+Minimum score is 1 if the directory exists.
+
+________________________________________________________________________
+
+TEST RUN.  (30)
+
+        Record a score of zero to two points for each of the
+        following test programs, except use a max of 3 ponts
+        for those output labelled (max 3).  Indicate any point loss.
+
+        00-hello-world.mbst
+
+        01-1to10.mbst
+
+        02-exprs.mbst
+
+        10-exprs.mbst
+
+        11-let.mbst
+
+        12-syntax.mbst
+
+        20-goto.mbst
+
+        21-let-if.mbst
+
+        22-fibonacci.mbst
+
+        23-pi-e-fns.mbst
+
+        30-quadratic.mbst
+
+        31-collatz.mbst
+
+        32-factorial.mbst
+
+        40-sort-array.mbst
+
+        41-eratosthenes.mbst
+
+total test run score: /30
+
+________________________________________________________________________
+
+Add up the two numbers out of 30 and enter the score below at
+the end of the line that says TOTALSCORE=.  TOTAL SCORE ENTERED
+BELOW BETWEEN 1 and 60.  A score of 0 is used to indicate
+nothing was submitted.  If they submitted anything at all,
+it is worth at least 1 point.
+
+If doing pair programming look for the TOTALPAIR= score in
+SCORE.pair.  Deduct points specified in TOTALPAIR.
+
+Set TOTALSCORE = source code score + test run score + TOTALPAIR.
+Note:  TOTALPAIR is from -10 to 0, but the other two are positive.
+
+TOTALSCORE=
+
+If the student is doing pair programming verify that the partner's
+directory exists.  If not mkdir.  Then cp SCORE into it.  Also
+make sure the symlink PARTNER points in both directions.
+

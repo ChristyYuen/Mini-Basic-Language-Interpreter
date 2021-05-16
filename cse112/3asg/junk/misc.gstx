@@ -1,0 +1,17 @@
+"$Id: misc.gstx,v 1.1 2020-11-04 21:26:44-08 - - $"
+
+nl := Character nl.
+
+pi := -1 arcCos.
+3 perform: #+ with: 4.
+pi perform: #sin.
+
+oper := [:op :x :y|
+   stdout << 'op: ' << op << '. x: ' << x << '. y: ' << y << '.' << nl.
+   stdout << (x perform: op with: y) << nl.
+].
+
+#( #+ #- #* #/) do: [:op|
+   oper value: op value: 3.0 value: 4.
+]
+

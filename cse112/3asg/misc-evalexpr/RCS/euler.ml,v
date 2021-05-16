@@ -1,0 +1,44 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@; @;
+
+
+1.1
+date	2021.04.28.20.52.03;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/afs/cats.ucsc.edu/courses/cse112-wm/usr/ocaml/bin/ocaml
+(* $Id: euler.ml,v 1.3 2021-02-18 16:46:43-08 - - $ *)
+
+open Printf;;
+
+let ( *: ) = Complex.mul;;
+let ( +: ) = Complex.add;;
+let cexp = Complex.exp;;
+let csqrt = Complex.sqrt;;
+let complex_of_float x = {Complex.re = x; Complex.im = 0.0};;
+let string_of_complex x =
+    "{" ^ string_of_float x.re ^ " + " ^ string_of_float x.im ^ "i}";;
+
+let i = Complex.sqrt (complex_of_float ~-1.0);;
+let pi = complex_of_float (acos ~-1.0);;
+let euler = Complex.exp (i *: pi) + complex_of_float 1.0;;
+
+printf "i = %s\n" (string_of_complex i);;
+printf "pi = %s\n" (string_of_complex pi);;
+printf "euler = %s\n" (string_of_complex euler);;
+
+@
