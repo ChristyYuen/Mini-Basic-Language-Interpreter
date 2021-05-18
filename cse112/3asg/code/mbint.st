@@ -150,6 +150,10 @@ Expr extend [
    ]
 ].
 
+"
+chmod‌ ‌+x‌ ‌./mbint.st‌ ‌ ‌
+./mbint.st‌ ‌../dot.score/00-hello-world.mbst‌ ‌ "
+
 "label table here"
 MiniBasic subclass: Stmt [ "abstract base class" "-------------------------------------------------------------------------------------"
    stmtNr := 1.
@@ -158,11 +162,32 @@ MiniBasic subclass: Stmt [ "abstract base class" "------------------------------
    Stmt class >> getStmtNr [^ stmtNr]
    Stmt class >> incrStmtNr [stmtNr := stmtNr + 1]
    labelDict := Dictionary new.
+   " putLabel: label lineNumber: [labelDict at: label put: lineNumber] "
+
+   Stmt class >> putLabel:label [labelDict at: label put: stmtNr]
+
    Stmt class >> getLineNumber:label [^ labelDict at:label] 
+
+   " Stmt class >> scanlabel[]  "
+
    "taking an agrvLabel and returning what labelDict gives us at label"
    printOn: file [^ file << self prefix << ')']
    interp [MiniBasic unimplemented: self.]
 ].
+
+"-------------------------------------------------------------------------------------SCAN FOR LABELS--------------------------"
+" Stmt subclass: scanlabel 
+[
+   scanlabel class >> new: stmt [^ super new] 
+
+   1 to: prog size do: [:index|
+         |statement label lineNumber|
+         statement := prog.index. 
+         label := statement at:2. 
+         lineNumber := index.
+         (label == nil) ifFalse: [stmt putLabel: label lineNumber]. 
+      ].
+]. "
 
 Stmt subclass: DimStmt [
    |name size|
@@ -193,10 +218,10 @@ Stmt subclass: GotoStmt [
    printOn: file [^ file << self prefix << label << ')']
    interp[
       |lineNumber|
-      lineNumber:= stmt [getLineNumber: label.].
-      stmt [setLineNumber:lineNumber.].
+      lineNumber := Stmt getLineNumber: label. 
+      Stmt setLineNumber:lineNumber.
       "grabing different numbers, and doing interp on that stmt"
-   ].
+   ]
 ].
 
 Stmt subclass: IfStmt [
@@ -263,6 +288,7 @@ Stmt subclass: NullStmt [
    interp []
 ].
 
+
 Stmt extend [
    stmtDict := Dictionary from: {
       #dim   -> DimStmt.
@@ -282,8 +308,8 @@ Stmt extend [
    ]
 ]
 
-MiniBasic subclass: Interpreter [
-   |statements|
+MiniBasic subclass: Interpreter [ "-------------------------------------------MiniBasic Start------------------------------------------"
+   |statements prog|
    Interpreter class >> new: program [^ super new init: program]
    init: program [
       statements := Array new: program size.
@@ -292,6 +318,7 @@ MiniBasic subclass: Interpreter [
          stmt := (program at: index) at: 3.
          statements at: index put: (Stmt parse: stmt).
       ].
+      prog := program.
    ]
 
    print [
@@ -301,6 +328,18 @@ MiniBasic subclass: Interpreter [
                 << (statements at: index) << nl.
       ].
       stdout << '].' << nl.
+   ]
+
+   "--------------------------------------------------------------------------------------SCAN LABELS-----------------"
+   scanLabel 
+   [
+   1 to: prog size do: [:index|
+         |statement label lineNumber|
+         statement := prog at: index. 
+         label := statement at:2. 
+         lineNumber := index.
+         (label == nil) ifFalse: [Stmt putLabel: label lineNumber]. 
+      ]
    ]
 
    interpret [
@@ -316,7 +355,7 @@ MiniBasic subclass: Interpreter [
    ]
 ].
 
-Object subclass: Main [
+Object subclass: Main [ "---------------------------------------------------------------------Main Class Start------------------------------------"
    nl := Character nl.
    scriptName := thisContext currentFileName.
 
@@ -359,6 +398,7 @@ Object subclass: Main [
          Debug > 0 ifTrue: [Main print: program].
          interpreter := Interpreter new: program.
          Debug > 0 ifTrue: [interpreter print].
+         interpreter scanLabel.
          interpreter interpret.
       ] on: SystemExceptions.FileError do: [:signal|
          stderr << scriptName << ': ' << fileName << ': '
