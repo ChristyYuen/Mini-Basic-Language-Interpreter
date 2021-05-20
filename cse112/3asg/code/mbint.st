@@ -95,7 +95,7 @@ Expr subclass: UnopExpr [
       ^ file << self prefix << oper << ' ' << opnd << ')'.
    ]
    "Added value here"
-   value [^ (opnd value perform:oper) + 0.0.]  
+   value [^ (opnd value perform:oper) + 0.0.]  "--------------------------------------------------------ADDDED:works---------"
 ].
 
 Expr subclass: BinopExpr [
@@ -111,14 +111,31 @@ Expr subclass: BinopExpr [
              << ' ' << opnd2 << ')'.
    ]
    "Added value here"
-   value [^ (opnd1 value) perform:oper with: opnd2 value.]  
+   value [
+      (opnd1 isMemberOf: ArrayExpr)
+      ifTrue: [^opnd1 getVal: opnd2 value]
+      ifFalse: [^ (opnd1 value) perform:oper with: opnd2 value.]   
+   ] "--------------------------------------------------------ADDDED:works---------"
 ].
 
-Expr subclass: ArrayExpr [
+Expr subclass: ArrayExpr [ "---------------------------------------------------------------------Setting Up DIM but error-------------------------------"
    |arrayName|
    arrayDict := Dictionary new.
    ArrayExpr class >> new: var [^ super new init: var]
    init: var [arrayName := var]
+
+   getVal: index [
+      |arr|
+      arr := arrayDict at: arrayName.
+      ^arr at: ((index + 1) ceiling)
+   ]
+   putVal: exp index: ind [
+      |arr|
+      arr:= arrayDict at: arrayName
+      arr at: ((ind +1) ceiling) put: exp
+   ]
+   putArray:arr [ arrayDict at: arrayName put:arr]
+   
    printOn: file [^ file << self prefix << arrayName << ')']
 ].
 
@@ -150,10 +167,6 @@ Expr extend [
    ]
 ].
 
-"
-chmod‌ ‌+x‌ ‌./mbint.st‌ ‌ ‌
-./mbint.st‌ ‌../dot.score/00-hello-world.mbst‌ ‌ "
-
 "label table here"
 MiniBasic subclass: Stmt [ "abstract base class" "-------------------------------------------------------------------------------------"
    stmtNr := 1.
@@ -162,32 +175,20 @@ MiniBasic subclass: Stmt [ "abstract base class" "------------------------------
    Stmt class >> getStmtNr [^ stmtNr]
    Stmt class >> incrStmtNr [stmtNr := stmtNr + 1]
    labelDict := Dictionary new.
-   " putLabel: label lineNumber: [labelDict at: label put: lineNumber] "
 
-   Stmt class >> putLabel:label [labelDict at: label put: stmtNr]
+   Stmt class >> putLabel:label [labelDict at: label put: stmtNr] 
+   " works but line number doesn't understand "
+
+   " Stmt class >> putLabel:label putLabel:lineNr [labelDict at: label put: lineNr]   "
+   "-----------QUESTION: HOW TO MULT ARGS IN CLASS DEF"
+
+   " Stmt class >> putLabel:label lineNumber [labelDict at: label put: lineNumber] "
 
    Stmt class >> getLineNumber:label [^ labelDict at:label] 
-
-   " Stmt class >> scanlabel[]  "
-
    "taking an agrvLabel and returning what labelDict gives us at label"
    printOn: file [^ file << self prefix << ')']
    interp [MiniBasic unimplemented: self.]
 ].
-
-"-------------------------------------------------------------------------------------SCAN FOR LABELS--------------------------"
-" Stmt subclass: scanlabel 
-[
-   scanlabel class >> new: stmt [^ super new] 
-
-   1 to: prog size do: [:index|
-         |statement label lineNumber|
-         statement := prog.index. 
-         label := statement at:2. 
-         lineNumber := index.
-         (label == nil) ifFalse: [stmt putLabel: label lineNumber]. 
-      ].
-]. "
 
 Stmt subclass: DimStmt [
    |name size|
@@ -197,6 +198,14 @@ Stmt subclass: DimStmt [
       size := Expr parse: (stmt at: 3).
    ]
    printOn: file [^ file << self prefix << name << ' ' << size << ')']
+   interp[
+      |c|
+      c := Array new: (size value)asInteger.
+      1 to: c size do:[:i|
+         c at:i put: 0.0.
+      ].
+      name putArray: c.
+   ]
 ].
 
 Stmt subclass: LetStmt [
@@ -208,17 +217,25 @@ Stmt subclass: LetStmt [
    ]
    printOn: file [^ file << self prefix << name << ' ' << expr << ')']
 
-   interp [name put: expr value.]
+   "-----------------------------------------------------------------------------ADDDED:works---------"
+   interp [
+      (name isMemberOf: BinopExpr)
+      ifFalse:[name put: expr value.]   
+      ifTrue:[
+         name getLeft putVal: (expr value) 
+                      index: name getRight value
+      ]
+   ] 
 ].
 
 Stmt subclass: GotoStmt [
    |label|
-   GotoStmt class >> new: stmt [^ super new init: stmt] "dest" "Question: stmt Stmt difference" "-----------------------------------"
+   GotoStmt class >> new: stmt [^ super new init: stmt] "dest" "---------------------- Question: stmt Stmt difference" "-----------------------------------"
    init: stmt [label := stmt at: 2]
    printOn: file [^ file << self prefix << label << ')']
-   interp[
+   interp[                               "-------------------------------------------------------------ADDDED: idk if it works---------"
       |lineNumber|
-      lineNumber := Stmt getLineNumber: label. 
+      lineNumber := Stmt getLineNumber:label. 
       Stmt setLineNumber:lineNumber.
       "grabing different numbers, and doing interp on that stmt"
    ]
@@ -232,6 +249,14 @@ Stmt subclass: IfStmt [
       label := stmt at: 3.
    ]
    printOn: file [^ file << self prefix << expr << ' ' << label << ')']
+   interp[                                                   "------------------------------------------ADDDED:hopefully works-------"
+      |lineNum|
+      (expr value) ifTrue: [
+         lineNum := Stmt getLineNumber label.
+         Stmt setLineNumber: lineNum.
+      ]
+
+   ]
 ].
 
 Stmt subclass: InputStmt [
@@ -251,8 +276,10 @@ Stmt subclass: InputStmt [
       inputVars do: [:var|
          |value|
          value := stdinNumbers nextNumber.
-         stdout << thisContext method << ' '
-                << var << ': ' << value << nl.
+         " stdout << thisContext method << ' '
+                << var << ': ' << value << nl. "
+         (stdinNumbers atEnd) ifTrue:[var replace: #eof value:1.0] "-----------------------ADDED: UNTESTED -------------------------"
+                              ifFalse:[var put:value]
       ].
    ]
 ].
@@ -308,7 +335,8 @@ Stmt extend [
    ]
 ]
 
-MiniBasic subclass: Interpreter [ "-------------------------------------------MiniBasic Start------------------------------------------"
+"---------------------------------------------------------------------------MiniBasic Start------------------------------------------"
+MiniBasic subclass: Interpreter [ 
    |statements prog|
    Interpreter class >> new: program [^ super new init: program]
    init: program [
@@ -318,7 +346,7 @@ MiniBasic subclass: Interpreter [ "-------------------------------------------Mi
          stmt := (program at: index) at: 3.
          statements at: index put: (Stmt parse: stmt).
       ].
-      prog := program.
+      prog := program. "---------------------------------------------------------------------------------ADDDED prog and prog equal---------"
    ]
 
    print [
@@ -330,17 +358,28 @@ MiniBasic subclass: Interpreter [ "-------------------------------------------Mi
       stdout << '].' << nl.
    ]
 
-   "--------------------------------------------------------------------------------------SCAN LABELS-----------------"
+   "--------------------------------------------------------------------------------------SCAN LABELS--------------------------------"
    scanLabel 
    [
+      1 to: prog size do: [:index|
+         |statement label lineNumb| "--------------------------------------------------------------lineNum has error-------------------"
+         statement := prog at: index. 
+         label := statement at: 2. 
+         lineNumb := index. 
+         (label = nil) ifFalse: [Stmt.labelDict at: label put:lineNumb]. "might == or ="
+      ].
+   ]
+
+"Testing without lineNumb and see if error disappears, it didn't. Inf loop"
+   " scanLabel 
+   [
    1 to: prog size do: [:index|
-         |statement label lineNumber|
+         |statement label|
          statement := prog at: index. 
          label := statement at:2. 
-         lineNumber := index.
-         (label == nil) ifFalse: [Stmt putLabel: label lineNumber]. 
+         (label == nil) ifFalse: [Stmt putLabel: label]. 
       ]
-   ]
+   ] "
 
    interpret [
       |stmtNr|
@@ -398,7 +437,7 @@ Object subclass: Main [ "-------------------------------------------------------
          Debug > 0 ifTrue: [Main print: program].
          interpreter := Interpreter new: program.
          Debug > 0 ifTrue: [interpreter print].
-         interpreter scanLabel.
+         interpreter scanLabel. "--------------------------------------------------------------------------------------ADDDED---------"
          interpreter interpret.
       ] on: SystemExceptions.FileError do: [:signal|
          stderr << scriptName << ': ' << fileName << ': '
