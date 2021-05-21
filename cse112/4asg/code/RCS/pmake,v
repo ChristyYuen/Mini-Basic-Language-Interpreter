@@ -1,0 +1,998 @@
+head	1.37;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.37
+date	2021.02.24.21.17.46;	author -;	state -;
+branches;
+next	1.36;
+
+1.36
+date	2020.12.04.22.39.10;	author -;	state -;
+branches;
+next	1.35;
+
+1.35
+date	2020.12.04.22.38.50;	author -;	state -;
+branches;
+next	1.34;
+
+1.34
+date	2020.12.02.19.41.42;	author -;	state -;
+branches;
+next	1.33;
+
+1.33
+date	2020.12.02.03.17.54;	author -;	state -;
+branches;
+next	1.32;
+
+1.32
+date	2020.12.02.03.17.34;	author -;	state -;
+branches;
+next	1.31;
+
+1.31
+date	2020.11.28.20.08.59;	author -;	state -;
+branches;
+next	1.30;
+
+1.30
+date	2020.11.28.20.08.03;	author -;	state -;
+branches;
+next	1.29;
+
+1.29
+date	2020.11.27.01.06.28;	author -;	state -;
+branches;
+next	1.28;
+
+1.28
+date	2020.11.27.01.05.03;	author -;	state -;
+branches;
+next	1.27;
+
+1.27
+date	2020.11.27.01.00.30;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2020.11.27.00.51.55;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2020.11.27.00.34.33;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2020.11.24.06.14.13;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2020.11.24.05.59.10;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2020.11.24.05.55.16;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2020.11.24.05.53.09;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2020.11.24.01.16.25;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2020.11.24.01.09.55;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2020.11.23.20.25.37;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2020.11.23.20.24.29;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2020.11.23.20.24.02;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2020.11.23.20.22.43;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2020.11.23.19.58.49;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2020.11.23.19.57.31;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2020.11.23.19.56.52;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2020.11.23.19.37.28;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2020.11.23.19.35.05;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2020.11.23.02.13.24;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2020.11.23.01.36.26;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2020.11.22.23.49.01;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2020.11.22.23.48.33;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2020.11.22.23.47.12;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2020.11.22.23.46.32;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2020.11.22.23.45.15;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.11.22.23.43.51;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.21.03.37.23;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.37
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: pmake,v 1.36 2020-12-04 14:39:10-08 - - $
+
+$0 =~ s|.*/||;
+use Getopt::Std;
+use Data::Dumper;
+use strict;
+use warnings;
+
+$Data::Dumper::Indent = 1;
+$Data::Dumper::Sortkeys = 1;
+$Data::Dumper::Terse = 1;
+sub dump_hash ($\%) {
+   my ($label, $hashptr) = @@_;
+   print STDERR "%$label: ", Data::Dumper->Dump ([$hashptr]);
+}
+
+my $STATUS = 0;
+END { exit $STATUS; }
+$SIG{'__WARN__'} = sub { print STDERR @@_; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { print STDERR @@_; $STATUS = 1; exit; };
+
+# sigtoperl: x86_64 Linux unix1.lt.ucsc.edu
+# sigtoperl: Sun Nov 22 17:33:55 2020
+my %strsignal = (
+    0 => "Unknown signal 0",
+    1 => "Hangup",
+    2 => "Interrupt",
+    3 => "Quit",
+    4 => "Illegal instruction",
+    5 => "Trace/breakpoint trap",
+    6 => "Aborted",
+    7 => "Bus error",
+    8 => "Floating point exception",
+    9 => "Killed",
+   10 => "User defined signal 1",
+   11 => "Segmentation fault",
+   12 => "User defined signal 2",
+   13 => "Broken pipe",
+   14 => "Alarm clock",
+   15 => "Terminated",
+   16 => "Stack fault",
+   17 => "Child exited",
+   18 => "Continued",
+   19 => "Stopped (signal)",
+   20 => "Stopped",
+   21 => "Stopped (tty input)",
+   22 => "Stopped (tty output)",
+   23 => "Urgent I/O condition",
+   24 => "CPU time limit exceeded",
+   25 => "File size limit exceeded",
+   26 => "Virtual timer expired",
+   27 => "Profiling timer expired",
+   28 => "Window changed",
+   29 => "I/O possible",
+   30 => "Power failure",
+   31 => "Bad system call",
+);
+
+sub run_command (@@) {
+   my (@@command) = @@_;
+   print "@@command\n";
+   my $status = eval {no warnings; system @@command};
+   return undef unless $status;
+   return "$!" if $status == -1;
+   my $signal = $status & 0x7F;
+   my $core = $status & 0x80;
+   my $exit = ($status >> 8) & 0xFF;
+   return "Error $exit" unless $signal || $core;
+   return ($strsignal{$signal} || "Invalid Signal Number $signal")
+        . ($core ? " (core dumped)" : "");
+}
+
+my $MAKECMDGOALS;
+my $Makefile = "Makefile";
+my %OPTIONS;
+my %GRAPH;
+my %MACROS;
+
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub stop($) { die "$Makefile:@@_. Stop.\n" }
+
+sub scan_cmdline() {
+   getopts "dgm", \%OPTIONS;
+   usage unless @@ARGV <= 1;
+   $MAKECMDGOALS = $ARGV[0] if @@ARGV == 1;
+}
+
+sub dump_graph() {
+   print STDERR "%MACROS:\n";
+   for my $macro (sort keys %MACROS) {
+      printf STDERR "%7d [%s] = [%s]\n",
+             $MACROS{$macro}{LINE}, $macro, $MACROS{$macro}{VALUE};
+   }
+   print STDERR "MAKECMDGOALS = [$MAKECMDGOALS]\n";
+   print STDERR "%GRAPH:\n";
+   for my $target (sort keys %GRAPH) {
+      my $prereqs = $GRAPH{$target}{PREREQS};
+      printf STDERR "%7d [%s] :", $GRAPH{$target}{LINE}, $target;
+      print STDERR " [$_]" for @@$prereqs;
+      print STDERR "\n";
+      for my $cmd (@@{$GRAPH{$target}{COMMANDS}}) {
+         printf STDERR "%7d.\t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+      }
+   }
+}
+
+sub load_Makefile() {
+   open my $mkfile, "<$Makefile" or die "$0: $Makefile: $!";
+   my $target;
+   while (defined (my $line = <$mkfile>)) {
+      next if $line =~ m/^\s*(#|$)/;
+      if (!$target && $line =~ m/^\s*(\S+)\s*=\s*(.*?)\s*$/) {
+         $MACROS{$1} = {LINE=> $., VALUE=> $2};
+      }elsif ($line =~ m/^(\S+)\s*:\s*(.*)/) {
+         $target = $1;
+         $GRAPH{$target}{PREREQS} = [split ' ', $2];
+         $GRAPH{$target}{LINE} = $.;
+         $MAKECMDGOALS = $target unless $MAKECMDGOALS;
+      }elsif ($line =~ m/^\t(.*)/) {
+         if (defined $target) {
+            push @@{$GRAPH{$target}{COMMANDS}},
+                 {LINE=> $., CMD=> $1};
+         }else {
+            stop "$.: Command before first target";
+         }
+      }else {
+         stop "$.: Missing separator";
+      }
+   }
+   close $mkfile;
+}
+
+scan_cmdline;
+load_Makefile;
+
+dump_hash ("MACROS", %MACROS) if $OPTIONS{'m'};
+dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'g'};
+dump_graph if $OPTIONS{'d'};
+
+@
+
+
+1.36
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.35 2020-12-04 14:38:50-08 - - $
+d84 1
+a84 1
+   getopts "dg", \%OPTIONS;
+d137 3
+a139 3
+dump_hash ("MACROS", %MACROS) if $OPTIONS{'d'};
+dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'d'};
+dump_graph if $OPTIONS{'g'};
+@
+
+
+1.35
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.34 2020-12-02 11:41:42-08 - - $
+d103 1
+a103 1
+         printf STDERR "%7d \t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+@
+
+
+1.34
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.33 2020-12-01 19:17:54-08 - - $
+d103 1
+a103 1
+         printf STDERR "%7d\t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+@
+
+
+1.33
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.32 2020-12-01 19:17:34-08 - - $
+d103 1
+a103 1
+         printf STDERR "%7d \t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+@
+
+
+1.32
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.31 2020-11-28 12:08:59-08 - - $
+d138 1
+a138 1
+dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'g'};
+@
+
+
+1.31
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.30 2020-11-28 12:08:03-08 - - $
+d138 1
+a138 1
+dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'d'};
+@
+
+
+1.30
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.29 2020-11-26 17:06:28-08 - - $
+a96 1
+   for my $macro (sort keys %MACROS) {
+@
+
+
+1.29
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.28 2020-11-26 17:05:03-08 - - $
+d90 1
+d96 2
+@
+
+
+1.28
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.27 2020-11-26 17:00:30-08 - - $
+d84 1
+a84 1
+   getopts "dgm", \%OPTIONS;
+d89 1
+a89 1
+sub dump_macros() {
+a94 3
+}
+
+sub dump_graph() {
+a136 1
+dump_macros if $OPTIONS{'m'};
+@
+
+
+1.27
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.26 2020-11-26 16:51:55-08 - - $
+d74 1
+a74 1
+my $MAIN_TARGET;
+d86 1
+a86 1
+   $MAIN_TARGET = $ARGV[0] if @@ARGV == 1;
+d92 1
+a92 1
+             $MACROS{$macro}{LINE}, $MACROS{$macro}{VALUE};
+d94 1
+a106 1
+   print STDERR "MAIN_TARGET = [$MAIN_TARGET]\n";
+d115 1
+a115 1
+         $MACROS{$1} = {Line=> $., VALUE=> $2};
+d120 1
+a120 1
+         $MAIN_TARGET = $target unless $MAIN_TARGET;
+@
+
+
+1.26
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.25 2020-11-26 16:34:33-08 - - $
+d91 2
+a92 1
+      print STDERR "MACRO{$macro} = [$MACROS{$macro}]\n";
+a96 1
+   print STDERR "MAIN_TARGET = [$MAIN_TARGET]\n";
+d99 1
+a99 1
+      printf STDERR "%3d [%s] :", $GRAPH{$target}{LINE}, $target;
+d103 1
+a103 1
+         printf STDERR "%3d \t[%s]\n", $cmd->{LINE}, $cmd->{CMD};;
+d106 1
+d115 1
+a115 1
+         $MACROS{$1} = $2;
+@
+
+
+1.25
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.24 2020-11-23 22:14:13-08 - - $
+d99 1
+a99 1
+      print STDERR "$GRAPH{$target}{LINE} $target :";
+d102 2
+a103 2
+      for my $command (@@{$GRAPH{$target}{COMMANDS}}) {
+         print STDERR "...[$command]\n";
+d122 2
+a123 1
+            push @@{$GRAPH{$target}{COMMANDS}}, $1;
+@
+
+
+1.24
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.20 2020-11-23 17:16:25-08 - - $
+d60 4
+a63 2
+sub status_string ($) {
+   my ($status) = @@_;
+d65 7
+a71 5
+   $status &= 0xFFFF;
+   return sprintf "Error %d", $status >> 8 if ($status & 0xFF) == 0;
+   my $message = $strsignal{$status & 0x7F} || "Invalid Signal Number";
+   $message .= " (core dumped)" if $status & 0x80;
+   return $message;
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.22 2020-11-23 21:55:16-08 - - $
+d20 2
+a21 3
+sub note { print STDERR @@_; }
+$SIG{'__WARN__'} = sub { note @@_; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { warn @@_; exit; };
+d87 1
+a87 1
+      note "MACRO{$macro} = [$MACROS{$macro}]\n";
+d92 1
+a92 1
+   note "MAIN_TARGET = [$MAIN_TARGET]\n";
+d95 3
+a97 3
+      note "$GRAPH{$target}{LINE} $target :";
+      note " [$_]" for @@$prereqs;
+      note "\n";
+d99 1
+a99 3
+         note "...";
+         note " [$_]" for @@$command;
+         note "\n";
+d118 1
+a118 1
+            push @@{$GRAPH{$target}{COMMANDS}}, [split ' ', $1];
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.21 2020-11-23 21:53:09-08 - - $
+d20 3
+a22 2
+$SIG{'__WARN__'} = sub { print STDERR @@_; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { print STDERR @@_; $STATUS = 1; exit; };
+d88 1
+a88 1
+      print STDERR "MACRO{$macro} = [$MACROS{$macro}]\n";
+d93 1
+a93 1
+   print STDERR "MAIN_TARGET = [$MAIN_TARGET]\n";
+d96 3
+a98 3
+      print STDERR "$GRAPH{$target}{LINE} $target :";
+      print STDERR " [$_]" for @@$prereqs;
+      print STDERR "\n";
+d100 3
+a102 3
+         print STDERR "...";
+         print " [$_]" for @@$command;
+         print STDERR "\n";
+@
+
+
+1.21
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.20 2020-11-23 17:16:25-08 - - $
+d99 3
+a101 1
+         print STDERR "...[$command]\n";
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.19 2020-11-23 17:09:55-08 - - $
+d118 1
+a118 1
+            push @@{$GRAPH{$target}{COMMANDS}}, $1;
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.18 2020-11-23 12:25:37-08 - - $
+d15 1
+a15 1
+   print "%$label: ", Data::Dumper->Dump ([$hashptr]);
+d20 2
+a21 3
+sub note (@@) { print STDERR @@_; };
+$SIG{'__WARN__'} = sub { note @@_; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { warn @@_; $STATUS = 1; exit; };
+d87 1
+a87 1
+      print "MACRO{$macro} = [$MACROS{$macro}]\n";
+d92 1
+a92 1
+   print "MAIN_TARGET = [$MAIN_TARGET]\n";
+d95 3
+a97 1
+      print "$GRAPH{$target}{LINE} $target : [@@$prereqs]\n";
+d99 1
+a99 1
+         print "...[$command]\n";
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.17 2020-11-23 12:24:29-08 - - $
+d13 4
+d131 2
+a132 2
+print "%MACROS: ", Data::Dumper->Dump ([\%MACROS]) if $OPTIONS{'d'};
+print "%GRAPH: ", Data::Dumper->Dump ([\%GRAPH]) if $OPTIONS{'d'};
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.16 2020-11-23 12:24:02-08 - - $
+d79 1
+a79 1
+   $MAIN_TARGET = $ARGV[0];
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.15 2020-11-23 12:22:43-08 - - $
+a19 3
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub stop($) { die "$Makefile:@@_. Stop.\n" }
+
+d72 3
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.14 2020-11-23 11:58:49-08 - - $
+d10 4
+d20 2
+a69 4
+$Data::Dumper::Indent = 1;
+$Data::Dumper::Sortkeys = 1;
+$Data::Dumper::Terse = 1;
+
+a74 3
+
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub stop($) { die "$Makefile:@@_. Stop.\n" }
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.13 2020-11-23 11:57:31-08 - - $
+d127 3
+a129 2
+if ($OPTIONS{'d'}) { print "%MACROS: "; print Dumper \%MACROS; }
+if ($OPTIONS{'d'}) { print "%GRAPH: "; print Dumper \%GRAPH; }
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.12 2020-11-23 11:56:52-08 - - $
+d57 1
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.11 2020-11-23 11:37:28-08 - - $
+d56 1
+a56 1
+   return "OK" unless $status;
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.10 2020-11-23 11:35:05-08 - - $
+d53 9
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.9 2020-11-22 18:13:24-08 - - $
+d95 1
+a95 1
+      if (! $MAIN_TARGET && $line =~ m/^\s*(\S+)\s*=\s*(.*?)\s*$/) {
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.8 2020-11-22 17:36:26-08 - - $
+d13 2
+a14 2
+$SIG{'__WARN__'} = sub { note "@@_\n"; $STATUS = 1; };
+$SIG{'__DIE__'} = sub { warn "@@_\n"; $STATUS = 1; exit; };
+d64 2
+a65 2
+sub usage() { die "Usage: $0 [-d] [target]" }
+sub stop($) { die "$Makefile:@@_. Stop." }
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.7 2020-11-22 15:49:01-08 - - $
+d10 2
+a11 2
+my $EXIT_STATUS = 0;
+END { exit $EXIT_STATUS; }
+d13 2
+a14 2
+$SIG{'__WARN__'} = sub { note @@_; $EXIT_STATUS = 1; };
+$SIG{'__DIE__'} = sub { warn @@_; exit; };
+d64 2
+a65 2
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub stop($) { die "$Makefile:@@_. Stop.\n" }
+d91 1
+a91 1
+   open my $mkfile, "<$Makefile" or die "$0: $Makefile: $!\n";
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.6 2020-11-22 15:48:33-08 - - $
+d15 38
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.5 2020-11-22 15:47:12-08 - - $
+d47 1
+a47 1
+         print "...[$command\n";
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.4 2020-11-22 15:46:32-08 - - $
+d37 1
+a37 1
+      print "\$MACRO{$macro} = [$MACROS{$macro}]\n";
+d42 1
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.3 2020-11-22 15:45:15-08 - - $
+d46 1
+a46 1
+         print "\t[$command\n";
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.2 2020-11-22 15:43:51-08 - - $
+d37 1
+a37 1
+      print "\$MACRO{$macro} = $MACROS{$macro}\n";
+d44 1
+a44 1
+      print "$GRAPH{$target}{LINE} $target : @@$prereqs\n";
+d46 1
+a46 1
+         print "\t$command\n";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.1 2020-11-20 19:37:23-08 - - $
+a29 1
+   my %OPTIONS;
+a44 1
+      print "\n";
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.5 2020-11-20 18:45:18-08 - - $
+d22 1
+a22 1
+my $DEBUG;
+d30 2
+a31 3
+   my %options;
+   getopts "d", \%options;
+   $DEBUG = $options{'d'};
+d36 17
+d80 4
+a83 2
+if ($DEBUG) { print "%MACROS: "; print Dumper \%MACROS; }
+if ($DEBUG) { print "%GRAPH: "; print Dumper \%GRAPH; }
+@

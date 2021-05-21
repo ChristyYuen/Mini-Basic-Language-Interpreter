@@ -1,0 +1,29 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.1
+date	2021.05.06.23.39.53;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id: zerodivide.cpp,v 1.2 2020-11-22 18:14:31-08 - - $
+int main() {
+   int a = 3;
+   int b = 0;
+   a /= b;
+}
+@

@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.1
+date	2021.05.06.23.39.52;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id: error.cpp,v 1.2 2020-11-22 19:42:39-08 - - $
+#include <string>
+int main (int argc, char**argv) {
+   return argc == 1 ? 0 : std::stoi (argv[1]);
+}
+@

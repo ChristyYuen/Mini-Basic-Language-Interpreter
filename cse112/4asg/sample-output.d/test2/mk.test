@@ -1,0 +1,6 @@
+#!/bin/sh -x
+# $Id: mk.test,v 1.6 2020-12-02 11:51:13-08 - - $
+rm -v hello
+make clean    >spotless.log 2>&1
+make          >all.log 2>&1
+make notarget >notarget.log 2>&1

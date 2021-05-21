@@ -1,0 +1,122 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.3
+date	2021.05.06.23.57.01;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.11.21.21.19.47;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.11.21.21.14.43;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: modtime.perl,v 1.2 2020-11-21 13:19:47-08 - - $
+#
+# NAME
+#    modtime.perl - print modification time of files
+#
+# SYNOPSIS
+#    modtime.perl filename...
+#
+
+$0 =~ s|.*/||;
+use POSIX qw(strftime);
+use strict;
+use warnings;
+
+sub modtime ($) {
+   my ($filename) = @@_;
+   my @@stat = stat $filename;
+   return @@stat ? $stat[9] : undef;
+}
+
+for my $filename (@@ARGV) {
+   my $mtime = modtime $filename;
+   if (defined $mtime) {
+      my $ctime = strftime "%c", localtime $mtime;
+      printf "%-20s 0x%08X %12d %s\n",
+             $filename, $mtime, $mtime, $ctime;
+   }else {
+      printf "$0: $filename: $!\n";
+   }
+}
+
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: modtime.perl,v 1.1 2020-11-21 13:14:43-08 - - $
+d26 2
+a27 1
+      printf "%-20s %12d %s\n", $filename, $mtime, $ctime;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mtime.perl,v 1.1 2018-11-06 18:50:44-08 - - $
+d5 1
+a5 1
+#    older.perl - check whether a pair of files are older or newer
+d8 1
+a8 5
+#    older.perl filename...
+#
+# DESCRIPTION
+#    The two files' modification times are compared and a
+#    relationship is printed.
+d11 2
+a14 2
+use POSIX qw(strftime);
+$0 =~ s|.*/||;
+d22 1
+a22 2
+sub fileinfo ($) {
+   my ($filename) = @@_;
+d24 1
+a24 11
+   print "$filename: ";
+   if (defined $mtime) {print strftime "%c\n", localtime $mtime}
+                  else {print "$!\n"}
+   return $mtime;
+}
+
+for my $filename (@@ARGV) {
+   unless (-e $filename) {
+      printf STDERR "$0: $filename: $!\n";
+   }else {
+      my $mtime = modtime $filename;
+d27 2
+@

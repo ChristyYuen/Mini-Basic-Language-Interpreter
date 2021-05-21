@@ -1,0 +1,28 @@
+#!/bin/sh -x
+# $Id: mk,v 1.25 2021-05-06 17:09:12-07 - - $
+
+# cid -is $0 graph.perl modtime.perl sigtoperl.cpp runcmd.perl
+
+# graph.perl 2>&1 | tee graph.output
+
+perl <<'__EOF__'
+   @array = (
+      [-0x7FFFFFFFFFFF, "utime-min47.txt"],
+      [    -0x80000000, "utime-min31.txt"],
+      [              0, "utime-0.txt"    ],
+      [     0x7FFFFFFF, "utime-max31.txt"],
+      [ 0x7FFFFFFFFFFF, "utime-max47.txt"],
+   );
+   for $a (@array) {
+      my ($time, $name) = @$a;
+      system "cp /dev/null $name";
+      utime $time, $time, $name;
+      system "modtime.perl $name";
+   }
+__EOF__
+
+modtime.perl * . /dev/null 2>&1 | tee modtime.output
+
+# mkc sigtoperl.cpp
+# sigtoperl >sigtoperl.output 2>&1
+

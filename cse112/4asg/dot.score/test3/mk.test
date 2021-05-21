@@ -1,0 +1,5 @@
+#!/bin/sh -x
+# $Id: mk.test,v 1.4 2021-05-06 16:32:47-07 - - $
+rm hello
+pmake clean    >clean.log 2>&1
+pmake          >all.log 2>&1

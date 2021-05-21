@@ -1,0 +1,184 @@
+head	1.6;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.6
+date	2021.02.22.05.50.35;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2021.02.22.05.49.05;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2020.11.21.03.34.09;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2020.08.30.22.47.15;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2020.07.23.22.40.28;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.07.23.22.39.34;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@-
+@
+text
+@<PRE>
+
+Learning Perl.
+
+There are many Perl tutorials avalable on the web for free.
+
+You can read O'Reilly books for free online at:
+<A HREF=
+http://proquest.safaribooksonline.com/>http://proquest.safaribooksonline.com/
+</A>
+This works using a UCSC computer because the library has
+a subscription.
+
+Learning Perl is at:
+<A HREF=
+http://proquest.safaribooksonline.com/0596101058>http://proquest.safaribooksonline.com/0596101058
+</A>
+
+Another free books is available at:
+<A HREF=
+http://www.onyxneon.com/books/modern_perl/index.html>http://www.onyxneon.com/books/modern_perl/index.html
+</A>
+<A HREF=
+http://www.onyxneon.com/books/modern_perl/modern_perl_letter.pdf>http://www.onyxneon.com/books/modern_perl/modern_perl_letter.pdf
+</A>
+
+</PRE>
+
+<P>
+<A HREF=gods-wrought-univ.png>
+<IMG width="95%"
+SRC="gods-wrought-univ.png"
+ALT="gods-wrought-univ.png"
+>
+</A>
+<P>
+
+$Id: README.html,v 1.5 2021-02-21 21:49:05-08 - - $
+@
+
+
+1.5
+log
+@-
+@
+text
+@d31 1
+a31 1
+<IMG width="100%"
+d38 1
+a38 1
+$Id: README.html,v 1.4 2020-11-20 19:34:09-08 - - $
+@
+
+
+1.4
+log
+@-
+@
+text
+@d31 1
+a31 1
+<IMG width="70%"
+d38 1
+a38 1
+$Id: README.html,v 1.3 2020-08-30 15:47:15-07 - - $
+@
+
+
+1.3
+log
+@-
+@
+text
+@d31 1
+a31 1
+<IMG
+d38 1
+a38 1
+$Id: README.html,v 1.2 2020-07-23 15:40:28-07 - - $
+@
+
+
+1.2
+log
+@-
+@
+text
+@a0 17
+<HEAD>
+<TITLE>README.text</TITLE>
+<STYLE> 
+BODY {
+   color: #00FF00 !important;
+   background-color: #1F1F1F !important;
+}
+DIV.TXT {
+   margin-left: 1em;
+}
+A:link {color: #FFFF00}
+A:visited {color: #00FFFF}
+A:hover {color: #FF0000}
+</STYLE>
+</HEAD> 
+<BODY>
+<DIV class="TXT">
+d8 3
+a10 1
+<A HREF=http://proquest.safaribooksonline.com/>http://proquest.safaribooksonline.com/</A>
+d15 3
+a17 1
+<A HREF=http://proquest.safaribooksonline.com/0596101058>http://proquest.safaribooksonline.com/0596101058</A>
+d20 6
+a25 2
+<A HREF=http://www.onyxneon.com/books/modern_perl/index.html>http://www.onyxneon.com/books/modern_perl/index.html</A>
+<A HREF=http://www.onyxneon.com/books/modern_perl/modern_perl_letter.pdf>http://www.onyxneon.com/books/modern_perl/modern_perl_letter.pdf</A>
+d38 1
+a38 3
+$Id: README.html,v 1.1 2020-07-23 15:39:34-07 - - $
+</DIV>
+</BODY>
+@
+
+
+1.1
+log
+@-
+@
+text
+@d38 1
+a45 2
+<TT>gods-wrought-univ.png</TT>
+<BR>
+d47 1
+a47 1
+$Id: README,v 1.1 2018-10-18 13:47:32-07 - - $
+@

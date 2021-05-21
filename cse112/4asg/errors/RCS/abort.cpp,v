@@ -1,0 +1,27 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@// @;
+
+
+1.1
+date	2021.05.06.23.39.51;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id: abort.cpp,v 1.1 2020-11-22 18:22:56-08 - - $
+int main() {
+   throw 0;
+}
+@

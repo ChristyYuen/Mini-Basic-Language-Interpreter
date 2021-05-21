@@ -1,0 +1,3 @@
+cc -g -c main.c
+cc -g -c hello.c
+cc -g main.o hello.o -o hello
