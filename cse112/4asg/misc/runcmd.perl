@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: runcmd.perl,v 1.5 2021-02-27 14:26:48-08 - - $
+# $Id: runcmd.perl,v 1.6 2021-05-24 22:01:38-07 - - $
 #
 # Copy code from this file in order to print an exit status.
 #
@@ -51,9 +51,9 @@ my %strsignal = (
    31 => "Bad system call",
 );
 
-sub run_command (@) {
-   my (@command) = @_;
-   my $status = eval {no warnings; system @command};
+sub run_command ($) {
+   my ($command) = @_;
+   my $status = eval {no warnings; system $command};
    return undef unless $status;
    return "$!" if $status == -1;
    my $signal = $status & 0x7F;

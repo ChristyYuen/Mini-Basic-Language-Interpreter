@@ -1,9 +1,14 @@
-head	1.11;
+head	1.12;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.12
+date	2021.05.26.05.58.21;	author -;	state -;
+branches;
+next	1.11;
 
 1.11
 date	2020.02.03.23.32.55;	author -;	state -;
@@ -65,7 +70,7 @@ desc
 @@
 
 
-1.11
+1.12
 log
 @-
 @
@@ -139,7 +144,7 @@ If in doubt, check with gmake to see what is happening.
                assign 4 points of two targets (log files) work.
                6 points if all targets work.
 
-   (6) test3 - same comment as test2
+   (6) test3 - 3 point for each correct log file
 
    (6) test4 - same comment as test2
 
@@ -156,6 +161,20 @@ If not, TOTALSCORE = SUBTOTAL.
 TOTALSCORE=
 min 1, max 60
 
+$Id: SCORE,v 1.11 2020-02-03 15:32:55-08 - - $
+@
+
+
+1.11
+log
+@-
+@
+text
+@d70 1
+a70 1
+   (6) test3 - same comment as test2
+d87 1
+a87 1
 $Id: SCORE,v 1.10 2020-02-03 15:32:02-08 - - $
 @
 

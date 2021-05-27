@@ -35,3 +35,10 @@ utime : utime-zero.txt
 utime-zero.txt : utime-maxint.txt
 	echo Need to make $@ from $<
 
+qux :
+	- gcc foobar.c
+	echo foo
+
+quux:
+	gcc foobar.c
+	echo foo

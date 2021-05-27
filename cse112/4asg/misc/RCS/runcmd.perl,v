@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2021.05.25.05.01.38;	author -;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2021.02.27.22.26.48;	author -;	state -;
@@ -35,13 +40,13 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
 text
 @#!/usr/bin/perl
-# $Id: runcmd.perl,v 1.4 2021-02-27 14:13:55-08 - - $
+# $Id: runcmd.perl,v 1.5 2021-02-27 14:26:48-08 - - $
 #
 # Copy code from this file in order to print an exit status.
 #
@@ -93,9 +98,9 @@ my %strsignal = (
    31 => "Bad system call",
 );
 
-sub run_command (@@) {
-   my (@@command) = @@_;
-   my $status = eval {no warnings; system @@command};
+sub run_command ($) {
+   my ($command) = @@_;
+   my $status = eval {no warnings; system $command};
    return undef unless $status;
    return "$!" if $status == -1;
    my $signal = $status & 0x7F;
@@ -136,6 +141,22 @@ if ($message) {
 # Bits 6..0 (7-bit field) is the encoded signal number which
 # caused the program to crash.
 # 
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: runcmd.perl,v 1.4 2021-02-27 14:13:55-08 - - $
+d54 3
+a56 3
+sub run_command (@@) {
+   my (@@command) = @@_;
+   my $status = eval {no warnings; system @@command};
 @
 
 

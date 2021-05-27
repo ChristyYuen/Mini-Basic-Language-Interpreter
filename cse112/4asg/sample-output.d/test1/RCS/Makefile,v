@@ -1,0 +1,36 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2021.05.21.03.33.20;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: Makefile,v 1.4 2021-02-17 17:59:40-08 - - $
+
+hello : hello.c
+	gcc hello.c -o hello
+
+bad : bad.c
+	gcc bad.c -o bad
+
+clean :
+	- rm -v hello bad
+
+both : bad hello
+
+@

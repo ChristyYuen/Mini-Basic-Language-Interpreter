@@ -1,6 +1,4 @@
 #!/usr/bin/perl
-# Christy Yuen and cyuen7@ucsc.edu
-# Mellany Quiroz Almendarez and mquiroza@ucsc.edu
 # $Id: pmake,v 1.40 2021-05-24 22:02:38-07 - - $
 
 $0 =~ s|.*/||;
@@ -8,8 +6,6 @@ use Getopt::Std;
 use Data::Dumper;
 use strict;
 use warnings;
-use List::Util qw(max);
-use Statistics::Lite qw(:all);
 
 $Data::Dumper::Indent = 1;
 $Data::Dumper::Sortkeys = 1;
@@ -80,11 +76,6 @@ my $Makefile = "Makefile";
 my %OPTIONS;
 my %GRAPH;
 my %MACROS;
-#Key: Macro Name -> LINE -> Line Number of the definition, 
-#                              VALUE -> marco assignment
-#Key: target name -> LINE -> Line number of the definition, 
-#                              PREREQS -> array of prereg strings
-
 
 sub usage() { die "Usage: $0 [-mgd] [target]\n" }
 sub stop($) { die "$Makefile:@_. Stop.\n" }
@@ -93,9 +84,6 @@ sub scan_cmdline() {
    getopts "dgm", \%OPTIONS;
    usage unless @ARGV <= 1;
    $MAKECMDGOALS = $ARGV[0] if @ARGV == 1;
-   #CDDGOALS contains the target we want to run, 
-   #we can just look it up in the graph to figure out where it is
-
 }
 
 sub dump_graph() {
@@ -142,45 +130,10 @@ sub load_Makefile() {
    }
    close $mkfile;
 }
-#NOTE: Target is the i in forloop
 
-print "Helloooo /n"; 
-
-
-sub make_goal(goal) { #was ($) 
-   $GRAPH {goal}
-   # my ($goal) = @_;
-   if $VISITED{goal}
-      return; 
-   $VISITED{goal} = 1;
-   {LINE};
-   @{PREREQS};
-   @{COMMANDS};
-   my ($prereq_modtime) = 0; 
-   
-   foreach (my $p in @PREREQS){
-      if ($GRAPH{$p} is not null)
-      { 
-         my ($m) = make_goal(@PREREGS); 
-         #...
-         $prereq_modtime = max $prereq_modtime m;
-      } 
-   }
-
-   
-   my ($out_modtime) = 0;
-   my (@filestat) = stat $goal;
-
-   if @filestat #is a thingy // is real // exists
-      $out_modtime = $filestat[9];
-
-   if $out_modtime <= $prereq_modtime
-      run the @commends sequentially;
-      @filestat = stat goal;
-      $out_modtime = 0; 
-      if @filestat 
-         $out_modtime = $filestat[9];
-   return $out_modtime;   
+sub make_goal($) {
+   my ($goal) = @_;
+   ### fill in stuff here and delete this comment
 }
 
 scan_cmdline;

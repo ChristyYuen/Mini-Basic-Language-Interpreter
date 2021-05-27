@@ -29,9 +29,9 @@
 .ds qrf*ref-CURR-PAGE-hn 4.
 .ds qrf*ref-CURR-PAGE-pn 4
 .ds qrf*ref-CURR-PAGE-xx 4
-.ds qrf*ref-SCORE-TOTAL-END-hn 4.
+.ds qrf*ref-SCORE-TOTAL-END-hn 6.
 .ds qrf*ref-SCORE-TOTAL-END-pn 4
 .ds qrf*ref-SCORE-TOTAL-END-xx 0
-.ds qrf*ref-END-PNR-hn 4.
+.ds qrf*ref-END-PNR-hn 6.
 .ds qrf*ref-END-PNR-pn 4
 .ds qrf*ref-END-PNR-xx 4

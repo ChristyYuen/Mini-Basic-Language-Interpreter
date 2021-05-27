@@ -3,7 +3,7 @@
 .INITR* \n[.F]
 .SIZE 12 14
 .TITLE CSE-112 Spring\~2021 Program\~4 "Perl and Rapid Development"
-.RCS "$Id: asg4-perl-pmake.mm,v 1.45 2021-05-17 15:32:42-07 - - $"
+.RCS "$Id: asg4-perl-pmake.mm,v 1.54 2021-05-22 10:48:37-07 - - $"
 .PWD
 .URL
 .H 1 "Overview"
@@ -278,6 +278,72 @@ Look at the subdirectories
 and see what 
 .V= make
 does with them.
+.LE
+.H 1 "Pseudocode for make_goal"
+For details of the exact format of error messages,
+run
+.V= make
+on similar programs and copy the format.
+.P
+Make_goal is a recursive function.
+.ALX a ()
+.LI
+If the goal has already been visited, return.
+.br
+Otherwise mark it as having been visited and continue.
+.LI
+If goal is not a target\(::
+.ALX 1 () "" 0
+.LI
+If goal is a file, return its modtime time.
+.LI
+Else print a message ``No rule to make...'' and exit 1.
+.LE
+.LI
+If it is a target (even if a file of the same name exists),
+continue.
+.br
+For each prerequisite\(::
+.ALX 1 () "" 0
+.LI
+Call make_goal recursively for the prerequisite.
+.LI
+Remember the newest prerequisite modtime of all of them.
+.LI
+If there are no prerequisites, the modtime for them is 0.
+.LE
+.LI
+If either of the following is true, run the commands.
+.ALX 1 () "" 0
+.LI
+The target file does not exist.
+.LI
+The newest prerequisite is newer than the target modtime.
+.LE
+.LI
+If the commands did build the target file, return its modtime.
+.br
+Else return 0 as the modtime.
+.LE
+.H 1 "Running a command"
+.ALX a ()
+.LI
+Perform macro substitution on the command.
+.LI
+If the command does not begin with a ``@'', print it.
+.LI
+Call run_command and check its result.
+.ALX 1 () "" 0
+.LI
+If the result is undef, return.
+.LI
+If the result tests true,
+and the command begins with a ``\-'',
+.br
+print a message with ``ignored'' as part of the message, and return.
+.LI
+Otherwise print the message, and exit 1.
+.LE
 .LE
 .H 1 "What to submit"
 Submit one file, specifically called

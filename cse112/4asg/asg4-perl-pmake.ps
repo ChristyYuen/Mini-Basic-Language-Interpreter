@@ -1,6 +1,6 @@
 %!PS-Adobe-3.0
 %%Creator: groff version 1.22.2
-%%CreationDate: Mon May 17 15:33:15 2021
+%%CreationDate: Sat May 22 10:48:38 2021
 %%Title: asg4-perl-pmake.ps
 %%BoundingBox: 0 0 612 792
 %%DocumentNeededResources: font Courier
@@ -307,7 +307,7 @@ BP
 (CSE-112 \203 Spring 2021 \203 Program 4 \203 P)72 50 Q
 (erl and Rapid Development)-.66 E/F1 12/NewCenturySchlbk-Roman@0 SF
 3.336(1o)26.052 G 3.336(f4)-3.336 G/F2 11/Courier-Elite@0 SF
-($Id: asg4-perl-pmake.mm,v 1.45 2021-05-17 15:32:42-07 - - $)72 67 Q
+($Id: asg4-perl-pmake.mm,v 1.54 2021-05-22 10:48:37-07 - - $)72 67 Q
 (PWD: /afs/cats.ucsc.edu/courses/cse112-wm/Assignments/asg4-perl-pmake)
 72 80 Q(URL: https://www2.ucsc.edu/courses/cse112-wm/:/Assignments/asg4\
 -perl-pmake/)72 93 Q F0 3.444(1. Overview)72 117 R F1 .658(Scripting is\
@@ -523,29 +523,68 @@ BP
 .48 LW 540 54 72 54 DL 540 56 72 56 DL/F0 12/NewCenturySchlbk-Bold@0 SF
 (CSE-112 \203 Spring 2021 \203 Program 4 \203 P)72 50 Q
 (erl and Rapid Development)-.66 E/F1 12/NewCenturySchlbk-Roman@0 SF
-3.336(4o)26.052 G 3.336(f4)-3.336 G F0 3.444(4. What)72 74 R(to submit)
-3.444 E F1 .557(Submit one \214le)72 94 R 3.893(,s)-.216 G .557
-(peci\214cally called)-3.893 F/F2 12/Courier-Elite-Bold@0 SF(pmake)3.893
-E F1 3.893(,w)C(hic)-3.893 E 3.893(hh)-.084 G .557(as been)-3.893 F F2
-(chmod)3.893 E F1 .557(ed to executable \()B F2(+x)A F1(\).)A .292
-(Also submit)72 108 R F2(README)3.628 E F1 .292(as speci\214ed under `)
-3.628 F .292(`pair programming')-.3 F 3.628('i)-.3 G 3.628(nt)-3.628 G
-.292(he syllabus)-3.628 F 6.964(.T)-.3 G .292(he \214rst)-6.964 F .719
-(line must be a hashbang for P)72 122 R 4.055(erl. Be)-.444 F .719
+3.336(4o)26.052 G 3.336(f4)-3.336 G F0 3.444(4. Pseudocode)72 74 R
+(for make_goal)3.444 E F1 -.66(Fo)72 94 S 3.815(rd).66 G .479
+(etails of the exact format of error messages)-3.815 F 3.815(,r)-.3 G
+(un)-3.815 E/F2 12/Courier-Elite-Bold@0 SF(make)3.815 E F1 .48
+(on similar programs and)3.815 F(copy the format.)72 108 Q
+(Make_goal is a recursive function.)72 128 Q 2.664(\(a\) If)81.336 148 R
+(the goal has already been visited, return.)3.336 E
+(Otherwise mark it as ha)102 162 Q(ving been visited and continue)-.12 E
+(.)-.216 E 2.664(\(b\) If)81.336 182 R(goal is not a target)3.336 E(:)2
+E 2.664(\(1\) If)111.336 196 R(goal is a \214le)3.336 E 3.336(,r)-.216 G
+(eturn its modtime time)-3.336 E(.)-.216 E 2.664(\(2\) Else)111.336 210
+R(print a message `)3.336 E(`No rule to make)-.3 E(...')-.216 E 3.336
+('a)-.3 G(nd exit 1.)-3.336 E 2.664(\(c\) If)82.68 230 R
+(it is a target \(even if a \214le of the same name exists\), continue)
+3.336 E(.)-.216 E -.66(Fo)102 244 S 3.336(re).66 G(ac)-3.336 E 3.336(hp)
+-.084 G -1.336(rerequisite :)-3.336 F 2.664(\(1\) Call)111.336 258 R
+(make_goal recursively for the prerequisite)3.336 E(.)-.216 E 2.664
+(\(2\) Remember)111.336 272 R
+(the newest prerequisite modtime of all of them.)3.336 E 2.664(\(3\) If)
+111.336 286 R(there are no prerequisites)3.336 E 3.336(,t)-.3 G
+(he modtime for them is 0.)-3.336 E 2.664(\(d\) If)81.12 306 R
+(either of the following is true)3.336 E 3.336(,r)-.216 G
+(un the commands)-3.336 E(.)-.3 E 2.664(\(1\) The)111.336 320 R
+(target \214le does not exist.)3.336 E 2.664(\(2\) The)111.336 334 R
+(newest prerequisite is newer than the target modtime)3.336 E(.)-.216 E
+2.664(\(e\) If)82.008 354 R(the commands did build the target \214le)
+3.336 E 3.336(,r)-.216 G(eturn its modtime)-3.336 E(.)-.216 E
+(Else return 0 as the modtime)102 368 Q(.)-.216 E F0 3.444(5. Running)72
+394 R 3.444(ac)3.444 G(ommand)-3.444 E F1 2.664(\(a\) P)81.336 414 R
+(erform macro substitution on the command.)-.444 E 2.664(\(b\) If)81.336
+434 R(the command does not begin with a `)3.336 E(`@')-.3 E
+(', print it.)-.3 E 2.664(\(c\) Call)82.68 454 R(run_command and c)3.336
+E(hec)-.084 E 3.336(ki)-.084 G(ts result.)-3.336 E 2.664(\(1\) If)
+111.336 468 R(the result is undef)3.336 E 3.336(,r)-.444 G(eturn.)-3.336
+E 2.664(\(2\) If)111.336 482 R(the result tests true)3.336 E 3.336(,a)
+-.216 G(nd the command begins with a `)-3.336 E(`\255')-.3 E(',)-.3 E
+(print a message with `)132 496 Q(`ignored')-.3 E 3.336('a)-.3 G 3.336
+(sp)-3.336 G(art of the message)-3.336 E 3.336(,a)-.216 G(nd return.)
+-3.336 E 2.664(\(3\) Otherwise)111.336 510 R(print the message)3.336 E
+3.336(,a)-.216 G(nd exit 1.)-3.336 E F0 3.444(6. What)72 536 R
+(to submit)3.444 E F1 .557(Submit one \214le)72 556 R 3.893(,s)-.216 G
+.557(peci\214cally called)-3.893 F F2(pmake)3.893 E F1 3.893(,w)C(hic)
+-3.893 E 3.893(hh)-.084 G .557(as been)-3.893 F F2(chmod)3.893 E F1 .557
+(ed to executable \()B F2(+x)A F1(\).)A .292(Also submit)72 570 R F2
+(README)3.628 E F1 .292(as speci\214ed under `)3.628 F .292
+(`pair programming')-.3 F 3.628('i)-.3 G 3.628(nt)-3.628 G .292
+(he syllabus)-3.628 F 6.964(.T)-.3 G .292(he \214rst)-6.964 F .72
+(line must be a hashbang for P)72 584 R 4.055(erl. Be)-.444 F .719
 (sure there are no carriage returns in the \214le)4.055 F(.)-.216 E
-(Also)72 136 Q 5.966(,u)-.216 G(se)-5.966 E F2(strict)5.966 E F1(and)
+(Also)72 598 Q 5.966(,u)-.216 G(se)-5.966 E F2(strict)5.966 E F1(and)
 5.966 E F2(warnings)5.966 E F1 9.302(.Y)C 2.63(our name must come)
 -10.502 F/F3 12/NewCenturySchlbk-BoldItalic@0 SF(after)5.966 E F1 2.63
-(the hashbang line)5.966 F(.)-.216 E 1.772
-(Grading will be done by naming it as a shell script.)72 150 R 1.773
-(Do not run it by typing the)8.445 F(word)72 164 Q F2(perl)3.336 E F1
+(the hashbang line)5.966 F(.)-.216 E 1.773
+(Grading will be done by naming it as a shell script.)72 612 R 1.772
+(Do not run it by typing the)8.444 F(word)72 626 Q F2(perl)3.336 E F1
 (as the \214rst word on the command line)3.336 E 6.672(.T)-.216 G
-(he \214rst few lines are)-6.672 E(:)2 E F2(#!/usr/bin/perl)85.5 184 Q
-(#)85.5 198 Q/F4 12/Courier-Elite@0 SF(Your name and username@ucsc.edu)6
-E F2(use strict;)85.5 212 Q(use warnings;)85.5 226 Q F1 .072
-(If you are doing pair programming)72 246 R 3.408(,s)-.3 G(ubmit)-3.408
+(he \214rst few lines are)-6.672 E(:)2 E F2(#!/usr/bin/perl)85.5 646 Q
+(#)85.5 660 Q/F4 12/Courier-Elite@0 SF(Your name and username@ucsc.edu)6
+E F2(use strict;)85.5 674 Q(use warnings;)85.5 688 Q F1 .072
+(If you are doing pair programming)72 708 R 3.408(,s)-.3 G(ubmit)-3.408
 E F2(PARTNER)3.408 E F1 .072(as required by the pair program-)3.408 F
-(ming instructions in)72 260 Q F2(cse112-wm/Syllabus/pair-programming)
+(ming instructions in)72 722 Q F2(cse112-wm/Syllabus/pair-programming)
 3.336 E F1(.)A 0 Cg EP
 %%Trailer
 end

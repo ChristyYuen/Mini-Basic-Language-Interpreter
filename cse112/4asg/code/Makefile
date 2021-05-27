@@ -14,7 +14,7 @@ THING = echo what do we want
 THERE = there is a thing
 
 all :
-	@ echo ${MAKECMDGOALS}
+	@ echo "MAKECMDGOALS='${MAKECMDGOALS}'"
 	@ echo "Hello World"
 	echo NOMACRO=${NOMACRO}
 

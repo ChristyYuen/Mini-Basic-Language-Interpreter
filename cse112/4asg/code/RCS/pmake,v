@@ -1,9 +1,24 @@
-head	1.37;
+head	1.40;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.40
+date	2021.05.25.05.02.38;	author -;	state -;
+branches;
+next	1.39;
+
+1.39
+date	2021.05.22.01.35.44;	author -;	state -;
+branches;
+next	1.38;
+
+1.38
+date	2021.05.21.03.37.03;	author -;	state -;
+branches;
+next	1.37;
 
 1.37
 date	2021.02.24.21.17.46;	author -;	state -;
@@ -195,13 +210,13 @@ desc
 @@
 
 
-1.37
+1.40
 log
 @-
 @
 text
 @#!/usr/bin/perl
-# $Id: pmake,v 1.36 2020-12-04 14:39:10-08 - - $
+# $Id: pmake,v 1.39 2021-05-21 18:35:44-07 - - $
 
 $0 =~ s|.*/||;
 use Getopt::Std;
@@ -259,10 +274,10 @@ my %strsignal = (
    31 => "Bad system call",
 );
 
-sub run_command (@@) {
-   my (@@command) = @@_;
-   print "@@command\n";
-   my $status = eval {no warnings; system @@command};
+sub run_command ($) {
+   my ($command) = @@_;
+   print "$command\n";
+   my $status = eval {no warnings; system $command};
    return undef unless $status;
    return "$!" if $status == -1;
    my $signal = $status & 0x7F;
@@ -279,7 +294,7 @@ my %OPTIONS;
 my %GRAPH;
 my %MACROS;
 
-sub usage() { die "Usage: $0 [-d] [target]\n" }
+sub usage() { die "Usage: $0 [-mgd] [target]\n" }
 sub stop($) { die "$Makefile:@@_. Stop.\n" }
 
 sub scan_cmdline() {
@@ -333,6 +348,11 @@ sub load_Makefile() {
    close $mkfile;
 }
 
+sub make_goal($) {
+   my ($goal) = @@_;
+   ### fill in stuff here and delete this comment
+}
+
 scan_cmdline;
 load_Makefile;
 
@@ -340,6 +360,58 @@ dump_hash ("MACROS", %MACROS) if $OPTIONS{'m'};
 dump_hash ("GRAPH", %GRAPH) if $OPTIONS{'g'};
 dump_graph if $OPTIONS{'d'};
 
+make_goal ($MAKECMDGOALS);
+
+@
+
+
+1.39
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.38 2021-05-20 20:37:03-07 - - $
+d60 4
+a63 4
+sub run_command (@@) {
+   my (@@command) = @@_;
+   print "@@command\n";
+   my $status = eval {no warnings; system @@command};
+@
+
+
+1.38
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.37 2021-02-24 13:17:46-08 - - $
+d134 1
+a134 1
+sub do_make($) {
+d146 1
+a146 1
+do_make ($MAKECMDGOALS);
+@
+
+
+1.37
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pmake,v 1.36 2020-12-04 14:39:10-08 - - $
+d80 1
+a80 1
+sub usage() { die "Usage: $0 [-d] [target]\n" }
+d134 5
+d145 2
 @
 
 

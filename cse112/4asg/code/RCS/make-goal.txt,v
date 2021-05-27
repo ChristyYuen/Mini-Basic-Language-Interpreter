@@ -1,0 +1,75 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2021.05.22.02.21.56;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2021.05.22.01.55.27;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@
+pseudocode:
+
+make_goal is a recursive function
+
+make_goal goal
+    if goal is not a target:
+        if goal is a file return its modtime
+        else stop with error "don't know how..."
+    else it is a target.
+
+    for each prereq:
+        call make_goal recursively with that prereq
+        remember the newest prereq modtime
+        if no prereqs, the newest modtime is 0
+
+    run the commands if either of the following is true:
+        the target file does not exist
+        or the newest prereq is newer than the target modtime
+
+running a command:
+    perform macro substitution on the command
+    if the command does not begin with "@@", print it
+    call run_command
+    if run_command returns undef, return 
+    print the message:
+        if the command begins with "-" use (ignored), return
+        if not, print the message and exit 1
+
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d18 1
+a18 1
+        the target files does not exist
+d25 3
+a27 4
+    if run_command returns undef, continue next command
+    if it returns true:
+        if the command begins with "-",
+            print the message and (ignored), and continue next command
+@

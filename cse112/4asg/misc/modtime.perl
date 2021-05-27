@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: modtime.perl,v 1.3 2021-05-06 16:57:01-07 - - $
+# $Id: modtime.perl,v 1.4 2021-05-22 18:42:27-07 - - $
 #
 # NAME
 #    modtime.perl - print modification time of files
@@ -23,8 +23,8 @@ for my $filename (@ARGV) {
    my $mtime = modtime $filename;
    if (defined $mtime) {
       my $ctime = strftime "%c", localtime $mtime;
-      printf "%-20s 0x%08X %12d %s\n",
-             $filename, $mtime, $mtime, $ctime;
+      printf "%-20s %12d %s\n",
+             $filename, $mtime, $ctime;
    }else {
       printf "$0: $filename: $!\n";
    }

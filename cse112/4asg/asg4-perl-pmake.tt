@@ -1,5 +1,5 @@
 CSE-112 · Spring 2021 · Program 4 · Perl and Rapid Development  1 of 1
-$Id: asg4-perl-pmake.mm,v 1.45 2021-05-17 15:32:42-07 - - $
+$Id: asg4-perl-pmake.mm,v 1.54 2021-05-22 10:48:37-07 - - $
 PWD: /afs/cats.ucsc.edu/courses/cse112-wm/Assignments/asg4-perl-
 pmake
 URL: https://www2.ucsc.edu/courses/cse112-wm/:/Assignments/
@@ -182,7 +182,49 @@ Perl and how to perform certain kinds of coding.
  (i) Look at the subdirectories .score/test* and see what make does
      with them.
 
-4.  What to submit
+4.  Pseudocode for make_goal
+
+For details of the exact format of error messages, run make on similar
+programs and copy the format.
+
+Make_goal is a recursive function.
+
+ (a) If the goal has already been visited, return.
+     Otherwise mark it as having been visited and continue.
+
+ (b) If goal is not a target:
+      (1) If goal is a file, return its modtime time.
+      (2) Else print a message ``No rule to make...'' and exit 1.
+
+ (c) If it is a target (even if a file of the same name exists),
+     continue.
+     For each prerequisite:
+      (1) Call make_goal recursively for the prerequisite.
+      (2) Remember the newest prerequisite modtime of all of them.
+      (3) If there are no prerequisites, the modtime for them is 0.
+
+ (d) If either of the following is true, run the commands.
+      (1) The target file does not exist.
+      (2) The newest prerequisite is newer than the target modtime.
+
+ (e) If the commands did build the target file, return its modtime.
+     Else return 0 as the modtime.
+
+5.  Running a command
+
+ (a) Perform macro substitution on the command.
+
+ (b) If the command does not begin with a ``@'', print it.
+
+ (c) Call run_command and check its result.
+      (1) If the result is undef, return.
+      (2) If the result tests true, and the command begins with a
+          ``-'',
+          print a message with ``ignored'' as part of the message, and
+          return.
+      (3) Otherwise print the message, and exit 1.
+
+6.  What to submit
 
 Submit one file, specifically called pmake, which has been chmoded to
 executable (+x).  Also submit README as specified under ``pair

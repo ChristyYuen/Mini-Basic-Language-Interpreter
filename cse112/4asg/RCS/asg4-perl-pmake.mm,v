@@ -1,9 +1,54 @@
-head	1.45;
+head	1.54;
 access;
 symbols;
 locks;
 comment	@.\" @;
 
+
+1.54
+date	2021.05.22.17.48.37;	author -;	state -;
+branches;
+next	1.53;
+
+1.53
+date	2021.05.22.04.30.19;	author -;	state -;
+branches;
+next	1.52;
+
+1.52
+date	2021.05.22.04.29.59;	author -;	state -;
+branches;
+next	1.51;
+
+1.51
+date	2021.05.22.04.28.31;	author -;	state -;
+branches;
+next	1.50;
+
+1.50
+date	2021.05.22.04.28.04;	author -;	state -;
+branches;
+next	1.49;
+
+1.49
+date	2021.05.22.04.27.37;	author -;	state -;
+branches;
+next	1.48;
+
+1.48
+date	2021.05.22.04.27.22;	author -;	state -;
+branches;
+next	1.47;
+
+1.47
+date	2021.05.22.04.26.13;	author -;	state -;
+branches;
+next	1.46;
+
+1.46
+date	2021.05.22.04.18.53;	author -;	state -;
+branches;
+next	1.45;
 
 1.45
 date	2021.05.17.22.32.42;	author -;	state -;
@@ -235,7 +280,7 @@ desc
 @@
 
 
-1.45
+1.54
 log
 @-
 @
@@ -245,7 +290,7 @@ text
 .INITR* \n[.F]
 .SIZE 12 14
 .TITLE CSE-112 Spring\~2021 Program\~4 "Perl and Rapid Development"
-.RCS "$Id: asg4-perl-pmake.mm,v 1.44 2021-02-17 17:55:55-08 - - $"
+.RCS "$Id: asg4-perl-pmake.mm,v 1.53 2021-05-21 21:30:19-07 - - $"
 .PWD
 .URL
 .H 1 "Overview"
@@ -521,6 +566,72 @@ and see what
 .V= make
 does with them.
 .LE
+.H 1 "Pseudocode for make_goal"
+For details of the exact format of error messages,
+run
+.V= make
+on similar programs and copy the format.
+.P
+Make_goal is a recursive function.
+.ALX a ()
+.LI
+If the goal has already been visited, return.
+.br
+Otherwise mark it as having been visited and continue.
+.LI
+If goal is not a target\(::
+.ALX 1 () "" 0
+.LI
+If goal is a file, return its modtime time.
+.LI
+Else print a message ``No rule to make...'' and exit 1.
+.LE
+.LI
+If it is a target (even if a file of the same name exists),
+continue.
+.br
+For each prerequisite\(::
+.ALX 1 () "" 0
+.LI
+Call make_goal recursively for the prerequisite.
+.LI
+Remember the newest prerequisite modtime of all of them.
+.LI
+If there are no prerequisites, the modtime for them is 0.
+.LE
+.LI
+If either of the following is true, run the commands.
+.ALX 1 () "" 0
+.LI
+The target file does not exist.
+.LI
+The newest prerequisite is newer than the target modtime.
+.LE
+.LI
+If the commands did build the target file, return its modtime.
+.br
+Else return 0 as the modtime.
+.LE
+.H 1 "Running a command"
+.ALX a ()
+.LI
+Perform macro substitution on the command.
+.LI
+If the command does not begin with a ``@@'', print it.
+.LI
+Call run_command and check its result.
+.ALX 1 () "" 0
+.LI
+If the result is undef, return.
+.LI
+If the result tests true,
+and the command begins with a ``\-'',
+.br
+print a message with ``ignored'' as part of the message, and return.
+.LI
+Otherwise print the message, and exit 1.
+.LE
+.LE
 .H 1 "What to submit"
 Submit one file, specifically called
 .V= pmake ,
@@ -558,6 +669,137 @@ submit
 .V= PARTNER
 as required by the pair programming instructions in
 .V= cse112-wm/Syllabus/pair-programming .
+@
+
+
+1.53
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.52 2021-05-21 21:29:59-07 - - $"
+d282 6
+a287 1
+.H 1 "Pseudcode for make_goal"
+d311 1
+a311 1
+Remember the newest prequiristie modtime of all of them.
+@
+
+
+1.52
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.51 2021-05-21 21:28:31-07 - - $"
+d337 1
+@
+
+
+1.51
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.50 2021-05-21 21:28:04-07 - - $"
+d295 1
+a295 1
+Else print an error message ``No rule to make...'' and exit 1.
+d337 1
+a337 1
+print an error message with ``ignored'' as part of the message.
+@
+
+
+1.50
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.49 2021-05-21 21:27:37-07 - - $"
+d287 1
+@
+
+
+1.49
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.48 2021-05-21 21:27:22-07 - - $"
+d319 1
+@
+
+
+1.48
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.47 2021-05-21 21:26:13-07 - - $"
+a320 1
+.SP
+@
+
+
+1.47
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.46 2021-05-21 21:18:53-07 - - $"
+d321 2
+a322 1
+Running a command.
+@
+
+
+1.46
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.45 2021-05-17 15:32:42-07 - - $"
+d283 1
+a283 1
+Make_goal is a recusrive function.
+d286 1
+a286 1
+If the gal has already been visited, return.
+d292 1
+a292 1
+If goal is a file, return its modification time.
+d299 1
+d318 21
+@
+
+
+1.45
+log
+@-
+@
+text
+@d6 1
+a6 1
+.RCS "$Id: asg4-perl-pmake.mm,v 1.44 2021-02-17 17:55:55-08 - - $"
+d281 36
 @
 
 

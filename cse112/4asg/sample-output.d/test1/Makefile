@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.4 2021-02-17 17:59:40-08 - - $
+# $Id: Makefile,v 1.1 2021-05-20 20:33:20-07 - - $
 
 hello : hello.c
 	gcc hello.c -o hello
@@ -8,3 +8,6 @@ bad : bad.c
 
 clean :
 	- rm -v hello bad
+
+both : bad hello
+
