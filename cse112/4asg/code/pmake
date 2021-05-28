@@ -8,8 +8,8 @@ use Getopt::Std;
 use Data::Dumper;
 use strict;
 use warnings;
-use List::Util qw(max);
-use Statistics::Lite qw(:all);
+use List::Util qw(max); #added for max
+use Statistics::Lite qw(:all); #added for max
 
 $Data::Dumper::Indent = 1;
 $Data::Dumper::Sortkeys = 1;
@@ -146,42 +146,92 @@ sub load_Makefile() {
 
 print "Helloooo /n"; 
 
+# if (!@match)
+# if (@match == 0)
+# if (scalar @match == 0)  #prereq help
+
 
 sub make_goal(goal) { #was ($) 
    $GRAPH {goal}
    # my ($goal) = @_;
-   if $VISITED{goal}
-      return; 
+   if ($VISITED{goal}) {
+      return 0; 
+   }
    $VISITED{goal} = 1;
    {LINE};
    @{PREREQS};
    @{COMMANDS};
    my ($prereq_modtime) = 0; 
+
+   my ($out_modtime) = 0;
    
-   foreach (my $p in @PREREQS){
+   my (@filestat) = stat $goal;
+
+   if (@filestat) #is a thingy // is real // exists
+   {
+      $out_modtime = $filestat[9];
+   }
+   
+   foreach (my $p in @PREREQS)
+   {
       if ($GRAPH{$p} is not null)
       { 
+         #p is target
+         if( GOAL != target)
+         {
+            if(-e GOAL)
+            {
+               return $out_modtime;
+            }
+            else{
+               print "no rule to make ..."; #error message
+               exit 1;
+            }
+         }
          my ($m) = make_goal(@PREREGS); 
-         #...
-         $prereq_modtime = max $prereq_modtime m;
+         #... 
+         $prereq_modtime = max $prereq_modtime $m; 
+         
+         #$prereq_modtime = max $prereq_modtime m;
       } 
    }
 
+   # my ($out_modtime) = 0;
    
-   my ($out_modtime) = 0;
-   my (@filestat) = stat $goal;
+   # my (@filestat) = stat $goal;
 
-   if @filestat #is a thingy // is real // exists
-      $out_modtime = $filestat[9];
+   # if (@filestat) #is a thingy // is real // exists
+   # {
+   #    $out_modtime = $filestat[9];
+   # }
 
-   if $out_modtime <= $prereq_modtime
-      run the @commends sequentially;
+   if ($out_modtime <= $prereq_modtime)
+   {
+      #run the @commends sequentially;
+      #(!-e filename) 
       @filestat = stat goal;
       $out_modtime = 0; 
       if @filestat 
+      {
          $out_modtime = $filestat[9];
+      }
+         
+   }
    return $out_modtime;   
 }
+
+#MACROS REGEX STUFF
+# 1. create a regex from the target 
+# target_name =~ s/%/'(\S+)'/g
+# "%.o"
+# new_target_name = "(\S+).o"
+
+# 2. When you have a target, check whether this rule couble be used
+# hello.o 
+# hello.o =~ new_target_name
+
+# 3. If it can, figure out the preregs 
+# new_prereq_names = GRAPH{target_name}{PREREQS} =~ s/%/$1
 
 scan_cmdline;
 load_Makefile;
