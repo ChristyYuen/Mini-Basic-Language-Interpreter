@@ -8,8 +8,7 @@ use Getopt::Std;
 use Data::Dumper;
 use strict;
 use warnings;
-use List::Util qw(max); #added for max
-use Statistics::Lite qw(:all); #added for max
+use List::Util qw(max);
 
 $Data::Dumper::Indent = 1;
 $Data::Dumper::Sortkeys = 1;
@@ -75,15 +74,16 @@ sub run_command ($) {
         . ($core ? " (core dumped)" : "");
 }
 
+my @VISITED; #added; visted targets
 my $MAKECMDGOALS;
 my $Makefile = "Makefile";
 my %OPTIONS;
 my %GRAPH;
+#Key: target name -> LINE -> Line number of the definition, 
+#                              PREREQS -> array of prereg strings
 my %MACROS;
 #Key: Macro Name -> LINE -> Line Number of the definition, 
 #                              VALUE -> marco assignment
-#Key: target name -> LINE -> Line number of the definition, 
-#                              PREREQS -> array of prereg strings
 
 
 sub usage() { die "Usage: $0 [-mgd] [target]\n" }
@@ -151,35 +151,43 @@ print "Helloooo /n";
 # if (scalar @match == 0)  #prereq help
 
 
-sub make_goal(goal) { #was ($) 
-   $GRAPH {goal}
-   # my ($goal) = @_;
-   if ($VISITED{goal}) {
+sub make_goal($) { #was ($) 
+   my ($goal) = @_;
+#    run_command($goal); 
+#    printf STDERR "%7d [%s] :", $MAKECMDGOALS;
+# }
+   my ($target) = 0; 
+   $GRAPH{$goal};
+   if ($VISITED{$goal}) {
       return 0; 
    }
-   $VISITED{goal} = 1;
-   {LINE};
-   @{PREREQS};
-   @{COMMANDS};
+   $VISITED{$goal} = 1;
+   # {LINE};
+   @{$GRAPH{$target}{LINE}};
+   # @{PREREQS};
+   @{$GRAPH{$target}{PREREQS}};
+   # @{COMMANDS};
+   @{$GRAPH{$target}{COMMENDS}};
+
    my ($prereq_modtime) = 0; 
 
    my ($out_modtime) = 0;
    
    my (@filestat) = stat $goal;
 
-   if (@filestat) #is a thingy // is real // exists
+   if (-e @filestat) #is a thingy // is real // exists
    {
       $out_modtime = $filestat[9];
    }
    
    foreach (my $p in @PREREQS)
    {
-      if ($GRAPH{$p} is not null)
+      if ($GRAPH{$p} ne NULL) 
       { 
          #p is target
-         if( GOAL != target)
+         if( $goal ne $target)
          {
-            if(-e GOAL)
+            if(-e $goal)
             {
                return $out_modtime;
             }
@@ -190,32 +198,21 @@ sub make_goal(goal) { #was ($)
          }
          my ($m) = make_goal(@PREREGS); 
          #... 
-         $prereq_modtime = max $prereq_modtime $m; 
-         
-         #$prereq_modtime = max $prereq_modtime m;
+         # $prereq_modtime = max $prereq_modtime $m; 
       } 
    }
-
-   # my ($out_modtime) = 0;
-   
-   # my (@filestat) = stat $goal;
-
-   # if (@filestat) #is a thingy // is real // exists
-   # {
-   #    $out_modtime = $filestat[9];
-   # }
 
    if ($out_modtime <= $prereq_modtime)
    {
       #run the @commends sequentially;
       #(!-e filename) 
-      @filestat = stat goal;
+      run_command($goal); 
+      @filestat = stat $goal;
       $out_modtime = 0; 
       if @filestat 
       {
          $out_modtime = $filestat[9];
       }
-         
    }
    return $out_modtime;   
 }
