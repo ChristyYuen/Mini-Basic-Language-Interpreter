@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+# Christy Yuen and cyuen7@ucsc.edu
+# Mellany Quiroz Almendarez and mquiroza@ucsc.edu
 # $Id: pmake,v 1.40 2021-05-24 22:02:38-07 - - $
 
 $0 =~ s|.*/||;
@@ -6,6 +8,7 @@ use Getopt::Std;
 use Data::Dumper;
 use strict;
 use warnings;
+use List::Util qw(max);
 
 $Data::Dumper::Indent = 1;
 $Data::Dumper::Sortkeys = 1;
@@ -71,11 +74,19 @@ sub run_command ($) {
         . ($core ? " (core dumped)" : "");
 }
 
+my %VISITED; #added; visted targets
 my $MAKECMDGOALS;
 my $Makefile = "Makefile";
 my %OPTIONS;
 my %GRAPH;
+#Key: target name -> LINE -> Line number of the definition, 
+#                              PREREQS -> array of prereg strings
 my %MACROS;
+#Key: Macro Name -> LINE -> Line Number of the definition, 
+#                              VALUE -> marco assignment
+my @PREREQS;
+my @COMMANDS; 
+
 
 sub usage() { die "Usage: $0 [-mgd] [target]\n" }
 sub stop($) { die "$Makefile:@_. Stop.\n" }
@@ -84,6 +95,9 @@ sub scan_cmdline() {
    getopts "dgm", \%OPTIONS;
    usage unless @ARGV <= 1;
    $MAKECMDGOALS = $ARGV[0] if @ARGV == 1;
+   #CDDGOALS contains the target we want to run, 
+   #we can just look it up in the graph to figure out where it is
+
 }
 
 sub dump_graph() {
@@ -130,11 +144,103 @@ sub load_Makefile() {
    }
    close $mkfile;
 }
+#NOTE: Target is the i in forloop
 
-sub make_goal($) {
+#print "Helloooo /n"; 
+
+# if (!@match)
+# if (@match == 0)
+# if (scalar @match == 0)  #prereq help
+
+
+sub make_goal($) { #was ($) 
    my ($goal) = @_;
-   ### fill in stuff here and delete this comment
+#    run_command($goal); 
+#    printf STDERR "%7d [%s] :", $MAKECMDGOALS;
+# }
+   my ($target) = 0; 
+   # my (@PREREQS); 
+   # $GRAPH{$goal};
+   if ($VISITED{$goal}) {
+      return 0; 
+   }
+   $VISITED{$goal} = 1;
+   # {LINE};
+   #@{$GRAPH{$target}{LINE}};
+   # {PREREQS};
+   # @{preregs};
+   #@{$GRAPH{$target}{PREREQS}};
+   # {COMMANDS};
+   #@{$GRAPH{$target}{COMMENDS}};
+
+   my ($prereq_modtime) = 0; 
+
+   my ($out_modtime) = 0;
+   
+   my (@filestat) = stat $goal;
+
+   if (-e @filestat)
+   {
+      $out_modtime = $filestat[9];
+   }
+   
+   foreach my $p (@PREREQS) #@PREREQS
+   {
+      if (! defined $GRAPH{$p}) 
+      { 
+         #p is target
+         if( $goal ne $target)
+         {
+            if(-e $goal)
+            {
+               return $out_modtime;
+            }
+            else
+            {
+               print "no rule to make ..."; #error message
+               exit 1;
+            }
+         }
+         # my $m = make_goal (@PREREGS);  
+         # my $m = make_goal ($goal);  #IMPORTANT
+         #... 
+         # $prereq_modtime = max $prereq_modtime $m; 
+         
+      } 
+      #  my $m = make_goal (@PREREGS);  
+       
+     my $m = make_goal ($goal);
+   }
+
+   if ($out_modtime <= $prereq_modtime)
+   {
+      #run the @commends sequentially;
+      #(!-e filename) 
+      run_command($goal);
+      # run_command(@{$GRAPH{$target}{COMMENDS}}) 
+      @filestat = stat $goal;
+      $out_modtime = 0; 
+      if (@filestat) 
+      {
+         $out_modtime = $filestat[9];
+      }
+      # my $m = make_goal ($goal); 
+   }
+   return $out_modtime;   
 }
+
+#MACROS REGEX STUFF
+# 1. create a regex from the target 
+# target_name =~ s/%/'(\S+)'/g
+# "%.o"
+# new_target_name = "(\S+).o"
+
+# 2. When you have a target, check whether this rule couble be used
+# hello.o 
+# hello.o =~ new_target_name
+
+# 3. If it can, figure out the preregs 
+# new_prereq_names = GRAPH{target_name}{PREREQS} =~ s/%/$1
 
 scan_cmdline;
 load_Makefile;
